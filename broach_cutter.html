@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broach Cutter - Designed to Perform | Innovative Engineering Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css"> <style>
+        /* Table styling copied for this standalone page */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        th, td {
+            border: 1px solid #4a5568; /* gray-700 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #2d3748; /* gray-800 */
+            color: #cbd5e0; /* gray-300 */
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #2a3340; /* Slightly darker for even rows */
+        }
+        tr:hover {
+            background-color: #4a5568; /* gray-700 on hover */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-950 text-gray-200 font-sans">
+
+    <nav class="sticky top-0 z-50 bg-gray-950 bg-opacity-90 backdrop-blur-md shadow-lg p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-white text-2xl font-bold">
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-8 h-8">
+                <span>Innovative Engineering Products</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
+                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
+                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
+                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
+            <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="index.html#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
+            <a href="index.html#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
+            <a href="index.html#about" class="text-white text-3xl hover:text-purple-400 transition duration-300">About Us</a>
+            <a href="index.html#contact" class="text-white text-3xl hover:text-purple-400 transition duration-300">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16">
+        <section id="hero" class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="w-full lg:w-1/2 text-center lg:text-left">
+                <h1 class="text-5xl font-extrabold text-white mb-4">Broach Cutter: Designed to Perform</h1>
+                <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
+                    Eliminate Step-Drilling and Save upto 90% time with Broach Cutter's innovative solutions. Drill accurate holes of any diameter in a single pass using BroachCutter MT Arbors & Annular Cutters.
+                </p>
+            </div>
+            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+                <img src="assets/images/broach_cutter/broach_cutter_logo.png" alt="Broach Cutter Products" class="rounded-lg shadow-lg max-w-full h-auto">
+            </div>
+        </section>
+
+        <section id="products-content" class="mb-8">
+            <h2 class="text-4xl font-bold text-white text-center mb-8">Our Product Categories</h2>
+
+            <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+                <label for="category-filter" class="text-lg text-gray-300">Jump to Category:</label>
+                <div class="relative inline-block text-left">
+                    <select id="category-filter" class="block appearance-none w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer">
+                        <option value="all">Select a Category</option>
+                        </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-gray-400 text-xl">
+                <p>Use the "Jump to Category" filter to quickly navigate through our detailed product offerings.</p>
+            </div>
+        </section>
+
+        <section id="arbors-radial-drill-machines" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">ACCESSORIES: Arbors for Radial Drill Machines</h3>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Morse Taper</th>
+                            <th>Shank Diameter (mm)</th>
+                            <th>Depth of Cut (mm)</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>141200</td><td>2</td><td>19.05</td><td>50</td><td></td></tr>
+                        <tr><td>141300</td><td>2</td><td>19.05</td><td>50</td><td></td></tr>
+                        <tr><td>151300</td><td>2</td><td>19.05</td><td>75</td><td></td></tr>
+                        <tr><td>161300</td><td>3</td><td>19.05</td><td>100</td><td></td></tr>
+                        <tr><td>141400</td><td>3</td><td>19.05</td><td>50</td><td></td></tr>
+                        <tr><td>151400</td><td>3</td><td>19.05</td><td>75</td><td></td></tr>
+                        <tr><td>161400</td><td>3</td><td>19.05</td><td>100</td><td></td></tr>
+                        <tr><td>151500</td><td>4</td><td>19.05</td><td>75</td><td></td></tr>
+                        <tr><td>161500</td><td>4</td><td>19.05</td><td>100</td><td></td></tr>
+                        <tr><td>141316</td><td>3</td><td>31.75</td><td>50</td><td></td></tr>
+                        <tr><td>151310</td><td>3</td><td>31.75</td><td>75</td><td></td></tr>
+                        <tr><td>161310</td><td>3</td><td>31.75</td><td>100</td><td></td></tr>
+                        <tr><td>141410</td><td>4</td><td>31.75</td><td>50</td><td></td></tr>
+                        <tr><td>151410</td><td>4</td><td>31.75</td><td>75</td><td></td></tr>
+                        <tr><td>161410</td><td>4</td><td>31.75</td><td>100</td><td></td></tr>
+                        <tr><td>161510</td><td>5</td><td>31.75</td><td>75</td><td></td></tr>
+                        <tr><td>161510</td><td>5</td><td>31.75</td><td>100</td><td></td></tr>
+                        <tr><td>167610</td><td>6</td><td>31.75</td><td>100</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="drillmagic-series" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Drillmagic Series</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">CUB XL</h4>
+                    <p><strong>Max. Capacity:</strong> ANNULAR CUTTER 35mm X 50mm L, SOLID DRILL Up to 12mm</p>
+                    <p><strong>Part No:</strong> 900015</p>
+                    <img src="assets/images/broach_cutter/cub_xl.png" alt="CUB XL" class="my-4 rounded-lg shadow-lg mx-auto">
+                </div>
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">TRIDENT XL</h4>
+                    <p><strong>Max. Capacity:</strong> ANNULAR CUTTER 75mm X 75mm L, SOLID DRILL Up to 32mm</p>
+                    <p><strong>Part No:</strong> 900010</p>
+                    <img src="assets/images/broach_cutter/trident_xl.png" alt="TRIDENT XL" class="my-4 rounded-lg shadow-lg mx-auto">
+                </div>
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">SUPER XL</h4>
+                    <p><strong>Max. Capacity:</strong> ANNULAR CUTTER 50mm X 50mm L, SOLID DRILL Up to 22mm</p>
+                    <p><strong>Part No:</strong> 900016</p>
+                    <img src="assets/images/broach_cutter/super_xl.png" alt="SUPER XL" class="my-4 rounded-lg shadow-lg mx-auto">
+                </div>
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">TITAN XL</h4>
+                    <p><strong>Max. Capacity:</strong> ANNULAR CUTTER 120mm X 100mm, SOLID DRILL Up to 47mm</p>
+                    <p><strong>Part No:</strong> 900017</p>
+                    <img src="assets/images/broach_cutter/titan_xl.png" alt="TITAN XL" class="my-4 rounded-lg shadow-lg mx-auto">
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <h3 class="text-3xl font-bold text-white mb-4">Launching Soon: Automagic Series</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-effect p-4 rounded-lg">
+                        <h4 class="text-xl font-semibold text-purple-400 mb-2">CUB XL auto</h4>
+                        <img src="assets/images/broach_cutter/cub_xl_auto.png" alt="CUB XL auto" class="my-2 rounded-lg shadow-lg mx-auto">
+                    </div>
+                    <div class="glass-effect p-4 rounded-lg">
+                        <h4 class="text-xl font-semibold text-purple-400 mb-2">TRIDENT XL auto</h4>
+                        <img src="assets/images/broach_cutter/trident_xl_auto.png" alt="TRIDENT XL auto" class="my-2 rounded-lg shadow-lg mx-auto">
+                    </div>
+                    <div class="glass-effect p-4 rounded-lg">
+                        <h4 class="text-xl font-semibold text-purple-400 mb-2">SUPER XL auto</h4>
+                        <img src="assets/images/broach_cutter/super_xl_auto.png" alt="SUPER XL auto" class="my-2 rounded-lg shadow-lg mx-auto">
+                    </div>
+                    <div class="glass-effect p-4 rounded-lg">
+                        <h4 class="text-xl font-semibold text-purple-400 mb-2">TITAN XL auto</h4>
+                        <img src="assets/images/broach_cutter/titan_xl_auto.png" alt="TITAN XL auto" class="my-2 rounded-lg shadow-lg mx-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tapmagic-series" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Tapmagic Series</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">TRIDENT XL reverse</h4>
+                    <p><strong>Max. Capacity:</strong> TAPPING Up to M24, ANNULAR CUTTER 75mm x 75mm L, SOLID DRILL Up to 32mm (With MT3 Shank)</p>
+                    <p><strong>Part No:</strong> 900020</p>
+                    <img src="assets/images/broach_cutter/trident_xl_reverse.png" alt="TRIDENT XL reverse" class="my-4 rounded-lg shadow-lg mx-auto">
+                </div>
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">TITAN XL reverse</h4>
+                    <p><strong>Max. Capacity:</strong> TAPPING Up to M30, ANNULAR CUTTER 110mm x 100mm, SOLID DRILL Up to 47mm (With MT4 Shank)</p>
+                    <p><strong>Part No:</strong> 900021</p>
+                    <img src="assets/images/broach_cutter/titan_xl_reverse.png" alt="TITAN XL reverse" class="my-4 rounded-lg shadow-lg mx-auto">
+                </div>
+            </div>
+        </section>
+
+        <section id="light-weight-rail-drilling-machines" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Light Weight Rail Drilling Machines</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">RACCLER PETROL</h4>
+                    <p><strong>Part No:</strong> 900013</p>
+                    <p><strong>Capacity:</strong> 7mm to 36mm</p>
+                    <p><strong>Drilling Time:</strong> 30 to 40 seconds</p>
+                    <p><strong>Clamping Time:</strong> 8 to 10 seconds</p>
+                    <p><strong>De-Clamping Time:</strong> 5 to 10 seconds</p>
+                    <img src="assets/images/broach_cutter/raccler_petrol.png" alt="RACCLER PETROL" class="my-4 rounded-lg shadow-lg">
+                </div>
+                <div class="glass-effect p-4 rounded-lg">
+                    <h4 class="text-2xl font-semibold text-purple-400 mb-4">RACCLER ELECTRIC</h4>
+                    <p><strong>Part No:</strong> 900021</p>
+                    <p><strong>Capacity:</strong> 7mm to 36mm</p>
+                    <p><strong>Drilling Time:</strong> 30 to 40 seconds</p>
+                    <p><strong>Clamping Time:</strong> 8 to 10 seconds</p>
+                    <p><strong>De-Clamping Time:</strong> 5 to 10 seconds</p>
+                    <img src="assets/images/broach_cutter/raccler_electric.png" alt="RACCLER ELECTRIC" class="my-4 rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <section id="annular-cutters-hss-weldon-shank" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Annular Cutters, HSS, Weldon Shank 19.05mm</h3>
+            <div class="text-gray-300 mb-4">
+                <p>For Direct use on Magnetic Drilling Machines eliminating the need for drill chucks.</p>
+                <p>Note: Drill bits are separate from the shank and can be regrinded and replaced, making them economical to use.</p>
+                <p>Weldon Shank: 19.05mm (3/4")</p>
+            </div>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Dia. (mm)</th>
+                            <th>Part No. (25mm Depth of Cut)</th>
+                            <th>Price (25mm)</th>
+                            <th>Part No. (50mm Depth of Cut)</th>
+                            <th>Price (50mm)</th>
+                            <th>Part No. (75mm Depth of Cut)</th>
+                            <th>Price (75mm)</th>
+                            <th>Part No. (100mm Depth of Cut)</th>
+                            <th>Price (100mm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>11</td><td>100111</td><td></td><td>100011</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>12</td><td>100112</td><td></td><td>100012</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>13</td><td>100113</td><td></td><td>100013</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>14</td><td>100114</td><td></td><td>100014</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>15</td><td>100115</td><td></td><td>100015</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>16</td><td>100116</td><td></td><td>100016</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>17</td><td>100117</td><td></td><td>100017</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>18</td><td>100118</td><td></td><td>100018</td><td></td><td>100318</td><td></td><td>100418</td><td></td></tr>
+                        <tr><td>19</td><td>100119</td><td></td><td>100019</td><td></td><td>100319</td><td></td><td>100419</td><td></td></tr>
+                        <tr><td>20</td><td>100120</td><td></td><td>100020</td><td></td><td>100320</td><td></td><td>100420</td><td></td></tr>
+                        <tr><td>21</td><td>100121</td><td></td><td>100021</td><td></td><td>100321</td><td></td><td>100421</td><td></td></tr>
+                        <tr><td>22</td><td>100122</td><td></td><td>100022</td><td></td><td>100322</td><td></td><td>100422</td><td></td></tr>
+                        <tr><td>23</td><td>100123</td><td></td><td>100023</td><td></td><td>100323</td><td></td><td>100423</td><td></td></tr>
+                        <tr><td>24</td><td>100124</td><td></td><td>100024</td><td></td><td>100324</td><td></td><td>100424</td><td></td></tr>
+                        <tr><td>25</td><td>100125</td><td></td><td>100025</td><td></td><td>100325</td><td></td><td>100425</td><td></td></tr>
+                        <tr><td>26</td><td>100126</td><td></td><td>100026</td><td></td><td>100326</td><td></td><td>100426</td><td></td></tr>
+                        <tr><td>27</td><td>100127</td><td></td><td>100027</td><td></td><td>100327</td><td></td><td>100427</td><td></td></tr>
+                        <tr><td>28</td><td>100128</td><td></td><td>100028</td><td></td><td>100328</td><td></td><td>100428</td><td></td></tr>
+                        <tr><td>29</td><td>100129</td><td></td><td>100029</td><td></td><td>100329</td><td></td><td>100429</td><td></td></tr>
+                        <tr><td>30</td><td>100130</td><td></td><td>100030</td><td></td><td>100330</td><td></td><td>100430</td><td></td></tr>
+                        <tr><td>31</td><td>100131</td><td></td><td>100031</td><td></td><td>100331</td><td></td><td>100431</td><td></td></tr>
+                        <tr><td>32</td><td>100132</td><td></td><td>100032</td><td></td><td>100332</td><td></td><td>100432</td><td></td></tr>
+                        <tr><td>33</td><td>100133</td><td></td><td>100033</td><td></td><td>100333</td><td></td><td>100433</td><td></td></tr>
+                        <tr><td>34</td><td>100134</td><td></td><td>100034</td><td></td><td>100334</td><td></td><td>100434</td><td></td></tr>
+                        <tr><td>35</td><td>100135</td><td></td><td>100035</td><td></td><td>100335</td><td></td><td>100435</td><td></td></tr>
+                        <tr><td>36</td><td>100136</td><td></td><td>100036</td><td></td><td>100336</td><td></td><td>100436</td><td></td></tr>
+                        <tr><td>37</td><td>100137</td><td></td><td>100037</td><td></td><td>100337</td><td></td><td>100437</td><td></td></tr>
+                        <tr><td>38</td><td>100138</td><td></td><td>100038</td><td></td><td>100338</td><td></td><td>100438</td><td></td></tr>
+                        <tr><td>39</td><td>100139</td><td></td><td>100039</td><td></td><td>100339</td><td></td><td>100439</td><td></td></tr>
+                        <tr><td>40</td><td>100140</td><td></td><td>100040</td><td></td><td>100340</td><td></td><td>100440</td><td></td></tr>
+                        <tr><td>41</td><td>100141</td><td></td><td>100041</td><td></td><td>100341</td><td></td><td>100441</td><td></td></tr>
+                        <tr><td>42</td><td>100142</td><td></td><td>100042</td><td></td><td>100342</td><td></td><td>100442</td><td></td></tr>
+                        <tr><td>43</td><td>100143</td><td></td><td>100043</td><td></td><td>100343</td><td></td><td>100443</td><td></td></tr>
+                        <tr><td>44</td><td>100144</td><td></td><td>100044</td><td></td><td>100344</td><td></td><td>100444</td><td></td></tr>
+                        <tr><td>45</td><td>100145</td><td></td><td>100045</td><td></td><td>100345</td><td></td><td>100445</td><td></td></tr>
+                        <tr><td>46</td><td>100146</td><td></td><td>100046</td><td></td><td>100346</td><td></td><td>100446</td><td></td></tr>
+                        <tr><td>47</td><td>100147</td><td></td><td>100047</td><td></td><td>100347</td><td></td><td>100447</td><td></td></tr>
+                        <tr><td>48</td><td>100148</td><td></td><td>100048</td><td></td><td>100348</td><td></td><td>100448</td><td></td></tr>
+                        <tr><td>49</td><td>100149</td><td></td><td>100049</td><td></td><td>100349</td><td></td><td>100449</td><td></td></tr>
+                        <tr><td>50</td><td>100150</td><td></td><td>100050</td><td></td><td>100350</td><td></td><td>100450</td><td></td></tr>
+                        <tr><td>51</td><td>100151</td><td></td><td>100051</td><td></td><td>100351</td><td></td><td>100451</td><td></td></tr>
+                        <tr><td>52</td><td>100152</td><td></td><td>100052</td><td></td><td>100352</td><td></td><td>100452</td><td></td></tr>
+                        <tr><td>53</td><td>100153</td><td></td><td>100053</td><td></td><td>100353</td><td></td><td>100453</td><td></td></tr>
+                        <tr><td>54</td><td>100154</td><td></td><td>100054</td><td></td><td>100354</td><td></td><td>100454</td><td></td></tr>
+                        <tr><td>55</td><td>100155</td><td></td><td>100055</td><td></td><td>100355</td><td></td><td>100455</td><td></td></tr>
+                        <tr><td>56</td><td>100156</td><td></td><td>100056</td><td></td><td>100356</td><td></td><td>100456</td><td></td></tr>
+                        <tr><td>57</td><td>100157</td><td></td><td>100057</td><td></td><td>100357</td><td></td><td>100457</td><td></td></tr>
+                        <tr><td>58</td><td>100158</td><td></td><td>100058</td><td></td><td>100358</td><td></td><td>100458</td><td></td></tr>
+                        <tr><td>59</td><td>100159</td><td></td><td>100059</td><td></td><td>100359</td><td></td><td>100459</td><td></td></tr>
+                        <tr><td>60</td><td>100160</td><td></td><td>100060</td><td></td><td>100360</td><td></td><td>100460</td><td></td></tr>
+                        <tr><td>61</td><td>100161</td><td></td><td>100061</td><td></td><td>100361</td><td></td><td>100461</td><td></td></tr>
+                        <tr><td>62</td><td>100162</td><td></td><td>100062</td><td></td><td>100362</td><td></td><td>100462</td><td></td></tr>
+                        <tr><td>63</td><td>100163</td><td></td><td>100063</td><td></td><td>100363</td><td></td><td>100463</td><td></td></tr>
+                        <tr><td>64</td><td>100164</td><td></td><td>100064</td><td></td><td>100364</td><td></td><td>100464</td><td></td></tr>
+                        <tr><td>65</td><td>100165</td><td></td><td>100065</td><td></td><td>100365</td><td></td><td>100465</td><td></td></tr>
+                        <tr><td>66</td><td>100166</td><td></td><td>100066</td><td></td><td>100366</td><td></td><td>100466</td><td></td></tr>
+                        <tr><td>67</td><td>100167</td><td></td><td>100067</td><td></td><td>100367</td><td></td><td>100467</td><td></td></tr>
+                        <tr><td>68</td><td>100168</td><td></td><td>100068</td><td></td><td>100368</td><td></td><td>100468</td><td></td></tr>
+                        <tr><td>69</td><td>100169</td><td></td><td>100069</td><td></td><td>100369</td><td></td><td>100469</td><td></td></tr>
+                        <tr><td>70</td><td>100170</td><td></td><td>100070</td><td></td><td>100370</td><td></td><td>100470</td><td></td></tr>
+                        <tr><td>71</td><td>100171</td><td></td><td>100071</td><td></td><td>100371</td><td></td><td>100471</td><td></td></tr>
+                        <tr><td>72</td><td>100172</td><td></td><td>100072</td><td></td><td>100372</td><td></td><td>100472</td><td></td></tr>
+                        <tr><td>73</td><td>100173</td><td></td><td>100073</td><td></td><td>100373</td><td></td><td>100473</td><td></td></tr>
+                        <tr><td>74</td><td>100174</td><td></td><td>100074</td><td></td><td>100374</td><td></td><td>100474</td><td></td></tr>
+                        <tr><td>75</td><td>100175</td><td></td><td>100075</td><td></td><td>100375</td><td></td><td>100475</td><td></td></tr>
+                        <tr><td>76</td><td>100176</td><td></td><td>100076</td><td></td><td>100376</td><td></td><td>100476</td><td></td></tr>
+                        <tr><td>77</td><td>100177</td><td></td><td>100077</td><td></td><td>100377</td><td></td><td>100477</td><td></td></tr>
+                        <tr><td>78</td><td>100178</td><td></td><td>100078</td><td></td><td>100378</td><td></td><td>100478</td><td></td></tr>
+                        <tr><td>79</td><td>100179</td><td></td><td>100079</td><td></td><td>100379</td><td></td><td>100479</td><td></td></tr>
+                        <tr><td>80</td><td>100180</td><td></td><td>100080</td><td></td><td>100380</td><td></td><td>100480</td><td></td></tr>
+                        <tr><td>81</td><td>100181</td><td></td><td>100081</td><td></td><td>100381</td><td></td><td>100481</td><td></td></tr>
+                        <tr><td>82</td><td>100182</td><td></td><td>100082</td><td></td><td>100382</td><td></td><td>100482</td><td></td></tr>
+                        <tr><td>83</td><td>100183</td><td></td><td>100083</td><td></td><td>100383</td><td></td><td>100483</td><td></td></tr>
+                        <tr><td>84</td><td>100184</td><td></td><td>100084</td><td></td><td>100384</td><td></td><td>100484</td><td></td></tr>
+                        <tr><td>85</td><td>100185</td><td></td><td>100085</td><td></td><td>100385</td><td></td><td>100485</td><td></td></tr>
+                        <tr><td>86</td><td>100186</td><td></td><td>100086</td><td></td><td>100386</td><td></td><td>100486</td><td></td></tr>
+                        <tr><td>87</td><td>100187</td><td></td><td>100087</td><td></td><td>100387</td><td></td><td>100487</td><td></td></tr>
+                        <tr><td>88</td><td>100188</td><td></td><td>100088</td><td></td><td>100388</td><td></td><td>100488</td><td></td></tr>
+                        <tr><td>89</td><td>100189</td><td></td><td>100089</td><td></td><td>100389</td><td></td><td>100489</td><td></td></tr>
+                        <tr><td>90</td><td>100190</td><td></td><td>100090</td><td></td><td>100390</td><td></td><td>100490</td><td></td></tr>
+                        <tr><td>91</td><td>100191</td><td></td><td>100091</td><td></td><td>100391</td><td></td><td>100491</td><td></td></tr>
+                        <tr><td>92</td><td>100192</td><td></td><td>100092</td><td></td><td>100392</td><td></td><td>100492</td><td></td></tr>
+                        <tr><td>93</td><td>100193</td><td></td><td>100093</td><td></td><td>100393</td><td></td><td>100493</td><td></td></tr>
+                        <tr><td>94</td><td>100194</td><td></td><td>100094</td><td></td><td>100394</td><td></td><td>100494</td><td></td></tr>
+                        <tr><td>95</td><td>100195</td><td></td><td>100095</td><td></td><td>100395</td><td></td><td>100495</td><td></td></tr>
+                        <tr><td>96</td><td>100196</td><td></td><td>100096</td><td></td><td>100396</td><td></td><td>100496</td><td></td></tr>
+                        <tr><td>97</td><td>100197</td><td></td><td>100097</td><td></td><td>100397</td><td></td><td>100497</td><td></td></tr>
+                        <tr><td>98</td><td>100198</td><td></td><td>100098</td><td></td><td>100398</td><td></td><td>100498</td><td></td></tr>
+                        <tr><td>99</td><td>100199</td><td></td><td>100099</td><td></td><td>100399</td><td></td><td>100499</td><td></td></tr>
+                        <tr><td>100</td><td>1001100</td><td></td><td>1000100</td><td></td><td>1003100</td><td></td><td>1004100</td><td></td></tr>
+                        <tr><td>101</td><td>1001101</td><td></td><td>1000101</td><td></td><td>1003101</td><td></td><td>1004101</td><td></td></tr>
+                        <tr><td>105</td><td>1001105</td><td></td><td>1000105</td><td></td><td>1003105</td><td></td><td>1004105</td><td></td></tr>
+                        <tr><td>106</td><td>1001106</td><td></td><td>1000106</td><td></td><td>1003106</td><td></td><td>1004106</td><td></td></tr>
+                        <tr><td>110</td><td>1001110</td><td></td><td>1000110</td><td></td><td>1003110</td><td></td><td>1004110</td><td></td></tr>
+                        <tr><td>111</td><td>1001111</td><td></td><td>1000111</td><td></td><td>1003111</td><td></td><td>1004111</td><td></td></tr>
+                        <tr><td>115</td><td>1001115</td><td></td><td>1000115</td><td></td><td>1003115</td><td></td><td>1004115</td><td></td></tr>
+                        <tr><td>116</td><td>1001116</td><td></td><td>1000116</td><td></td><td>1003116</td><td></td><td>1004116</td><td></td></tr>
+                        <tr><td>120</td><td>1001120</td><td></td><td>1000120</td><td></td><td>1003120</td><td></td><td>1004120</td><td></td></tr>
+                        <tr><td>121</td><td>1001121</td><td></td><td>1000121</td><td></td><td>1003121</td><td></td><td>1004121</td><td></td></tr>
+                        <tr><td>125</td><td>1001125</td><td></td><td>1000125</td><td></td><td>1003125</td><td></td><td>1004125</td><td></td></tr>
+                        <tr><td>126</td><td>1001126</td><td></td><td>1000126</td><td></td><td>1003126</td><td></td><td>1004126</td><td></td></tr>
+                        <tr><td>129</td><td>1001129</td><td></td><td>1000129</td><td></td><td>1003129</td><td></td><td>1004129</td><td></td></tr>
+                        <tr><td>130</td><td>1001130</td><td></td><td>1000130</td><td></td><td>1003130</td><td></td><td>1004130</td><td></td></tr>
+                        <tr><td>131</td><td>1001131</td><td></td><td>1000131</td><td></td><td>1003131</td><td></td><td>1004131</td><td></td></tr>
+                        <tr><td>135</td><td>1001135</td><td></td><td>1000135</td><td></td><td>1003135</td><td></td><td>1004135</td><td></td></tr>
+                        <tr><td>136</td><td>1001136</td><td></td><td>1000136</td><td></td><td>1003136</td><td></td><td>1004136</td><td></td></tr>
+                        <tr><td>140</td><td>1001140</td><td></td><td>1000140</td><td></td><td>1003140</td><td></td><td>1004140</td><td></td></tr>
+                        <tr><td>141</td><td>1001141</td><td></td><td>1000141</td><td></td><td>1003141</td><td></td><td>1004141</td><td></td></tr>
+                        <tr><td>145</td><td>1001145</td><td></td><td>1000145</td><td></td><td>1003145</td><td></td><td>1004145</td><td></td></tr>
+                        <tr><td>146</td><td>1001146</td><td></td><td>1000146</td><td></td><td>1003146</td><td></td><td>1004146</td><td></td></tr>
+                        <tr><td>150</td><td>1001150</td><td></td><td>1000150</td><td></td><td>1003150</td><td></td><td>1004150</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="annular-cutters-tct" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Annular Cutters, TCT</h3>
+            <div class="text-gray-300 mb-4">
+                <p>The No.1 Indian Brand of Annular Cutters! Over 1 Million Cutters sold in INDIA. Broach Cutter TCT Annular Cutters are made with Special-purpose carbide tips for reduced damage of tips & better endurance. These are suitable for cutting holes on various materials with high speed, Multi-cut geometry results in increased chip removal and less resistance.</p>
+                <div class="flex justify-center">
+                    <img src="assets/images/broach_cutter/tct.png" alt="TCT Annular Cutter Features" class="my-4 rounded-lg shadow-lg">
+                </div>
+            </div>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Dia (mm)</th>
+                            <th>Part No. (15mm Depth of Cut)</th>
+                            <th>Price (15mm)</th>
+                            <th>Part No. (35mm Depth of Cut)</th>
+                            <th>Price (35mm)</th>
+                            <th>Part No. (50mm Depth of Cut)</th>
+                            <th>Price (50mm)</th>
+                            <th>Part No. (75mm Depth of Cut)</th>
+                            <th>Price (75mm)</th>
+                            <th>Part No. (100mm Depth of Cut)</th>
+                            <th>Price (100mm)</th>
+                            <th>Part No. (150mm Depth of Cut)</th>
+                            <th>Price (150mm)</th>
+                            <th>Part No. (200mm Depth of Cut)</th>
+                            <th>Price (200mm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>12</td><td>200112</td><td></td><td>200012</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>12.5</td><td>2001126</td><td></td><td>200012.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>13</td><td>200113</td><td></td><td>200013</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>13.5</td><td>200113.5</td><td></td><td>200013.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>14</td><td>200114</td><td></td><td>200014</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>14.5</td><td>200114.5</td><td></td><td>200014.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>15</td><td>200115</td><td></td><td>200015</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>15.5</td><td>2001155</td><td></td><td>200015.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>16</td><td>200116</td><td></td><td>200016</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>16.5</td><td>200116.5</td><td></td><td>200016.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>17</td><td>200117</td><td></td><td>200017</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>17.5</td><td>200177.5</td><td></td><td>200017.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>18</td><td>200118</td><td></td><td>200018</td><td></td><td>200318</td><td></td><td>200418</td><td></td><td>200518</td><td></td><td>200618</td><td></td></tr>
+                        <tr><td>18.5</td><td>200118.5</td><td></td><td>200018.5</td><td></td><td>200318.5</td><td></td><td>200418.5</td><td></td><td>200518.5</td><td></td><td></td><td></td></tr>
+                        <tr><td>19</td><td>200119</td><td></td><td>200019</td><td></td><td>200319</td><td></td><td>200419</td><td></td><td>200519</td><td></td><td></td><td></td></tr>
+                        <tr><td>20</td><td>200120</td><td></td><td>200020</td><td></td><td>200320</td><td></td><td>200420</td><td></td><td>200520</td><td></td><td></td><td></td></tr>
+                        <tr><td>20.5</td><td>200120.5</td><td></td><td>200020.5</td><td></td><td>200320.5</td><td></td><td>200420.5</td><td></td><td>200520.5</td><td></td><td></td><td></td></tr>
+                        <tr><td>21</td><td>200121</td><td></td><td>200021</td><td></td><td>200321</td><td></td><td>200421</td><td></td><td>200521</td><td></td><td></td><td></td></tr>
+                        <tr><td>21.5</td><td>200121.5</td><td></td><td>200021.5</td><td></td><td>200321.5</td><td></td><td>200421.5</td><td></td><td>200521.5</td><td></td><td></td><td></td></tr>
+                        <tr><td>22</td><td>200122</td><td></td><td>200022</td><td></td><td>200322</td><td></td><td>200422</td><td></td><td>200522</td><td></td><td></td><td></td></tr>
+                        <tr><td>22.5</td><td>200122.5</td><td></td><td>200022.5</td><td></td><td>200322.5</td><td></td><td>200422.5</td><td></td><td>200522.5</td><td></td><td></td><td></td></tr>
+                        <tr><td>23</td><td>200123</td><td></td><td>200023</td><td></td><td>200323</td><td></td><td>200423</td><td></td><td>200523</td><td></td><td></td><td></td></tr>
+                        <tr><td>23.5</td><td>200123.5</td><td></td><td>200023.5</td><td></td><td>200323.5</td><td></td><td>200423.5</td><td></td><td>200523.5</td><td></td><td></td><td></td></tr>
+                        <tr><td>24</td><td>200124</td><td></td><td>200024</td><td></td><td>200324</td><td></td><td>200424</td><td></td><td>200524</td><td></td><td></td><td></td></tr>
+                        <tr><td>24.5</td><td>200124.5</td><td></td><td>200024.5</td><td></td><td>200324.5</td><td></td><td>200424.5</td><td></td><td>200524.5</td><td></td><td></td><td></td></tr>
+                        <tr><td>25</td><td>200125</td><td></td><td>200025</td><td></td><td>200325</td><td></td><td>200425</td><td></td><td>200525</td><td></td><td></td><td></td></tr>
+                        <tr><td>25.4</td><td>2001254</td><td></td><td>2000254</td><td></td><td>2003254</td><td></td><td>2004254</td><td></td><td>2005254</td><td></td><td>2006254</td><td></td></tr>
+                        <tr><td>25.5</td><td>200125.5</td><td></td><td>200025.5</td><td></td><td>200325.5</td><td></td><td>200425.5</td><td></td><td>200525.5</td><td></td><td></td><td></td></tr>
+                        <tr><td>26</td><td>200126</td><td></td><td>200026</td><td></td><td>200326</td><td></td><td>200426</td><td></td><td>200526</td><td></td><td>200626</td><td></td></tr>
+                        <tr><td>26.3</td><td>200126.3</td><td></td><td>200026.3</td><td></td><td>200326.3</td><td></td><td>200426.3</td><td></td><td>200526.3</td><td></td><td>200626.3</td><td></td></tr>
+                        <tr><td>26.5</td><td>200126.5</td><td></td><td>200026.5</td><td></td><td>200326.5</td><td></td><td>200426.5</td><td></td><td>200526.5</td><td></td><td>200626.5</td><td></td></tr>
+                        <tr><td>27</td><td>200127</td><td></td><td>200027</td><td></td><td>200327</td><td></td><td>200427</td><td></td><td>200527</td><td></td><td>200627</td><td></td></tr>
+                        <tr><td>28</td><td>200128</td><td></td><td>200028</td><td></td><td>200328</td><td></td><td>200428</td><td></td><td>200528</td><td></td><td>200628</td><td></td></tr>
+                        <tr><td>28.5</td><td>200128.5</td><td></td><td>200028.5</td><td></td><td>200328.5</td><td></td><td>200428.5</td><td></td><td>200528.5</td><td></td><td>200628.5</td><td></td></tr>
+                        <tr><td>29</td><td>200129</td><td></td><td>200029</td><td></td><td>200329</td><td></td><td>200429</td><td></td><td>200529</td><td></td><td>200629</td><td></td></tr>
+                        <tr><td>29.5</td><td>200129.5</td><td></td><td>200029.5</td><td></td><td>200329.5</td><td></td><td>200429.5</td><td></td><td>200529.5</td><td></td><td>200629.5</td><td></td></tr>
+                        <tr><td>30</td><td>200130</td><td></td><td>200030</td><td></td><td>200330</td><td></td><td>200430</td><td></td><td>200530</td><td></td><td>200630</td><td></td></tr>
+                        <tr><td>30.5</td><td>200130.5</td><td></td><td>200030.5</td><td></td><td>200330.5</td><td></td><td>200430.5</td><td></td><td>200530.5</td><td></td><td>200630.5</td><td></td></tr>
+                        <tr><td>31</td><td>200131</td><td></td><td>200031</td><td></td><td>200331</td><td></td><td>200431</td><td></td><td>200531</td><td></td><td>200631</td><td></td></tr>
+                        <tr><td>31.5</td><td>200131.5</td><td></td><td>200031.5</td><td></td><td>200331.5</td><td></td><td>200431.5</td><td></td><td>200531.5</td><td></td><td>200631.5</td><td></td></tr>
+                        <tr><td>32</td><td>200132</td><td></td><td>200032</td><td></td><td>200332</td><td></td><td>200432</td><td></td><td>200532</td><td></td><td>200632</td><td></td></tr>
+                        <tr><td>32.5</td><td>200132.5</td><td></td><td>200032.5</td><td></td><td>200332.5</td><td></td><td>200432.5</td><td></td><td>200532.5</td><td></td><td>200632.5</td><td></td></tr>
+                        <tr><td>33</td><td>200133</td><td></td><td>200033</td><td></td><td>200333</td><td></td><td>200433</td><td></td><td>200533</td><td></td><td>200633</td><td></td></tr>
+                        <tr><td>33.5</td><td>200133.5</td><td></td><td>200033.5</td><td></td><td>200333.5</td><td></td><td>200433.5</td><td></td><td>200533.5</td><td></td><td>200633.5</td><td></td></tr>
+                        <tr><td>34</td><td>200134</td><td></td><td>200034</td><td></td><td>200334</td><td></td><td>200434</td><td></td><td>200534</td><td></td><td>200634</td><td></td></tr>
+                        <tr><td>35</td><td>200135</td><td></td><td>200035</td><td></td><td>200335</td><td></td><td>200435</td><td></td><td>200535</td><td></td><td>200635</td><td></td></tr>
+                        <tr><td>35.5</td><td>200135.5</td><td></td><td>200035.5</td><td></td><td>200335.5</td><td></td><td>200435.5</td><td></td><td>200535.5</td><td></td><td>200635.5</td><td></td></tr>
+                        <tr><td>36</td><td>200136</td><td></td><td>200036</td><td></td><td>200336</td><td></td><td>200436</td><td></td><td>200536</td><td></td><td>200636</td><td></td></tr>
+                        <tr><td>37</td><td>200137</td><td></td><td>200037</td><td></td><td>200337</td><td></td><td>200437</td><td></td><td>200537</td><td></td><td>200637</td><td></td></tr>
+                        <tr><td>38</td><td>200138</td><td></td><td>200038</td><td></td><td>200338</td><td></td><td>200438</td><td></td><td>200538</td><td></td><td>200638</td><td></td></tr>
+                        <tr><td>39</td><td>200139</td><td></td><td>200039</td><td></td><td>200339</td><td></td><td>200439</td><td></td><td>200539</td><td></td><td>200639</td><td></td></tr>
+                        <tr><td>40</td><td>200140</td><td></td><td>200040</td><td></td><td>200340</td><td></td><td>200440</td><td></td><td>200540</td><td></td><td>200640</td><td></td></tr>
+                        <tr><td>40.5</td><td>200140.5</td><td></td><td>200040.5</td><td></td><td>200340.5</td><td></td><td>200440.5</td><td></td><td>200540.5</td><td></td><td>200640.5</td><td></td></tr>
+                        <tr><td>41</td><td>200141</td><td></td><td>200041</td><td></td><td>200341</td><td></td><td>200441</td><td></td><td>200541</td><td></td><td>200641</td><td></td></tr>
+                        <tr><td>42</td><td>200142</td><td></td><td>200042</td><td></td><td>200342</td><td></td><td>200442</td><td></td><td>200542</td><td></td><td>200642</td><td></td></tr>
+                        <tr><td>43</td><td>200143</td><td></td><td>200043</td><td></td><td>200343</td><td></td><td>200443</td><td></td><td>200543</td><td></td><td>200643</td><td></td></tr>
+                        <tr><td>44</td><td>200144</td><td></td><td>200044</td><td></td><td>200344</td><td></td><td>200444</td><td></td><td>200544</td><td></td><td>200644</td><td></td></tr>
+                        <tr><td>45</td><td>200145</td><td></td><td>200045</td><td></td><td>200345</td><td></td><td>200445</td><td></td><td>200545</td><td></td><td>200645</td><td></td></tr>
+                        <tr><td>46</td><td>200146</td><td></td><td>200046</td><td></td><td>200346</td><td></td><td>200446</td><td></td><td>200546</td><td></td><td>200646</td><td></td></tr>
+                        <tr><td>47</td><td>200147</td><td></td><td>200047</td><td></td><td>200347</td><td></td><td>200447</td><td></td><td>200547</td><td></td><td>200647</td><td></td></tr>
+                        <tr><td>48</td><td>200148</td><td></td><td>200048</td><td></td><td>200348</td><td></td><td>200448</td><td></td><td>200548</td><td></td><td>200648</td><td></td></tr>
+                        <tr><td>49</td><td>200149</td><td></td><td>200049</td><td></td><td>200349</td><td></td><td>200449</td><td></td><td>200549</td><td></td><td>200649</td><td></td></tr>
+                        <tr><td>50</td><td>200150</td><td></td><td>200050</td><td></td><td>200350</td><td></td><td>200450</td><td></td><td>200550</td><td></td><td>200650</td><td></td></tr>
+                        <tr><td>50.5</td><td>200150.5</td><td></td><td>200050.5</td><td></td><td>200350.5</td><td></td><td>200450.5</td><td></td><td>200550.5</td><td></td><td>200650.5</td><td></td></tr>
+                        <tr><td>51</td><td>200151</td><td></td><td>200051</td><td></td><td>200351</td><td></td><td>200451</td><td></td><td>200551</td><td></td><td>200651</td><td></td></tr>
+                        <tr><td>52</td><td>200152</td><td></td><td>200052</td><td></td><td>200352</td><td></td><td>200452</td><td></td><td>200552</td><td></td><td>200652</td><td></td></tr>
+                        <tr><td>53</td><td>200153</td><td></td><td>200053</td><td></td><td>200353</td><td></td><td>200453</td><td></td><td>200553</td><td></td><td>200653</td><td></td></tr>
+                        <tr><td>54</td><td>200154</td><td></td><td>200054</td><td></td><td>200354</td><td></td><td>200454</td><td></td><td>200554</td><td></td><td>200654</td><td></td></tr>
+                        <tr><td>55</td><td>200155</td><td></td><td>200055</td><td></td><td>200355</td><td></td><td>200455</td><td></td><td>200555</td><td></td><td>200655</td><td></td></tr>
+                        <tr><td>56</td><td>200156</td><td></td><td>200056</td><td></td><td>200356</td><td></td><td>200456</td><td></td><td>200556</td><td></td><td>200656</td><td></td></tr>
+                        <tr><td>57</td><td>200157</td><td></td><td>200057</td><td></td><td>200357</td><td></td><td>200457</td><td></td><td>200557</td><td></td><td>200657</td><td></td></tr>
+                        <tr><td>58</td><td>200158</td><td></td><td>200058</td><td></td><td>200358</td><td></td><td>200458</td><td></td><td>200558</td><td></td><td>200658</td><td></td></tr>
+                        <tr><td>59</td><td>200159</td><td></td><td>200059</td><td></td><td>200359</td><td></td><td>200459</td><td></td><td>200559</td><td></td><td>200659</td><td></td></tr>
+                        <tr><td>60</td><td>200160</td><td></td><td>200060</td><td></td><td>200360</td><td></td><td>200460</td><td></td><td>200560</td><td></td><td>200660</td><td></td></tr>
+                        <tr><td>61</td><td>200161</td><td></td><td>200061</td><td></td><td>200361</td><td></td><td>200461</td><td></td><td>200561</td><td></td><td>200661</td><td></td></tr>
+                        <tr><td>62</td><td>200162</td><td></td><td>200062</td><td></td><td>200362</td><td></td><td>200462</td><td></td><td>200562</td><td></td><td>200662</td><td></td></tr>
+                        <tr><td>63</td><td>200163</td><td></td><td>200063</td><td></td><td>200363</td><td></td><td>200463</td><td></td><td>200563</td><td></td><td>200663</td><td></td></tr>
+                        <tr><td>64</td><td>200164</td><td></td><td>200064</td><td></td><td>200364</td><td></td><td>200464</td><td></td><td>200564</td><td></td><td>200664</td><td></td></tr>
+                        <tr><td>64.5</td><td>200164.5</td><td></td><td>200064.5</td><td></td><td>200364.5</td><td></td><td>200464.5</td><td></td><td>200564.5</td><td></td><td>200664.5</td><td></td></tr>
+                        <tr><td>65</td><td>200165</td><td></td><td>200065</td><td></td><td>200365</td><td></td><td>200465</td><td></td><td>200565</td><td></td><td>200665</td><td></td></tr>
+                        <tr><td>66</td><td>200166</td><td></td><td>200066</td><td></td><td>200366</td><td></td><td>200466</td><td></td><td>200566</td><td></td><td>200666</td><td></td></tr>
+                        <tr><td>67</td><td>200167</td><td></td><td>200067</td><td></td><td>200367</td><td></td><td>200467</td><td></td><td>200567</td><td></td><td>200667</td><td></td></tr>
+                        <tr><td>68</td><td>200168</td><td></td><td>200068</td><td></td><td>200368</td><td></td><td>200468</td><td></td><td>200568</td><td></td><td>200668</td><td></td></tr>
+                        <tr><td>69</td><td>200169</td><td></td><td>200069</td><td></td><td>200369</td><td></td><td>200469</td><td></td><td>200569</td><td></td><td>200669</td><td></td></tr>
+                        <tr><td>70</td><td>200170</td><td></td><td>200070</td><td></td><td>200370</td><td></td><td>200470</td><td></td><td>200570</td><td></td><td>200670</td><td></td></tr>
+                        <tr><td>71</td><td>200171</td><td></td><td>200071</td><td></td><td>200371</td><td></td><td>200471</td><td></td><td>200571</td><td></td><td>200671</td><td></td></tr>
+                        <tr><td>72</td><td>200172</td><td></td><td>200072</td><td></td><td>200372</td><td></td><td>200472</td><td></td><td>200572</td><td></td><td>200672</td><td></td></tr>
+                        <tr><td>73</td><td>200173</td><td></td><td>200073</td><td></td><td>200373</td><td></td><td>200473</td><td></td><td>200573</td><td></td><td>200673</td><td></td></tr>
+                        <tr><td>74</td><td>200174</td><td></td><td>200074</td><td></td><td>200374</td><td></td><td>200474</td><td></td><td>200574</td><td></td><td>200674</td><td></td></tr>
+                        <tr><td>75</td><td>200175</td><td></td><td>200075</td><td></td><td>200375</td><td></td><td>200475</td><td></td><td>200575</td><td></td><td>200675</td><td></td></tr>
+                        <tr><td>76</td><td>200176</td><td></td><td>200076</td><td></td><td>200376</td><td></td><td>200476</td><td></td><td>200576</td><td></td><td>200676</td><td></td></tr>
+                        <tr><td>77</td><td>200177</td><td></td><td>200077</td><td></td><td>200377</td><td></td><td>200477</td><td></td><td>200577</td><td></td><td>200677</td><td></td></tr>
+                        <tr><td>78</td><td>200178</td><td></td><td>200078</td><td></td><td>200378</td><td></td><td>200478</td><td></td><td>200578</td><td></td><td>200678</td><td></td></tr>
+                        <tr><td>79</td><td>200179</td><td></td><td>200079</td><td></td><td>200379</td><td></td><td>200479</td><td></td><td>200579</td><td></td><td>200679</td><td></td></tr>
+                        <tr><td>80</td><td>200180</td><td></td><td>200080</td><td></td><td>200380</td><td></td><td>200480</td><td></td><td>200580</td><td></td><td>200680</td><td></td></tr>
+                        <tr><td>81</td><td>200181</td><td></td><td>200081</td><td></td><td>200381</td><td></td><td>200481</td><td></td><td>200581</td><td></td><td>200681</td><td></td></tr>
+                        <tr><td>82</td><td>200182</td><td></td><td>200082</td><td></td><td>200382</td><td></td><td>200482</td><td></td><td>200582</td><td></td><td>200682</td><td></td></tr>
+                        <tr><td>83</td><td>200183</td><td></td><td>200083</td><td></td><td>200383</td><td></td><td>200483</td><td></td><td>200583</td><td></td><td>200683</td><td></td></tr>
+                        <tr><td>84</td><td>200184</td><td></td><td>200084</td><td></td><td>200384</td><td></td><td>200484</td><td></td><td>200584</td><td></td><td>200684</td><td></td></tr>
+                        <tr><td>85</td><td>200185</td><td></td><td>200085</td><td></td><td>200385</td><td></td><td>200485</td><td></td><td>200585</td><td></td><td>200685</td><td></td></tr>
+                        <tr><td>86</td><td>200186</td><td></td><td>200086</td><td></td><td>200386</td><td></td><td>200486</td><td></td><td>200586</td><td></td><td>200686</td><td></td></tr>
+                        <tr><td>87</td><td>200187</td><td></td><td>200087</td><td></td><td>200387</td><td></td><td>200487</td><td></td><td>200587</td><td></td><td>200687</td><td></td></tr>
+                        <tr><td>88</td><td>200188</td><td></td><td>200088</td><td></td><td>200388</td><td></td><td>200488</td><td></td><td>200588</td><td></td><td>200688</td><td></td></tr>
+                        <tr><td>89</td><td>200189</td><td></td><td>200089</td><td></td><td>200389</td><td></td><td>200489</td><td></td><td>200589</td><td></td><td>200689</td><td></td></tr>
+                        <tr><td>90</td><td>200190</td><td></td><td>200090</td><td></td><td>200390</td><td></td><td>200490</td><td></td><td>200590</td><td></td><td>200690</td><td></td></tr>
+                        <tr><td>91</td><td>200191</td><td></td><td>200091</td><td></td><td>200391</td><td></td><td>200491</td><td></td><td>200591</td><td></td><td>200691</td><td></td></tr>
+                        <tr><td>92</td><td>200192</td><td></td><td>200092</td><td></td><td>200392</td><td></td><td>200492</td><td></td><td>200592</td><td></td><td>200692</td><td></td></tr>
+                        <tr><td>93</td><td>200193</td><td></td><td>200093</td><td></td><td>200393</td><td></td><td>200493</td><td></td><td>200593</td><td></td><td>200693</td><td></td></tr>
+                        <tr><td>94</td><td>200194</td><td></td><td>200094</td><td></td><td>200394</td><td></td><td>200494</td><td></td><td>200594</td><td></td><td>200694</td><td></td></tr>
+                        <tr><td>95</td><td>200195</td><td></td><td>200095</td><td></td><td>200395</td><td></td><td>200495</td><td></td><td>200595</td><td></td><td>200695</td><td></td></tr>
+                        <tr><td>96</td><td>200196</td><td></td><td>200096</td><td></td><td>200396</td><td></td><td>200496</td><td></td><td>200596</td><td></td><td>200696</td><td></td></tr>
+                        <tr><td>97</td><td>200197</td><td></td><td>200097</td><td></td><td>200397</td><td></td><td>200497</td><td></td><td>200597</td><td></td><td>200697</td><td></td></tr>
+                        <tr><td>98</td><td>200198</td><td></td><td>200098</td><td></td><td>200398</td><td></td><td>200498</td><td></td><td>200598</td><td></td><td>200698</td><td></td></tr>
+                        <tr><td>99</td><td>200199</td><td></td><td>200099</td><td></td><td>200399</td><td></td><td>200499</td><td></td><td>200599</td><td></td><td>200699</td><td></td></tr>
+                        <tr><td>100</td><td>2001100</td><td></td><td>2000100</td><td></td><td>1003100</td><td></td><td>1004100</td><td></td><td>1005100</td><td></td><td>2006100</td><td></td></tr>
+                        <tr><td>101</td><td>2001101</td><td></td><td>2000101</td><td></td><td>1003101</td><td></td><td>1004101</td><td></td><td>1005101</td><td></td><td>2006101</td><td></td></tr>
+                        <tr><td>105</td><td>2001105</td><td></td><td>2000105</td><td></td><td>1003105</td><td></td><td>1004105</td><td></td><td>1005105</td><td></td><td>2006105</td><td></td></tr>
+                        <tr><td>106</td><td>2001106</td><td></td><td>2000106</td><td></td><td>1003106</td><td></td><td>1004106</td><td></td><td>1005106</td><td></td><td>2006106</td><td></td></tr>
+                        <tr><td>110</td><td>2001110</td><td></td><td>2000110</td><td></td><td>1003110</td><td></td><td>1004110</td><td></td><td>1005110</td><td></td><td>2006110</td><td></td></tr>
+                        <tr><td>111</td><td>2001111</td><td></td><td>2000111</td><td></td><td>1003111</td><td></td><td>1004111</td><td></td><td>1005111</td><td></td><td>2006111</td><td></td></tr>
+                        <tr><td>115</td><td>2001115</td><td></td><td>2000115</td><td></td><td>1003115</td><td></td><td>1004115</td><td></td><td>1005115</td><td></td><td>2006115</td><td></td></tr>
+                        <tr><td>116</td><td>2001116</td><td></td><td>2000116</td><td></td><td>1003116</td><td></td><td>1004116</td><td></td><td>1005116</td><td></td><td>2006116</td><td></td></tr>
+                        <tr><td>120</td><td>2001120</td><td></td><td>2000120</td><td></td><td>1003120</td><td></td><td>1004120</td><td></td><td>1005120</td><td></td><td>2006120</td><td></td></tr>
+                        <tr><td>121</td><td>2001121</td><td></td><td>2000121</td><td></td><td>1003121</td><td></td><td>1004121</td><td></td><td>1005121</td><td></td><td>2006121</td><td></td></tr>
+                        <tr><td>125</td><td>2001125</td><td></td><td>2000125</td><td></td><td>1003125</td><td></td><td>1004125</td><td></td><td>1005125</td><td></td><td>2006125</td><td></td></tr>
+                        <tr><td>126</td><td>2001126</td><td></td><td>2000126</td><td></td><td>1003126</td><td></td><td>1004126</td><td></td><td>1005126</td><td></td><td>2006126</td><td></td></tr>
+                        <tr><td>129</td><td>2001129</td><td></td><td>2000129</td><td></td><td>1003129</td><td></td><td>1004129</td><td></td><td>1005129</td><td></td><td>2006129</td><td></td></tr>
+                        <tr><td>130</td><td>2001130</td><td></td><td>2000130</td><td></td><td>1003130</td><td></td><td>1004130</td><td></td><td>1005130</td><td></td><td>2006130</td><td></td></tr>
+                        <tr><td>131</td><td>2001131</td><td></td><td>2000131</td><td></td><td>1003131</td><td></td><td>1004131</td><td></td><td>1005131</td><td></td><td>2006131</td><td></td></tr>
+                        <tr><td>135</td><td>2001135</td><td></td><td>2000135</td><td></td><td>1003135</td><td></td><td>1004135</td><td></td><td>1005135</td><td></td><td>2006135</td><td></td></tr>
+                        <tr><td>136</td><td>2001136</td><td></td><td>2000136</td><td></td><td>1003136</td><td></td><td>1004136</td><td></td><td>1005136</td><td></td><td>2006136</td><td></td></tr>
+                        <tr><td>140</td><td>2001140</td><td></td><td>2000140</td><td></td><td>1003140</td><td></td><td>1004140</td><td></td><td>1005140</td><td></td><td>2006140</td><td></td></tr>
+                        <tr><td>141</td><td>2001141</td><td></td><td>2000141</td><td></td><td>1003141</td><td></td><td>1004141</td><td></td><td>1005141</td><td></td><td>2006141</td><td></td></tr>
+                        <tr><td>145</td><td>2001145</td><td></td><td>2000145</td><td></td><td>1003145</td><td></td><td>1004145</td><td></td><td>1005145</td><td></td><td>2006145</td><td></td></tr>
+                        <tr><td>146</td><td>2001146</td></td><td>2000146</td><td></td><td>2003146</td><td></td><td>2004146</td><td></td><td>2005146</td><td></td><td>2006146</td><td></td></tr>
+                        <tr><td>150</td><td>2001150</td><td></td><td>2000150</td><td></td><td>2003150</td><td></td><td>2004150</td><td></td><td>2005150</td><td></td><td>2006150</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="accessories-adaptors-extensions" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">ACCESSORIES: Adaptors, Extensions, Countersink and Magnetic Sticks</h3>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Description</th>
+                            <th>Price Each</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>160001</td><td>UNIVERSAL ADAPTOR-Designed to allow use of Broach Cutter annular Cutters of 19.5mm Weldon Shank on Magnetic Base Drilling Machines having Arbor of 19.5mm/</td><td></td></tr>
+                        <tr><td>160003</td><td>UNIVERSAL ADAPTOR-Designed to allow use of Broach Cutter Annular Cutters of 19.5mm Weldon Shank on Magnetic Base Drilling Machines having Universal Arbor of 19.5mm/ Pilot Pin Dia 7.9</td><td></td></tr>
+                        <tr><td>160002</td><td>QUICK-IN SHANK ADAPTOR Designed to allow use of BroachCutter Annular Cutters of 19.5mm Weldon Shank on Magnetic Base Drilling Machines having Quick-in Shank of 19.5mm/ Pilot Pin Dia 6.35mm</td><td></td></tr>
+                        <tr><td>160004</td><td>QUICK IN SHANK ADAPTOR Designed to allow use of Broach Cutter Annular Cutters of 19.5mm Weldon Shank on Magnetic Base Drilling Machines having Quick in Shank of 19.5mm/ Pilot Pin Dia 7.8mm</td><td></td></tr>
+                        <tr><td>160007</td><td>Arbor Extension, 50mm, 19.5mm Weldon Shank</td><td></td></tr>
+                        <tr><td>160008</td><td>Arbor Extension, 75mm, 19.5mm Weldon Shank</td><td></td></tr>
+                        <tr><td>160009</td><td>Arbor Extension, 100mm, 19.5mm Weldon Shank</td><td></td></tr>
+                        <tr><td>160012</td><td>Arbor Extension, 100mm, 31.75mm Weldon Shank</td><td></td></tr>
+                        <tr><td>180040</td><td>Countersink 90° for Hole, Diameter 3mm to 40mm</td><td></td></tr>
+                        <tr><td>990008</td><td>Magnetic retrieving baton with release for clearing swarf and chips</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="solid-drills-weldon-shank" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Solid Drills with Weldon Shank</h3>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Dia (mm)</th>
+                            <th>Depth of Cut (mm)</th>
+                            <th>Price Each</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>180003</td><td>35</td><td></td></tr>
+                        <tr><td>180004</td><td>35</td><td></td></tr>
+                        <tr><td>180005</td><td>35</td><td></td></tr>
+                        <tr><td>180006</td><td>35</td><td></td></tr>
+                        <tr><td>180007</td><td>35</td><td></td></tr>
+                        <tr><td>180008</td><td>35</td><td></td></tr>
+                        <tr><td>180009</td><td>35</td><td></td></tr>
+                        <tr><td>180010</td><td>35</td><td></td></tr>
+                        <tr><td>180011</td><td>35</td><td></td></tr>
+                        <tr><td>180012</td><td>35</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="drill-bits" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Drill Bits</h3>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Price Each</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>190003</td><td></td></tr>
+                        <tr><td>190004</td><td></td></tr>
+                        <tr><td>190005</td><td></td></tr>
+                        <tr><td>190006</td><td></td></tr>
+                        <tr><td>190007</td><td></td></tr>
+                        <tr><td>190008</td><td></td></tr>
+                        <tr><td>190009</td><td></td></tr>
+                        <tr><td>190010</td><td></td></tr>
+                        <tr><td>190011</td><td></td></tr>
+                        <tr><td>190012</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="pilot-pins-tct-annular-cutters" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Pilot Pins for TCT Annular Cutters</h3>
+
+            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Depth of Cut: 35mm</h4>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Size</th>
+                            <th>Weldon Shank Size</th>
+                            <th>Dia. Range</th>
+                            <th>Depth of Cut</th>
+                            <th>Price Each</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>170007</td><td>6.35mm x 90mm</td><td>19.05mm</td><td>12-17mm</td><td>35mm</td><td></td></tr>
+                        <tr><td>170008</td><td>7.96mm x 90mm</td><td>19.05mm</td><td>18-50mm</td><td>35mm</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Depth of Cut: 50mm</h4>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Size</th>
+                            <th>Weldon Shank Size</th>
+                            <th>Dia. Range</th>
+                            <th>Depth of Cut</th>
+                            <th>Price Each</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>170009</td><td>6.35mm x 106mm</td><td>19.05mm</td><td>12-17mm</td><td>50mm</td><td></td></tr>
+                        <tr><td>170022</td><td>7.98mm x 105mm</td><td>19.05mm</td><td></td><td>50mm</td><td></td></tr>
+                        <tr><td>170010</td><td>7.98mm x 108mm</td><td>19.05mm</td><td>18-50mm</td><td>50mm</td><td></td></tr>
+                        <tr><td>170012</td><td>7.98mm x 113mm</td><td>31.75mm</td><td></td><td>50mm</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Depth of Cut: 75mm</h4>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Size</th>
+                            <th>Weldon Shank Size</th>
+                            <th>Dia. Range</th>
+                            <th>Depth of Cut</th>
+                            <th>Price Each</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>170011</td><td>7.98mm x 130mm</td><td>19.05</td><td>18-60mm</td><td>75mm</td><td></td></tr>
+                        <tr><td>170003</td><td>7.98mm x 130mm (Two-Part)</td><td>19.05mm</td><td>18-60mm</td><td>75mm</td><td></td></tr>
+                        <tr><td>170013</td><td>7.98mm 145mm.</td><td>31.25mm</td><td>60mm</td><td>75mm</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Depth of Cut: 100mm</h4>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Size</th>
+                            <th>Weldon Shank Size</th>
+                            <th>Dia. Range</th>
+                            <th>Depth of Cut</th>
+                            <th>Price Each</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>170004</td><td>7.98mm 160mm</td><td>19.05mm</td><td>38-60mm</td><td>100mm</td><td></td></tr>
+                        <tr><td>170005</td><td>7.96mm x 160mm (Two-Part)</td><td>19.05mm</td><td>38-60mm</td><td>100mm</td><td></td></tr>
+                        <tr><td>170014</td><td>7.98mm x 15mm</td><td>21.75mm</td><td>61-100mm</td><td>100mm</td><td></td></tr>
+                        <tr><td>170015</td><td>7.98mx 184mm(Two-Part)</td><td>31.75mm</td><td>61-100mm</td><td>100mm</td><td></td></tr>
+                        <tr><td>170018</td><td>19.8mm x 205mm</td><td>31.75mm</td><td>61-100mm</td><td>100mm</td><td></td></tr>
+                        <tr><td>170019</td><td>98mm 190mm</td><td>19.05mm</td><td>18-60mm</td><td>100mm</td><td></td></tr>
+                        <tr><td>170021</td><td>35mmx 160mm</td><td>19.05mm</td><td>14-16mm</td><td>100mm</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="pilot-pins-hss-annular-cutters" class="mb-12 scroll-animate-initial">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center">Pilot Pins for HSS Annular Cutters</h3>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Part No.</th>
+                            <th>Size</th>
+                            <th>Weldon Shank mm</th>
+                            <th>Dia. Range mm</th>
+                            <th>Depth of Cut mm</th>
+                            <th>Price Each</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>170001</td><td>6.35x77mm</td><td>19.05</td><td>12-65</td><td>25</td><td></td><td></td></tr>
+                        <tr><td>170002</td><td>6.35x102mm</td><td>19.05</td><td>12-65</td><td>58</td><td></td><td></td></tr>
+                        <tr><td>170016</td><td>6.35x10mm</td><td>19.05</td><td>12-65</td><td>50</td><td></td><td></td></tr>
+                        <tr><td>170011</td><td>107.98x130mm</td><td>19.05</td><td>18-50</td><td>75</td><td></td><td></td></tr>
+                        <tr><td>170003</td><td>7.98x130mm</td><td>19.05</td><td>18-50</td><td>75</td><td></td><td>(2-part design)</td></tr>
+                        <tr><td>170004</td><td>7.98x160mm</td><td>19.05</td><td>18-60</td><td>100</td><td></td><td></td></tr>
+                        <tr><td>170005</td><td>7.90x160mm</td><td>19.05</td><td>18-60</td><td>100</td><td></td><td></td></tr>
+                        <tr><td>170021</td><td>6.35x160mm</td><td>19.05</td><td>18-60</td><td></td><td></td><td>DOC 25mm + Extension 100mm</td></tr>
+                        <tr><td>170021</td><td>6.35x160mm</td><td>19.05</td><td>18-60</td><td></td><td></td><td>DOC 50mm+ Extension 75mm</td></tr>
+                        <tr><td>170020</td><td>4.74103mm</td><td>19.05</td><td>Imm</td><td>50</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="contact" class="mb-12 scroll-animate-initial">
+            <h2 class="text-4xl font-bold text-white text-center mb-8">Get In Touch With Innovative Engineering Products</h2>
+            <div class="glass-effect p-8 rounded-lg max-w-2xl mx-auto text-center">
+                <p class="text-lg text-gray-300 mb-4"><strong>Innovative Engineering Products</strong></p>
+                <p class="text-lg text-gray-300 mb-2"><strong>Contact Numbers:</strong> +91 99523 86668, +91 99433 82727</p>
+                <p class="text-lg text-gray-300 mb-4"><strong>Web:</strong> <a href="javascript:void(0)" class="text-purple-300 hover:underline">innovativeengineeringproducts.com</a></p>
+                <p class="text-lg text-gray-300"><strong>Address:</strong> #123, 1st Main, Industrial Area, Peenya, Bengaluru, Karnataka 560058, India</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 py-10">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <div class="flex flex-col items-center mb-6">
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-12 h-12 mb-2">
+                <p class="text-xl font-bold text-white">Innovative Engineering Products</p>
+            </div>
+            <p class="mb-4">&copy; 2025 Innovative Engineering Products. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Privacy Policy</a>
+                <span class="text-gray-600">|</span>
+                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Define categories for the filter dropdown, mapping display names to section IDs
+        const sectionCategories = [
+            { value: 'arbors-radial-drill-machines', text: 'Arbors for Radial Drill Machines' },
+            { value: 'drillmagic-series', text: 'Drillmagic Series' },
+            { value: 'tapmagic-series', text: 'Tapmagic Series' },
+            { value: 'light-weight-rail-drilling-machines', text: 'Rail Drilling Machines' },
+            { value: 'annular-cutters-hss-weldon-shank', text: 'HSS Annular Cutters' },
+            { value: 'annular-cutters-tct', text: 'TCT Annular Cutters' },
+            { value: 'accessories-adaptors-extensions', text: 'Accessories' },
+            { value: 'solid-drills-weldon-shank', text: 'Solid Drills' },
+            { value: 'drill-bits', text: 'Drill Bits' },
+            { value: 'pilot-pins-tct-annular-cutters', text: 'Pilot Pins (TCT)' },
+            { value: 'pilot-pins-hss-annular-cutters', text: 'Pilot Pins (HSS)' }
+        ];
+
+        const categoryFilter = document.getElementById('category-filter');
+
+        function populateCategories() {
+            // Clear existing options except "Select a Category"
+            categoryFilter.innerHTML = '<option value="all">Select a Category</option>';
+
+            // Add unique categories to the dropdown
+            sectionCategories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.value;
+                option.textContent = category.text;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        function filterProducts() {
+            const selectedCategory = categoryFilter.value;
+
+            if (selectedCategory !== 'all') {
+                const targetSection = document.getElementById(selectedCategory);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+
+        // Mobile menu event listeners (copied from main.js for standalone page)
+        function toggleMobileMenu() {
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (!mobileMenuOverlay || !menuIcon || !closeIcon) {
+                console.error('Mobile menu elements not found.');
+                return;
+            }
+
+            mobileMenuOverlay.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        }
+
+        // Intersection Observer for scroll animations (copied from main.js for standalone page)
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animate-entered');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year-footer'); // Changed ID to avoid conflict with main page
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // Mobile menu event listeners
+            document.getElementById('mobile-menu-button')?.addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-menu-close-button')?.addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-menu-overlay')?.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+
+            // Populate categories for the filter
+            populateCategories();
+
+            // Add event listener for category filter
+            categoryFilter.addEventListener('change', filterProducts);
+
+            // Observe sections for fade-in animation
+            document.querySelectorAll('section.scroll-animate-initial').forEach(section => {
+                fadeInObserver.observe(section);
+            });
+            document.querySelectorAll('footer.footer-initial').forEach(footer => {
+                fadeInObserver.observe(footer);
+            });
+        });
+    </script>
+</body>
+</html>

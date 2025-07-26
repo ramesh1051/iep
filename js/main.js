@@ -4,12 +4,9 @@
  * Safely gets an HTML element by its ID.
  * @param {string} id The ID of the element.
  * @returns {HTMLElement|null} The element or null if not found.
- */
+*/
 function getElement(id) {
     const element = document.getElementById(id);
-    if (!element) {
-        console.error(`Element with ID "${id}" not found.`);
-    }
     return element;
 }
 
@@ -17,10 +14,11 @@ function getElement(id) {
  * Handles image loading errors by replacing the src with a placeholder.
  * @param {Event} event The error event.
  * @param {string} altText The alternative text for the placeholder.
- */
+*/
 function handleImageError(event, altText = "Image") {
     event.target.onerror = null; // Prevent infinite loop if placeholder also fails
     event.target.src = `https://placehold.co/400x300/1f2937/d1d5db?text=${encodeURIComponent(altText.replace(/\s/g, '+'))}`;
+    console.warn(`Image failed to load: ${event.target.src}. Replaced with placeholder.`);
 }
 
 // --- Mobile Menu Logic ---
@@ -31,25 +29,28 @@ function toggleMobileMenu() {
     const menuIcon = getElement('menu-icon');
     const closeIcon = getElement('close-icon');
 
-    if (!mobileMenuOverlay || !menuIcon || !closeIcon) return;
+    if (!mobileMenuOverlay || !menuIcon || !closeIcon) {
+        console.error('Mobile menu elements not found.');
+        return;
+    }
 
     isMobileMenuOpen = !isMobileMenuOpen;
 
     if (isMobileMenuOpen) {
         mobileMenuOverlay.classList.remove('hidden');
-        mobileMenuOverlay.classList.add('mobile-menu-overlay-initial'); // Apply initial state for transition
-        // Force reflow for transition to work
-        void mobileMenuOverlay.offsetWidth;
+        mobileMenuOverlay.classList.add('mobile-menu-overlay-initial');
+        void mobileMenuOverlay.offsetWidth; // Force reflow
         mobileMenuOverlay.classList.add('mobile-menu-overlay-animate');
         menuIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden'); // Prevent scrolling when menu is open
+        console.log('Mobile menu opened.');
     } else {
         mobileMenuOverlay.classList.remove('mobile-menu-overlay-animate');
-        mobileMenuOverlay.classList.add('mobile-menu-overlay-initial'); // Animate out
+        mobileMenuOverlay.classList.add('mobile-menu-overlay-initial');
 
-        // Wait for the transition to finish before hiding
         mobileMenuOverlay.addEventListener('transitionend', function handler() {
-            if (!isMobileMenuOpen) { // Ensure it's still closed state before hiding
+            if (!isMobileMenuOpen) {
                 mobileMenuOverlay.classList.add('hidden');
             }
             mobileMenuOverlay.removeEventListener('transitionend', handler);
@@ -57,6 +58,8 @@ function toggleMobileMenu() {
 
         menuIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden'); // Restore scrolling
+        console.log('Mobile menu closed.');
     }
 }
 
@@ -73,10 +76,8 @@ const fadeInObserver = new IntersectionObserver((entries, observer) => {
             const target = entry.target;
             const animationType = target.dataset.animationType;
 
-            // Apply the 'entered' class for the animation to play
             target.classList.add('scroll-animate-entered');
 
-            // Handle specific animation types for initial classes
             if (animationType === 'slide-left') {
                 target.classList.remove('about-text-initial');
             } else if (animationType === 'slide-right') {
@@ -87,9 +88,8 @@ const fadeInObserver = new IntersectionObserver((entries, observer) => {
                 target.classList.remove('footer-initial');
             }
 
-            // For staggered items (like manufacturers) or elements that animate once
             if (target.dataset.staggerIndex === undefined) {
-                    observer.unobserve(target); // Stop observing after animation if not staggered
+                observer.unobserve(target);
             }
         }
     });
@@ -98,6 +98,8 @@ const fadeInObserver = new IntersectionObserver((entries, observer) => {
 
 // --- DOM Content Loaded / Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded. Initializing scripts.');
+
     // Set current year in footer
     const currentYearElement = getElement('current-year');
     if (currentYearElement) {
@@ -112,24 +114,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Hero Section Animations on Load ---
-    const backgenImage = getElement('backgen-image'); // New foreground image element
-    const heroLogo = getElement('hero-logo');
+    const backgenImage = getElement('backgen-image');
     const heroTitle = getElement('hero-title');
     const heroDescription = getElement('hero-description');
     const heroButton = getElement('hero-button');
     const companyInfo = getElement('company-info');
 
     if (backgenImage) {
-        // Animate foreground image immediately
         setTimeout(() => {
             backgenImage.classList.add('hero-foreground-image-animate');
         }, 100);
     }
 
     // Stagger hero elements
-    if (heroLogo) {
-        setTimeout(() => heroLogo.classList.add('hero-element-animate'), 200);
-    }
     if (heroTitle) {
         setTimeout(() => heroTitle.classList.add('hero-element-animate'), 400);
     }
@@ -149,142 +146,63 @@ document.addEventListener('DOMContentLoaded', () => {
     if (manufacturersGrid) {
         manufacturers.forEach((mfr, index) => {
             const div = document.createElement('div');
-            // Add initial animation class and data-attribute for stagger
             div.className = `glass-effect p-4 flex items-center justify-center h-24 rounded-lg hover:scale-105 transition duration-300 scroll-animate-initial`;
-            div.style.transitionDelay = `${index * 0.1}s`; // Stagger delay
-            // Updated img class for better sizing: h-16 w-full object-contain
+            div.style.transitionDelay = `${index * 0.1}s`;
             div.innerHTML = `<img src="${mfr.logo}" alt="${mfr.name}" class="${mfr.logoSize} w-full object-contain opacity-75 hover:opacity-100 transition-opacity duration-300" onerror="handleImageError(event, '${mfr.name} Logo')">`;
             manufacturersGrid.appendChild(div);
-            fadeInObserver.observe(div); // Observe each manufacturer logo
+            fadeInObserver.observe(div);
         });
     }
 
-    // --- Populate Product Cards ---
+    // --- Populate Product Cards (New Design) ---
     const productCardsContainer = getElement('product-cards-container');
     if (productCardsContainer) {
-        products.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.className = 'glass-effect rounded-xl p-6 flex flex-col h-full transform hover:-translate-y-2 transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-purple-700/30 scroll-animate-initial';
+        productCardsContainer.innerHTML = ''; // Clear any existing static cards
+        products.forEach((product, index) => {
+            const productCard = document.createElement('a'); // Changed to <a> for direct linking
+            productCard.href = product.detailsPage || 'starblaze.html'; // Link to detailsPage or fallback
+            productCard.className = 'product-card flex flex-col rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 ease-in-out glow-button group scroll-animate-initial';
+            productCard.style.transitionDelay = `${index * 0.08}s`; // Stagger animation
 
-            // Image with error fallback
-            const img = document.createElement('img');
-            img.src = product.image;
-            img.alt = product.category;
-            img.className = 'product-image mb-6';
-            img.onerror = function() { handleImageError(event, product.category); };
-            productCard.appendChild(img);
-
-            // Title and Manufacturer Badge
-            const headerDiv = document.createElement('div');
-            headerDiv.className = 'flex justify-between items-start mb-4';
-            headerDiv.innerHTML = `
-                <h3 class="text-3xl font-semibold text-white leading-tight">${product.category}</h3>
-                <span class="bg-purple-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide opacity-80">
-                    ${product.manufacturer}
-                </span>
-            `;
-            productCard.appendChild(headerDiv);
-
-            // Description
-            const descriptionP = document.createElement('p');
-            descriptionP.className = 'text-gray-300 text-lg mb-6 flex-grow';
-            descriptionP.textContent = product.description;
-            productCard.appendChild(descriptionP);
-
-            // Key Technical Specs
-            const specsDiv = document.createElement('div');
-            specsDiv.className = 'mb-6';
-            specsDiv.innerHTML = `<h4 class="text-xl font-medium text-purple-400 mb-3">Key Specs:</h4>`;
-            const specsUl = document.createElement('ul');
-            specsUl.className = 'space-y-2';
-            product.specs.forEach(spec => {
-                const li = document.createElement('li');
-                li.className = 'flex items-center text-gray-300';
-                li.innerHTML = `
-                    <svg class="w-4 h-4 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    <span class="font-semibold">${spec.name}:</span> ${spec.value}
-                `;
-                specsUl.appendChild(li);
-            });
-            specsDiv.appendChild(specsUl);
-            productCard.appendChild(specsDiv);
-
-            // Call to Action Buttons
-            const ctaDiv = document.createElement('div');
-            ctaDiv.className = 'mt-auto flex flex-col sm:flex-row gap-4';
-            ctaDiv.innerHTML += `
-                <button class="flex-1 px-6 py-3 bg-purple-600 text-white font-semibold rounded-full glow-button flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                    View Specs
-                </button>
-            `;
-            ctaDiv.innerHTML += `
-                <button class="flex-1 px-6 py-3 bg-gray-700 text-gray-200 font-semibold rounded-full hover:bg-gray-600 transition duration-300 flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.797 0-7.585-.453-11-1.745M12 21V3M10 4L4 9M18 4l6 5M15 15h4M15 19h4"></path></svg>
-                    Request Quote
-                </button>
-            `;
-            productCard.appendChild(ctaDiv);
-
-            productCardsContainer.appendChild(productCard);
-            fadeInObserver.observe(productCard); // Observe each product card
-        });
-    }
-
-    // --- Populate Product Tables ---
-    const productTablesContainer = getElement('product-tables-container');
-    if (productTablesContainer) {
-        productTablesData.forEach(tableData => {
-            const tableContainerDiv = document.createElement('div');
-            tableContainerDiv.className = 'product-table-container scroll-animate-initial'; // Apply initial animation class
-            
-            const h3 = document.createElement('h3');
-            h3.className = 'text-3xl font-semibold text-white mb-6 text-center';
-            h3.textContent = tableData.title;
-            tableContainerDiv.appendChild(h3);
-
-            const overflowDiv = document.createElement('div');
-            overflowDiv.className = 'overflow-x-auto rounded-xl';
-            tableContainerDiv.appendChild(overflowDiv);
-
-            const table = document.createElement('table');
-            table.className = 'product-table';
-            overflowDiv.appendChild(table);
-
-            const thead = document.createElement('thead');
-            table.appendChild(thead);
-            const headerRow = document.createElement('tr');
-            thead.appendChild(headerRow);
-            tableData.headers.forEach(headerText => {
-                const th = document.createElement('th');
-                th.textContent = headerText;
-                headerRow.appendChild(th);
-            });
-
-            const tbody = document.createElement('tbody');
-            table.appendChild(tbody);
-            tableData.rows.forEach(rowData => {
-                const tr = document.createElement('tr');
-                rowData.forEach(cellData => {
-                    const td = document.createElement('td');
-                    td.textContent = cellData;
-                    tr.appendChild(td);
+            // Add an alert for products without a specific details page, on click
+            if (!product.detailsPage) {
+                productCard.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default navigation for the alert
+                    alert(`Detailed specifications for "${product.category}" are coming soon! Redirecting to a general solutions page.`);
+                    window.location.href = 'starblaze.html'; // Manually navigate after alert
                 });
-                tbody.appendChild(tr);
-            });
-            productTablesContainer.appendChild(tableContainerDiv);
-            fadeInObserver.observe(tableContainerDiv); // Observe each table
+            }
+
+            productCard.innerHTML = `
+                <div class="product-card-image-wrapper">
+                    <img src="${product.image}" alt="${product.category}" class="product-card-image" onerror="handleImageError(event, '${product.category}')">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between bg-gray-800 bg-opacity-80 backdrop-blur-md">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white mb-2 leading-tight">${product.category}</h3>
+                        <p class="text-sm text-purple-400 font-medium mb-3">${product.manufacturer}</p>
+                        <p class="text-gray-300 text-base mb-4 line-clamp-3">${product.description}</p>
+                    </div>
+                    <div class="mt-auto">
+                        <span class="inline-flex items-center px-4 py-2 bg-purple-600 text-white text-sm font-semibold rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Learn More
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </span>
+                    </div>
+                </div>
+            `;
+            productCardsContainer.appendChild(productCard);
+            fadeInObserver.observe(productCard);
         });
     }
 
-    // --- Observe other sections for animation ---
     const sectionsToAnimate = document.querySelectorAll(
-        'section[data-animation-type="fade-up"], ' +
-        'div[data-animation-type="slide-left"], ' +
-        'div[data-animation-type="slide-right"], ' +
-        'div[data-animation-type="scale-in"], ' +
-        'footer[data-animation-type="fade-up"]'
+        '[data-animation-type="fade-up"], ' +
+        '[data-animation-type="slide-left"], ' +
+        '[data-animation-type="slide-right"], ' +
+        '[data-animation-type="scale-in"]'
     );
+    
 
     sectionsToAnimate.forEach(section => {
         fadeInObserver.observe(section);
@@ -295,11 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('#contact form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent default form submission
-            // In a real application, you would send this data to a backend server.
-            // For this example, we'll use a simple alert.
+            e.preventDefault();
+            console.log('Contact form submitted (client-side demo).');
             alert('Message sent! (Form submission is handled by client-side JS for demo purposes.)');
-            contactForm.reset(); // Clear the form
+            contactForm.reset();
         });
     }
 });

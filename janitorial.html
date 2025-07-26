@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janitorial Products - Innovative Engineering Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css"> <style>
+        /* Specific styles for this page, overriding or extending main style.css as needed */
+        
+        /* Product Card Styling for Janitorial Page */
+        .janitorial-product-card {
+            background-color: rgba(255, 255, 255, 0.08); /* glass-effect from main CSS */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* shadow-lg */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            padding: 1rem; /* p-4 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .janitorial-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .janitorial-product-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for image consistency */
+            object-fit: contain; /* Ensures the whole image is visible */
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-bottom: 1rem; /* mb-4 */
+            background-color: #1a202c; /* Dark background for image area */
+        }
+        
+        /* Animation keyframes and classes (copied from main style.css for standalone page) */
+        .scroll-animate-initial {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate-entered { /* Using a different name to prevent conflict if main.js is loaded */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Table styling (copied from main style.css for standalone page) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        th, td {
+            border: 1px solid #4a5568; /* gray-700 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #2d3748; /* gray-800 */
+            color: #cbd5e0; /* gray-300 */
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #2a3340; /* Slightly darker for even rows */
+        }
+        tr:hover {
+            background-color: #4a5568; /* gray-700 on hover */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-950 text-gray-200 font-sans">
+
+    <nav class="sticky top-0 z-50 bg-gray-950 bg-opacity-90 backdrop-blur-md shadow-lg p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-white text-2xl font-bold">
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-8 h-8">
+                <span>Innovative Engineering Products</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
+                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
+                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
+                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
+            <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="index.html#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
+            <a href="index.html#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
+            <a href="index.html#about" class="text-white text-3xl hover:text-purple-400 transition duration-300">About Us</a>
+            <a href="index.html#contact" class="text-white text-3xl hover:text-purple-400 transition duration-300">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16">
+        <section class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="w-full lg:w-1/2 text-center lg:text-left">
+                <h1 class="text-5xl font-extrabold text-white mb-4">Elevate Your Clean with Innovative Janitorial Solutions</h1>
+                <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
+                    Discover a superior standard of cleanliness with Innovative Engineering Products's comprehensive range of janitorial products. Partnering with industry leaders like **Roots Multiclean Ltd.**, we bring you innovative and eco-friendly solutions designed to transform cleaning from a chore into a truly satisfying experience. Our commitment is to help you achieve a sparkling, fresh, and welcoming environment with ease. Explore our extensive catalog to find the perfect tools and supplies tailored to your specific cleaning requirements.
+                </p>
+            </div>
+            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+                <img src="assets/images/janitorial_heading.png" alt="Janitorial Solutions Image" class="rounded-lg shadow-lg max-w-full h-auto">
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <label for="category-filter" class="text-lg text-gray-300">Filter by Category:</label>
+                <div class="relative inline-block text-left">
+                    <select id="category-filter" class="block appearance-none w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer">
+                        <option value="all">All Products</option>
+                        </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            </section>
+    </main>
+
+    <footer class="bg-gray-900 py-10 footer-initial fade-up">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <div class="flex flex-col items-center mb-6">
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-12 h-12 mb-2">
+                <p class="text-xl font-bold text-white">Innovative Engineering Products</p>
+            </div>
+            <p class="mb-4">&copy; <span id="current-year-footer"></span> Innovative Engineering Products. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Privacy Policy</a>
+                <span class="text-gray-600">|</span>
+                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            // Mops & Wet/Dry Systems (from Janitorial catalogue_Nov 2024.pdf page 2 and Price List)
+            { id: '16', partNo: '559260007-00', description: 'EZECLEAN SLEEK WET & DRY MOP', hsn: '39269000', category: 'mops' },
+            { id: '19', partNo: '558260019-00', description: 'SLEEK INSERT', hsn: '', category: 'accessories' },
+            { id: '20', partNo: '558260076-00', description: 'NEO INSERT 50CM', hsn: '', category: 'accessories' },
+            { id: '22', partNo: '559260033-00', description: 'EZECLEAN NEO WET & DRY MOP', hsn: '', category: 'mops' },
+            { id: '23', partNo: '559260014-00', description: 'EZECLEAN WET & DRY MOP 75 CMS BLUE', hsn: '', category: 'mops' },
+            { id: '24', partNo: '559260026-00', description: 'EZECLEAN DRY MOP 100 CMS', hsn: '', category: 'mops' },
+            { id: '25', partNo: '558260053-00', description: 'PLUS INSERT 75 CM', hsn: '', category: 'accessories' },
+            { id: '27', partNo: '558260087-00', description: 'INSERT 100CM', hsn: '', category: 'accessories' },
+            { id: '28', partNo: '558260081-00', description: 'PLUS INSERT-50 CMS BLUE DUSTY MOP 40', hsn: '', category: 'mops' },
+            { id: '31', partNo: '558260082-00', description: 'DUSTY MOP 60', hsn: '', category: 'mops' },
+            { id: '36', partNo: 'EZ10012', description: 'WET MOP REFILL-LOOP END', hsn: '', category: 'mops' },
+            { id: '37', partNo: 'EZ10006', description: 'COTTON MOP 350 GMS', hsn: '', category: 'mops' },
+            { id: '38', partNo: 'EZ10018', description: 'COTTON MOP 350 GMS, NC. LOOP END GREEN BAND', hsn: '', category: 'mops' },
+            { id: '39', partNo: 'EZ10019', description: 'COTTON MOP 350 GMS. RED, LOOP END', hsn: '', category: 'mops' },
+            { id: '47', partNo: '579100016', description: 'WET MOP CLIP BLUE', hsn: '', category: 'mops' },
+            { id: '52', partNo: '579100018', description: 'COTTON MOP LOOP END BLUE', hsn: '', category: 'mops' },
+            { id: '13', partNo: 'TT485', description: 'WET SYSTEM MICROFIBER /POLYESTER/COTTON - 40CM', hsn: '96039000', category: 'mops' },
+            { id: '14', partNo: 'TT694', description: 'WET SYSTEM WHITE MICROFIBRE MOP-40CM', hsn: '96039000', category: 'mops' },
+            { id: '15', partNo: 'TT695', description: 'MICROFIBRE MOP 40x13 BLUE', hsn: '96039000', category: 'mops' },
+            { id: '16', partNo: 'TT694MB', description: 'MICROFIBRE MOP REFILL- BLUE-40CM', hsn: '96039000', category: 'mops' },
+            { id: '17', partNo: 'TT694MR', description: 'MICROFIBRE MOP REFILL- RED-40CM', hsn: '96039000', category: 'mops' },
+            { id: '18', partNo: 'TT694MG', description: 'MICROFIBRE MOP REFILL- Yellow 40CM', hsn: '96039000', category: 'mops' },
+            { id: '19', partNo: 'TT694MV', description: 'MICROFIBRE MOP REFILL- GREEN-40CM', hsn: '96039000', category: 'mops' },
+            { id: '22', partNo: 'TTOB000705', description: 'WHITE MICROFIBRE MOP HEAD FOR VELCRO FRAME 40 CM', hsn: '96039000', category: 'mops' },
+            { id: '23', partNo: 'TT727', description: 'BASIC MICRO BLUE CLOTH FOR VELCROM HOLDER - 40 CM', hsn: '96039000', category: 'dusters' },
+            { id: '24', partNo: 'TTOBB00745MB', description: 'MICRO WHITE IN BLUE COLOUR 40CM', hsn: '96039000', category: 'dusters' },
+            { id: '25', partNo: 'TTORR00745MR', description: 'MICRO WHITE IN RED COLOUR 40CM', hsn: '96039000', category: 'dusters' },
+            { id: '26', partNo: 'TTOGG00745MG', description: 'MICRO WHITE IN YELLOW COLOUR 40CM', hsn: '96039000', category: 'dusters' },
+            { id: '27', partNo: 'TTOVV00745MV', description: 'MICRO WHITE GREEN COLOUR 40CM', hsn: '96039000', category: 'dusters' },
+            { id: '28', partNo: 'TT7700V', description: 'TRILOGY GREEN', hsn: '96039000', category: 'mops' },
+            { id: '29', partNo: 'TTOOAA9000BB', description: 'TRI WET MICROFIBRE MOP BLUE', hsn: '96039000', category: 'mops' },
+            { id: '33', partNo: 'TT1858', description: 'COTTON MOP', hsn: '96039000', category: 'mops' },
+            { id: '34', partNo: 'TT1351', description: 'MOP MIDDLE COTTON WITH BAND', hsn: '96039000', category: 'mops' },
+            { id: '35', partNo: 'TT1501', description: 'COTTON MOP BAND (WHITE)', hsn: '96039000', category: 'mops' },
+            { id: '171', partNo: '579020035-00', description: 'Uni System Microriccio flat mop white', hsn: '96039000', category: 'mops' },
+            { id: '172', partNo: '579020036-00', description: 'Uni System Microriccio flat mop Red', hsn: '96039000', category: 'mops' },
+            { id: '173', partNo: '579020037-00', description: 'Uni System Microriccio flat mop Blue', hsn: '96039000', category: 'mops' },
+            { id: '174', partNo: '579020038-00', description: 'Uni System Microriccio flat mop Green', hsn: '96039000', category: 'mops' },
+            { id: '175', partNo: '579020039-00', description: 'Uni System Microriccio flat mop yellow', hsn: '96039000', category: 'mops' },
+
+
+            // Buckets & Wringers (from Janitorial catalogue_Nov 2024.pdf page 3 and Price List)
+            { id: '1', partNo: 'TTOGO36484', description: 'ACTION PRO YELLOW 30L BUCKET WITH YELLOW', hsn: '39269000', category: 'buckets' },
+            { id: '5', partNo: 'TT3260', description: 'SECC LT 28 FOR WC WHEELS, TUB', hsn: '96039000', category: 'buckets' },
+            { id: '6', partNo: 'TT5271', description: 'BUCKET PIT 12 LTR BLUE', hsn: '96039000', category: 'buckets' },
+            { id: '7', partNo: 'TT5251', description: 'FOX BUCKET 14LTS CAPACITY', hsn: '39269000', category: 'buckets' },
+            { id: '8', partNo: 'TT36394', description: 'DOUBLE BUCKET TROLLEY WITH O-KEY WRINGER - 20 LTRS CAPACITY', hsn: '39269000', category: 'buckets' },
+            { id: '9', partNo: 'TT3720', description: 'PLASTIC WRINGER TEC GREY', hsn: '39269000', category: 'buckets' },
+            { id: '10', partNo: 'TT3724', description: 'PLASTIC TEC WRINGER (GREEN)', hsn: '39269000', category: 'buckets' },
+            { id: '11', partNo: 'TT3403', description: 'O-KEY WRINGER YELLOW', hsn: '39269000', category: 'buckets' },
+            { id: '40', partNo: 'EZ10005', description: 'KENTUCKY MOP HOLDER-GREEN', hsn: '', category: 'mop_accessories' }, // Changed category to differentiate
+            { id: '41', partNo: '579100017', description: 'WET MOP CLIP RED', hsn: '', category: 'mop_accessories' }, // Changed category to differentiate
+
+
+            // Trolleys (from Janitorial catalogue_Nov 2024.pdf page 6 & 7 and Price List)
+            { id: '2', partNo: 'TT6056', description: 'PLASTIC TROLLEY NICK LIGHT 2X25 LTR', hsn: '39269000', category: 'trolleys' },
+            { id: '3', partNo: 'TT6183', description: 'PLASTIC TROLLEY NICK WITH PLASTIC HANDLE 30 LTRS', hsn: '39269000', category: 'trolleys' },
+            { id: '4', partNo: 'TT6188', description: 'PLASTIC TROLLEY NICK WITH PLASTIC HANDLE-50 LTRS', hsn: '39269000', category: 'trolleys' },
+            { id: '101', partNo: 'TTORO36519', description: 'PLASTIC TROLLEY NICK PLUS 50 (WITHOUT BAG)', hsn: '39269000', category: 'trolleys' },
+            { id: '102', partNo: 'TTORO36729', description: 'Nick Star 60-28 litre with O Key Wringer (BAGS NOT INCLUDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '103', partNo: 'TTOB003150', description: 'TROLLEY GREEN 150 (BAGS & LIDS ARE NOT INCLUDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '116', partNo: 'TTMS700SOCOAOO', description: 'MAGIC SYSTEM 700S SAFETY (BAGS & LIDS ARE NOT INCLUDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '117', partNo: 'TTML360E0A0A00', description: 'CARRELLO MAGIC LINE 360 ELEGANCE (SACK BAG EXTRA)', hsn: '39269000', category: 'trolleys' },
+            { id: '118', partNo: 'TTML360S0A0A0O', description: 'MAGIC LINE 360S - SAFETY', hsn: '39269000', category: 'trolleys' },
+            { id: '119', partNo: 'TTM262R02N0120S', description: 'MAGIC ART TROLLEY ANTHEA (SACK BAG EXTRA)', hsn: '39269000', category: 'trolleys' },
+            { id: '139', partNo: 'TTML030B0A000', description: 'MAGIC SYSTEM 30B BASIC (BAGS & LIDS ARE NOT INCLUDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '140', partNo: 'TTML050B0A0000', description: 'MAGIC LINE 50B BASIC (BAGS & LIDS ARE NOT INCLUDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '143', partNo: 'TTMH810B0TVOO', description: 'MAGIC HOTEL 810 B (BAGS ARE NOT INCLUEDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '144', partNo: 'TTMH800BOTOVOO', description: 'MAGIC HOTEL 800B (BAGS ARE NOT INCLUEDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '145', partNo: 'TTMH840B0TOVVO', description: 'MAGIC HOTEL 840B BASIC', hsn: '39269000', category: 'trolleys' },
+            { id: '146', partNo: 'TTMH840SOTOVVO', description: 'MAGIC HOTEL 840S SAFETY (BAGS ARE NOT INCLUEDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '147', partNo: 'TTMH850SOTOVVO', description: 'MAGIC HOTEL 850S (BAGS ARE NOT INCLUEDED)', hsn: '39269000', category: 'trolleys' },
+            { id: '155', partNo: '579020019-00', description: 'TROLLEY MAGIC SYSTEM 840 ELEGANCE', hsn: '96039000', category: 'trolleys' },
+
+
+            // Poles & Handles (from Janitorial catalogue_Nov 2024.pdf page 4 and Price List)
+            { id: '130', partNo: 'TTOB001035-HANDLE', description: 'PLASTIC COATED HANDLE WITH THREAD BLUE - 130 CM', hsn: '96039000', category: 'poles_handles' }, // New category
+            { id: '151', partNo: 'TT1044', description: 'TELESCOPIC HANDLE - 140CM', hsn: '96039000', category: 'poles_handles' },
+            { id: '152', partNo: 'TT1047', description: 'ALU. HANDLE 140 CM', hsn: '96039000', category: 'poles_handles' },
+            { id: '150', partNo: 'TT1043', description: 'ALU. HANDLE WITH SCREW CM.140', hsn: '96039000', category: 'poles_handles' },
+            { id: '83', partNo: 'TT8500', description: 'TELESCOPIC POLES 125CM', hsn: '96039000', category: 'poles_handles' },
+            { id: '84', partNo: 'TT8510', description: 'TELESCOPIC POLES 2 X CM 125', hsn: '96039000', category: 'poles_handles' },
+            { id: '85', partNo: 'TT8517', description: 'TELESCOPIC POLE (2 X CM.250)', hsn: '96039000', category: 'poles_handles' },
+            { id: '86', partNo: 'TT8522', description: 'TELESCOPIC POLES 3 X CM 200', hsn: '96039000', category: 'poles_handles' },
+            { id: '87', partNo: 'TT8523', description: 'TELESCOPIC POLE (3 X CM.300)', hsn: '96039000', category: 'poles_handles' },
+            { id: '88', partNo: 'TT8530', description: 'TELESCOPIC POLE M.4+4+3', hsn: '96039000', category: 'poles_handles' },
+            { id: '89', partNo: 'TT8543', description: 'TERMINAL CONE WITH SCREW FOR HANDLE', hsn: '96039000', category: 'accessories' }, // Belongs to general accessories
+            { id: '90', partNo: 'TT8545', description: 'CONE FOR TELESCOPIC POLES (11, 9 & 5 MTRS)', hsn: '96039000', category: 'accessories' }, // Belongs to general accessories
+            { id: '91', partNo: 'TT8540', description: 'JOINT FOR POLES', hsn: '96039000', category: 'accessories' }, // Belongs to general accessories
+            { id: '158', partNo: '579020022-00', description: 'LAMELLO 60CM MIT LAMPO JACK', hsn: '96039000', category: 'poles_handles' },
+            { id: '164', partNo: '579020028-00', description: 'LAMPO TERMINAL CONE FOR 23MM HANDLES', hsn: '96039000', category: 'accessories' }, // Belongs to general accessories
+            { id: '165', partNo: '579020029-00', description: 'UNI SYSTEM FRAME - 40 CM WITH LAMPO JACK', hsn: '96039000', category: 'poles_handles' },
+            { id: '157', partNo: '579020021-00', description: 'VELOOK FRAME WITH SYSTEM 30CM LAMPOJACK', hsn: '96039000', category: 'poles_handles' },
+            { id: '159', partNo: '579020023-00', description: 'WET SYSTEM FRAME 40X11 CM WITH LAMPOJACK', hsn: '96039000', category: 'poles_handles' },
+            { id: '160', partNo: '579020024-00', description: 'POCKETS SYSTEM MIRRORED FLAT MOP - 40X13', hsn: '96039000', category: 'mops' }, // Already in mops, but fine if unique product
+            { id: '161', partNo: '579020025-00', description: 'BILAP TWIST FRAME WITH LAMPO HANDLE- 54CM', hsn: '96039000', category: 'poles_handles' },
+            { id: '152', partNo: 'TT00003319V', description: 'SCOUT HANDLE HOLDER- GREEN', hsn: '96039000', category: 'accessories' }, // Belongs to general accessories
+
+
+            // Squeegees & Wipers (from Janitorial catalogue_Nov 2024.pdf page 2 & 4 & 5 and Price List)
+            { id: '32', partNo: '559260020-00', description: 'EZE SQUEEGEE 55CM', hsn: '', category: 'squeegees_wipers' }, // New category
+            { id: '33', partNo: '559260019-00', description: 'EZE SQUEEGEE 75CM', hsn: '', category: 'squeegees_wipers' },
+            { id: '34', partNo: '559280010-00', description: 'SCRUB SQUEEGEE WITH HANDLE', hsn: '', category: 'squeegees_wipers' },
+            { id: '35', partNo: '559260004-00', description: 'EZE WIPER WITH HANDLE', hsn: '', category: 'squeegees_wipers' },
+            { id: '42', partNo: 'EZ10007', description: 'WIPER 45-GREEN', hsn: '', category: 'squeegees_wipers' },
+            { id: '44', partNo: 'EZ10008', description: 'WIPER 65-GREEN', hsn: '', category: 'squeegees_wipers' },
+            { id: '30', partNo: 'TT8631', description: 'NYLON FLOOR SUEGEE WITH BLACK RUBBER 45CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '31', partNo: 'TT8657', description: 'PLASTIC FLOOR SQUEEGEE RED WITH BLACK 55 CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '32', partNo: 'TT8658', description: 'PLASTIC FLOOR SQUEEGEE RED WITH BLACK RUBBER 75CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '48', partNo: 'TT8250', description: 'STRAIT WINDOW WASHER WITH FIXED SUPPORT 25CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '49', partNo: 'TT8251', description: 'STRAIT WINDOW WASHER WITH FIXED SUPPORT 35CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '50', partNo: 'TT8252', description: 'STRAIT WINDOW WASHER WITH FIXED SUPPORT 45CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '51', partNo: 'TT8400', description: 'STRAIT WINDOW WASHER 25 CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '52', partNo: 'TT8401', description: 'STRAIT WINDOW WASHER 35 CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '53', partNo: 'TT8402', description: 'STRAIT WINDOW WASHER 45 CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '54', partNo: 'TT8260', description: 'WHITE WINDOW WASHER WITH FIXED SUPPORT 25CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '55', partNo: 'TT8261', description: 'WHITE WINDOW WASHER WITH FIXED SUPPORT 35CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '56', partNo: 'TT8262', description: 'WHITE WINDOW WASHER WITH FIXED SUPPORT 45CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '57', partNo: 'TT8410', description: 'WHITE WINDOW WASHER REFIL CM25', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '58', partNo: 'TT8411', description: 'WHITE WINDOW WASHER REFIL CM35', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '59', partNo: 'TT8412', description: 'WHITE WINDOW WASHER REFIL CM45', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '74', partNo: 'TT8050', description: 'STAINLESS STEEL FIXED WINDOW SQUEEGEE 25CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '75', partNo: 'TT8052', description: 'STAINLESS STEEL FIXED WINDOW SQUEEGEE 35CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '76', partNo: 'TT8054', description: 'STAINLESS STEEL FIXED WINDOW SQUEEGEE 45CM', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '77', partNo: 'TT8167', description: 'RUBBER FOR WINDOW SQUEEGEE CM.71', hsn: '96039000', category: 'squeegees_wipers' },
+            { id: '78', partNo: 'TT8150', description: 'RUBBER FOR WINDOW SQUEEGEE CM.92', hsn: '96039000', category: 'squeegees_wipers' },
+
+
+            // Brooms & Dust Pans (from Janitorial catalogue_Nov 2024.pdf page 4 and Price List)
+            { id: '123', partNo: 'TT5555', description: 'BROOM SUSY WITH 110CM HANDLE', hsn: '96039000', category: 'brooms_dustpans' }, // New category
+            { id: '44', partNo: 'TT915', description: 'METAL FRAME FOR V-SWEEPER CM. 100x9', hsn: '96039000', category: 'brooms_dustpans' },
+            { id: '45', partNo: 'TT400', description: 'DUST MOP HEAD MIDDLE COTTON FOR V-SWEEPER - 100x13 CM', hsn: '96039000', category: 'brooms_dustpans' },
+            { id: '46', partNo: 'TT1051', description: 'REINFORCED HANDLE FOR V-SWEEPER HANDLE', hsn: '96039000', category: 'brooms_dustpans' },
+            { id: '47', partNo: 'TT401', description: 'ACYLIC V-SWEEPER MOP HEAD WITH COTTON', hsn: '96039000', category: 'brooms_dustpans' },
+            { id: '70', partNo: 'TT5170', description: 'INDUSTRIAL DUST BOX CINDY 15L CAPACITY - 23 x 94 CM', hsn: '39269000', category: 'brooms_dustpans' },
+            { id: '71', partNo: 'TT5610', description: 'DUST PAN CLIP WITH ALUMINIUM HANDLE (YELLOW) - 28 x29 x 85 CM', hsn: '96039000', category: 'brooms_dustpans' },
+            { id: '72', partNo: 'TT5630', description: 'DUST PAN CLIP WITH COVER AND HANDLE - 28 x29 x 85 CM', hsn: '96039000', category: 'brooms_dustpans' },
+            { id: '73', partNo: 'TT5562', description: 'BROOM FOR DUST PAN LOBBY 23x94CM', hsn: '96039000', category: 'brooms_dustpans' },
+
+
+            // Dust Bins & Waste Management (from Janitorial catalogue_Nov 2024.pdf page 5 & 7 and Price List)
+            { id: '226', partNo: 'TT5689', description: 'BIN WITHOUT LID 60 L', hsn: '39269000', category: 'dust_bins_waste_management' }, // New category
+            { id: '228', partNo: 'TT5766', description: 'BIN WITHOUT LID 30 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '233', partNo: 'TTS080770', description: 'WHITE LID FOR DERBY BIN 30-60 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '235', partNo: 'TTS080773', description: 'YELLOW LID FOR DERBY BIN 30-80 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '237', partNo: 'TT5686', description: 'BIN WITHOUT LID 90 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '239', partNo: 'TTS080771', description: 'RED LID FOR DERBY BIN 30-60 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '241', partNo: 'TTS080774', description: 'GREEN LID FOR DERBY BIN 30-60 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '243', partNo: 'TTS080772', description: 'BLUE LID FOR DERBY BIN 30-60 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '245', partNo: 'TTS080775', description: 'BROWN LID FOR DERBY BIN 30-60 L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '248', partNo: 'TTOW004670', description: 'SMILE 70 PLASTIC SACK HOLDER (SACK BAG EXTRA)', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '251', partNo: 'TT3646', description: 'NEUTRAL 120 LT SACK FOR BLUE (34X40X90)', hsn: '42020000', category: 'dust_bins_waste_management' },
+            { id: '264', partNo: 'TTS080710', description: 'WHITE LID FOR DERBY BIN 90L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '265', partNo: 'TTS080711', description: 'RED LID FOR DERBY BIN 90L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '266', partNo: 'TTS080712', description: 'BLUE LID FOR DERBY BIN 90L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '267', partNo: 'TTS080713', description: 'YELLOW LID FOR DERBY BIN 90L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '268', partNo: 'TTS080714', description: 'GREEN LID FOR DERBY BIN 90L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '269', partNo: 'TTS080716', description: 'BROWN LID FOR DERBY BIN 90L', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '270', partNo: 'TT5480', description: 'FEMININE HYGIENE BINS WHITE', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '272', partNo: 'TT5180', description: 'PLASTIC DUST BIN DERBY WITH PEDAL 25 LT', hsn: '96039000', category: 'dust_bins_waste_management' },
+            { id: '273', partNo: 'TT5120', description: 'PLASTIC DUST BIN DERBY WITH PEDAL 50 LT', hsn: '96039000', category: 'dust_bins_waste_management' },
+            { id: '346', partNo: '579100004-00', description: 'DUST BIN 120 L GREEN TWO WHEELED HOPE PLASTIC INJECTION', hsn: '', category: 'dust_bins_waste_management' },
+            { id: '347', partNo: '579100005-00', description: 'DUST BIN 240 L GREEN TWO WHEELED HOPE PLASTIC INJECTION', hsn: '', category: 'dust_bins_waste_management' },
+            { id: '348', partNo: '579100003-00', description: 'DUST BIN 660 L GREEN FOUR WHEELED HDPE PLASTIC INJECTION', hsn: '', category: 'dust_bins_waste_management' },
+            { id: '349', partNo: '579100006-00', description: 'DUST BIN 1100 L GREEN FOUR WHEELED HOPE PLASTIC INJECTION', hsn: '', category: 'dust_bins_waste_management' },
+            { id: '104', partNo: 'TT3648', description: 'NEUTRAL 120 LT.SACK FOR RED COLOUR - (34x40x90 CM)', hsn: '42020000', category: 'dust_bins_waste_management' },
+            { id: '106', partNo: 'TT3645', description: 'PLASTIFIED BAG 120 LTRS YELLOW', hsn: '42020000', category: 'dust_bins_waste_management' },
+            { id: '107', partNo: 'TT3650', description: 'PLASTIC BAG 120 LTRS - GREY COLOR', hsn: '42020000', category: 'dust_bins_waste_management' },
+            { id: '108', partNo: 'TT3641G', description: 'BAG 150-150 LTRS YELLOW COLOR', hsn: '42020000', category: 'dust_bins_waste_management' },
+            { id: '109', partNo: 'TTS070325', description: 'GREEN LINE - POLYPROPYLENE 120 LTRS LID WITH GLASS-GREEN COLOUR', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '110', partNo: 'TTS070325G', description: 'PLASTIC LID FOR 120-1 BAG SUPPORT WITH C', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '111', partNo: 'TTS070326', description: 'GREY PLASTIC LID', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '112', partNo: 'TTS070328', description: 'PLASTIC LID FOR 120-1 BAG SUPPORT WITH C', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '113', partNo: 'TTS070327', description: 'PLASTIC LID FOR 120-1 BAG SUPPORT WITH C', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '114', partNo: 'TTS070320', description: 'COVER 120 LT. WITH INTEGRATED ROOM', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '115', partNo: 'TTR390875', description: 'PLASTIC LID FOR 150-1 BAG HOLDER', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '120', partNo: 'TT3643W', description: '120L SACK BAG', hsn: '42020000', category: 'dust_bins_waste_management' },
+            { id: '141', partNo: 'TT4055', description: 'DUST EXPORT 150 LTRS', hsn: '39269000', category: 'dust_bins_waste_management' },
+            { id: '178', partNo: '576030585-00', description: 'LAUNDRY NETS OR MOPS AND CLOTHSRED 35L', hsn: '96039000', category: 'dust_bins_waste_management' },
+            { id: '179', partNo: '576030586-00', description: '70 LT BAG WITH ZIP- RED', hsn: '96039000', category: 'dust_bins_waste_management' },
+            { id: '180', partNo: '576030587-00', description: '70 LT BAG WITH ZIP - BLUE', hsn: '96039000', category: 'dust_bins_waste_management' },
+
+
+            // Scrapers & Scrubbers (from Janitorial catalogue_Nov 2024.pdf page 5 and Price List)
+            { id: '222', partNo: 'TT8700', description: 'TERFIR-JOINTED SCRUBBER', hsn: '96039000', category: 'scrapers_scrubbers' }, // New category
+            { id: '223', partNo: 'TT8712', description: 'ABRASIVE PAD GREEN FOR TERFIR', hsn: '68051090', category: 'scrapers_scrubbers' },
+            { id: '224', partNo: 'TT8701', description: 'TERFIR-HAND SCRUBBER', hsn: '96039000', category: 'scrapers_scrubbers' },
+            { id: '25', partNo: 'TT8550', description: 'BEST SCRAPER WITH HANDLE', hsn: '96039000', category: 'scrapers_scrubbers' },
+            { id: '260', partNo: 'TT8555', description: 'BEST SCRAPER WITH 25 CMS HANDLE', hsn: '96039000', category: 'scrapers_scrubbers' },
+            { id: '261', partNo: 'TT8560', description: 'METAL SCRAPPER HANDLE WITHOUT BLADE', hsn: '96039000', category: 'scrapers_scrubbers' },
+            { id: '262', partNo: 'TT8585', description: 'BLADE FOR SCRAPER HANDLEY', hsn: '96039000', category: 'scrapers_scrubbers' },
+            { id: '263', partNo: 'TT8570', description: 'SCRAPER CLIPS WITH 10 BLADES', hsn: '96039000', category: 'scrapers_scrubbers' },
+            { id: '100', partNo: 'TT8580', description: 'BLADES FOR SCRAPPER BEST', hsn: '96039000', category: 'scrapers_scrubbers' },
+
+
+            // Dusters & Cloths (from Janitorial catalogue_Nov 2024.pdf page 5 and Price List)
+            { id: '253', partNo: 'TT5010E', description: 'ROUNDED WES BRUSH', hsn: '96039000', category: 'dusters_cloths' }, // New category
+            { id: '254', partNo: 'TT5000E', description: 'CURVED WEB BRUSH', hsn: '96039000', category: 'dusters_cloths' },
+            { id: '258', partNo: 'TT5020', description: 'DUSTER', hsn: '96039000', category: 'dusters_cloths' },
+            { id: '259', partNo: 'TTTCH 101019, TTTCH 101029, TTTCH 101039, TTTCH 101049', description: 'MICRO FIBRE CLOTH (RED/BLUE/GREEN/YELLOW)', hsn: '', category: 'dusters_cloths' },
+            { id: '66', partNo: 'TTTCH101019', description: 'MULTI-T CLOTH RED 40x40 CM', hsn: '63071000', category: 'dusters_cloths' },
+            { id: '67', partNo: 'TTTCH101029', description: 'MULTI-T CLOTH BLUE - 40x40 CM', hsn: '63071000', category: 'dusters_cloths' },
+            { id: '68', partNo: 'TTTCH101039', description: 'MULTI-T CLOTH YELLOW - 40x40CM', hsn: '63071000', category: 'dusters_cloths' },
+            { id: '69', partNo: 'TTTCH101049', description: 'MULTI-T CLOTH GREEN - 40x40 CM', hsn: '63071000', category: 'dusters_cloths' },
+            { id: '170', partNo: '579020034-00', description: 'ANTISTAIC ATOXIC CLOTHS ROLL - 17X60CM', hsn: '96039000', category: 'dusters_cloths' },
+
+
+            // Cleaning Kits (from Janitorial catalogue_Nov 2024.pdf page 5 & 9 and Price List)
+            { id: '209', partNo: 'TTKIT00073', description: 'KIT PRO IN CLEAN IN BOX', hsn: '96039000', category: 'cleaning_kits' }, // New category
+            { id: '208', partNo: 'TT8596', description: 'WINDOW CLEANING SET', hsn: '96039000', category: 'cleaning_kits' },
+            { id: '255', partNo: 'TTKIT00069', description: 'KIT CLEAN GLASS (1+5)', hsn: '96039000', category: 'cleaning_kits' },
+            { id: '391', partNo: '00005075VK01', description: 'KIT UNI JUNIOR', hsn: '', category: 'cleaning_kits' },
+            { id: '397', partNo: '00001151K00', description: 'KIT RAY', hsn: '', category: 'cleaning_kits' },
+            { id: '398', partNo: 'KIT00100', description: 'KIT BELTY', hsn: '96039000', category: 'cleaning_kits' },
+            { id: '403', partNo: '00005647', description: 'KIT B-FLY PLUS', hsn: '96039000', category: 'cleaning_kits' },
+            { id: '166', partNo: '579020030-00', description: 'NICKITA WIZ WITH PLUG LAMPO GREEN FRAME', hsn: '96039000', category: 'cleaning_kits' },
+            { id: '168', partNo: '579020032-00', description: 'KIT RAY VELOOK WITH MOP 40CM', hsn: '96039000', category: 'cleaning_kits' },
+            { id: '169', partNo: '579020033-00', description: 'UNI JUNIOR BUCKET WITH HANDLE MOP FRAME', hsn: '96039000', category: 'cleaning_kits' },
+
+            // General Accessories (from Janitorial catalogue_Nov 2024.pdf page 2 & 9 & 10 and Price List)
+            { id: '45', partNo: 'CAUTION SIGN BOARD', description: 'CAUTION SIGN BOARD', hsn: '', category: 'general_accessories' }, // New category
+            { id: '49', partNo: 'CAUTION WET FLOOR', description: 'CAUTION WET FLOOR Sign', hsn: '', category: 'general_accessories' },
+            { id: '50', partNo: 'EZ10015', description: 'DUSTIE FRAME 40 CM-GREEN', hsn: '', category: 'general_accessories' },
+            { id: '53', partNo: 'EZ10016', description: 'DUSTIE FRAME 60 CM-GREEN', hsn: '', category: 'general_accessories' },
+            { id: '55', partNo: 'OUT OF SERVICE', description: 'OUT OF SERVICE Sign', hsn: '', category: 'general_accessories' },
+            { id: '56', partNo: 'EZ10002', description: 'SIGNAGE YELLOW CAUTION WET FLOOR', hsn: '', category: 'general_accessories' },
+            { id: '57', partNo: 'EZ10003', description: 'CAUTION BOARD (CLEANING IN PROGRESS)', hsn: '', category: 'general_accessories' },
+            { id: '59', partNo: 'EZ10004', description: 'CAUTION BOARD (OUT OF SERVICE)', hsn: '', category: 'general_accessories' },
+            { id: '61', partNo: 'TT8702', description: 'HAND FRAME WITH VELCRO POLYAMIDE 30x8CM', hsn: '96039000', category: 'general_accessories' },
+            { id: '60', partNo: 'TT734', description: 'MICRO FIBRE CLOTH CLEAN GLASS 30CM', hsn: '96039000', category: 'dusters_cloths' }, // Already in dusters_cloths, remove from general
+            { id: '163', partNo: '579020027-00', description: 'WET FLOOR SIGNAL FOR NICK TROLLEY', hsn: '96039000', category: 'general_accessories' },
+            { id: '176', partNo: '576030583-00', description: 'LAMPO PLUG FOR MAGIC PANEL', hsn: '96039000', category: 'general_accessories' },
+            { id: '177', partNo: '576030584-00', description: 'LAMPO RIGHT PLUG FOR MAGIC WALL', hsn: '96039000', category: 'general_accessories' },
+            { id: '183', partNo: 'TT5565', description: 'BRUSH IN PET 30 CM', hsn: '96039000', category: 'general_accessories' },
+            { id: '184', partNo: 'TT5570', description: 'BRUSH IN PET 45 CM', hsn: '96039000', category: 'general_accessories' },
+
+            // Floor Pads (from Janitorial catalogue_Nov 2024.pdf page 7)
+            { id: '352', partNo: 'RMCL-FP-88', description: 'FLOOR PAD-BLACK', hsn: '', category: 'floor_pads' }, // New category
+            { id: '353', partNo: 'RMCL-FP-87', description: 'FLOOR PAD-GREEN', hsn: '', category: 'floor_pads' },
+            { id: '356', partNo: 'RMCL-FP-89', description: 'FLOOR PAD-RED', hsn: '', category: 'floor_pads' },
+            { id: '357', partNo: 'RMCL-FP-94', description: 'FLOOR PAD-WHITE', hsn: '', category: 'floor_pads' },
+
+            // Supervac (from Janitorial catalogue_Nov 2024.pdf page 8) - This seems like a specific product, not janitorial general accessory
+            // Note: This product is duplicated in the main data.js. This entry is just for the janitorial page.
+            { id: '360', partNo: 'SFHF-3229', description: 'SUPERVAC VACUUM CLEANER - PLASTIC 23 LITRES BLUE COLOUR (3-in-1: Wet, Dry, Blow)', hsn: '', category: 'supervac_vacuum_cleaners' }, // New category for Supervac in janitorial context
+            { id: '365', partNo: 'SFM-2901', description: 'HOSE ASSEMBLY', hsn: '', category: 'supervac_accessories' }, // Accessories for Supervac
+            { id: '366', partNo: 'SFM-2903', description: 'MASTER NOZZLE', hsn: '', category: 'supervac_accessories' },
+            { id: '368', partNo: 'SFM-2902', description: 'EXTENSION WANDS (3 PIECES)', hsn: '', category: 'supervac_accessories' },
+            { id: '369', partNo: 'SFM-2904', description: 'SQUEEGEE NOZZLE ASSEMBLY', hsn: '', category: 'supervac_accessories' },
+            { id: '371', partNo: 'SFM-2905', description: 'CREVICE TOOLS', hsn: '', category: 'supervac_accessories' },
+            { id: '372', partNo: 'SFM-2906', description: 'ELLIPSE TOOLS', hsn: '', category: 'supervac_accessories' },
+            { id: '373', partNo: 'SFM-2908', description: 'FILTER BAG', hsn: '', category: 'supervac_accessories' },
+            { id: '374', partNo: 'SFM-2907', description: 'IRON NET (PLASTIC)', hsn: '', category: 'supervac_accessories' },
+        ];
+
+        const productListDiv = document.getElementById('product-list');
+        const categoryFilter = document.getElementById('category-filter');
+
+        function renderProducts(productsToRender) {
+            productListDiv.innerHTML = ''; // Clear existing products
+            if (productsToRender.length === 0) {
+                productListDiv.innerHTML = '<p class="col-span-full text-center text-gray-400 text-xl">No products found for this category.</p>';
+                return;
+            }
+
+            productsToRender.forEach(product => {
+                // Construct image path based on partNo
+                // Ensure you have images named like "559260007-00.png" in assets/images/janitorial/
+                const imagePath = `assets/images/janitorial/${product.partNo}.png`;
+
+                const productCard = document.createElement('div');
+                productCard.className = 'janitorial-product-card scroll-animate-initial'; // Using janitorial-product-card class
+
+                productCard.innerHTML = `
+                    <img src="${imagePath}" onerror="this.onerror=null;this.src='assets/images/janitorial/placeholder.png';" alt="${product.description}" class="mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">${product.description}</h3>
+                    <p class="text-purple-300 text-lg font-bold mb-1">Price: N/A</p>
+                    <p class="text-gray-400 text-sm">Part No: ${product.partNo || 'N/A'}</p>
+                    ${product.hsn ? `<p class="text-gray-400 text-sm">HSN: ${product.hsn}</p>` : ''}
+                `;
+                productListDiv.appendChild(productCard);
+            });
+
+            // Trigger animations for newly rendered products
+            const elementsToAnimate = productListDiv.querySelectorAll('.scroll-animate-initial');
+            elementsToAnimate.forEach(element => {
+                // Trigger animation by adding the 'fade-up' class, but ensure the initial state is removed
+                element.classList.add('scroll-animate-entered');
+            });
+        }
+
+        function populateCategories() {
+            const categories = new Set();
+            products.forEach(product => {
+                if (product.category) {
+                    categories.add(product.category);
+                }
+            });
+
+            // Clear existing options except "All Products"
+            categoryFilter.innerHTML = '<option value="all">All Products</option>';
+
+            // Add unique categories to the dropdown
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                // Format category names for display (e.g., "mops_wet_dry_systems" to "Mops Wet Dry Systems")
+                option.textContent = category.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        function filterProducts() {
+            const selectedCategory = categoryFilter.value;
+            let filteredProducts = [];
+
+            if (selectedCategory === 'all') {
+                filteredProducts = products;
+            } else {
+                filteredProducts = products.filter(product => product.category === selectedCategory);
+            }
+            renderProducts(filteredProducts);
+        }
+
+        // Mobile menu event listeners
+        function toggleMobileMenu() {
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            mobileMenuOverlay.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        }
+
+        // Intersection Observer for scroll animations
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animate-entered'); // Apply animation class
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year-footer'); // Changed ID to avoid conflict with main page
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // Mobile menu event listeners
+            document.getElementById('mobile-menu-button')?.addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-menu-close-button')?.addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-menu-overlay')?.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+
+            // Populate categories and initial render of all products
+            populateCategories();
+            renderProducts(products); // Render all products by default
+
+            // Add event listener for category filter
+            categoryFilter.addEventListener('change', filterProducts);
+
+            // Observe sections and footer for fade-in animation
+            document.querySelectorAll('section.scroll-animate-initial').forEach(section => {
+                fadeInObserver.observe(section);
+            });
+            document.querySelectorAll('footer.footer-initial').forEach(footer => {
+                fadeInObserver.observe(footer);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,8 @@
 /* Base styles for the body and root elements */
+html {
+    overflow-y: scroll; /* Always show vertical scrollbar, reserving space */
+}
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -33,13 +37,56 @@ body {
     text-shadow: 0 0 8px rgba(139, 92, 246, 0.6); /* Purple glow on text */
 }
 
-/* Responsive styling for product images */
-.product-image {
-    width: 100%;
-    height: 200px; /* Fixed height for consistency */
-    object-fit: cover; /* Cover the area, cropping if necessary */
-    border-radius: 8px; /* Rounded corners for images */
+/* New Product Card Design */
+.product-card {
+    background: linear-gradient(145deg, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9)); /* Deeper gradient */
+    border: 1px solid rgba(75, 85, 99, 0.3); /* Subtle border */
+    display: flex; /* Flex container for image and content */
+    flex-direction: column; /* Stack image and content vertically */
+    height: 100%; /* Ensure cards take full height in grid cell */
+    position: relative; /* For potential absolute elements inside */
+    transition: all 0.3s ease-in-out;
 }
+
+.product-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3), 0 5px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow with purple glow */
+}
+
+.product-card-image-wrapper {
+    width: 100%;
+    padding-top: 75%; /* 4:3 aspect ratio (height is 75% of width) for a sleek rectangle */
+    position: relative;
+    overflow: hidden;
+    background-color: #0e121a; /* Dark background for the image section */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the whole image is visible */
+    object-position: center;
+    padding: 1rem; /* Small padding around image for breathing room */
+}
+
+/* Hide the "View Specs" button until hover for a cleaner look */
+.product-card .inline-flex {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover .inline-flex {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* Specific styles for the product table for glassmorphism and glow */
 .product-table-container {
@@ -167,4 +214,31 @@ body {
 }
 .animate-pulse-light {
     animation: pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* New styles for the cover image on product details pages */
+.cover-image-container {
+    margin-bottom: 3rem; /* Adjust as needed for spacing below the image */
+    overflow: hidden; /* Ensures image corners are respected if rounded */
+    border-radius: 12px; /* Matches glass effect rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    position: relative; /* Needed for any potential absolute positioning of overlays/text */
+    max-width: 900px; /* Limit width for larger screens if desired */
+    margin-left: auto; /* Center the container */
+    margin-right: auto; /* Center the container */
+}
+
+.cover-image {
+    width: 100%;
+    height: 400px; /* Fixed height for the cover image */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    object-position: center; /* Centers the image within its container */
+    display: block; /* Removes extra space below image, important for img tags */
+}
+
+/* Responsive adjustment for the cover image height on smaller screens */
+@media (max-width: 768px) {
+    .cover-image {
+        height: 250px; /* Shorter height for mobile devices */
+    }
 }

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCLEAN 12 Ultra - Smart Robot Vacuum Cleaner | Innovative Engineering Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css"> <style>
+        /* Specific styles for this page if needed, otherwise rely on style.css */
+        /* Table styling from your previous snippet, ensure it's compatible or integrated into style.css */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        th, td {
+            border: 1px solid #4a5568; /* gray-700 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #2d3748; /* gray-800 */
+            color: #cbd5e0; /* gray-300 */
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #2a3340; /* Slightly darker for even rows */
+        }
+        tr:hover {
+            background-color: #4a5568; /* gray-700 on hover */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-950 text-gray-200 font-sans">
+
+    <nav class="sticky top-0 z-50 bg-gray-950 bg-opacity-90 backdrop-blur-md shadow-lg p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-white text-2xl font-bold">
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-8 h-8">
+                <span>Innovative Engineering Products</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
+                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
+                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
+                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
+            <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="index.html#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
+            <a href="index.html#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
+            <a href="index.html#about" class="text-white text-3xl hover:text-purple-400 transition duration-300">About Us</a>
+            <a href="index.html#contact" class="text-white text-3xl hover:text-purple-400 transition duration-300">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-16">
+        <section id="hero" class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="w-full lg:w-1/2 text-center lg:text-left">
+                <h1 class="text-5xl font-extrabold text-white mb-4">iCLEAN 12 Ultra: A Groundbreaking Product</h1>
+                <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
+                    A groundbreaking product that truly liberates your hands, even handling tasks like adding water and cleaning for you. With its advanced navigation and powerful suction, the iCLEAN 12 Ultra effortlessly tackles dirt and grime across all floor types. Experience a new level of convenience and intelligence in home cleaning, allowing you more time for what truly matters.
+                </p>
+                <div class="mt-8">
+                    <a href="#contact" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300">
+                        Book A Free Demo Now!
+                    </a>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+                <img src="assets/images/robot/logo.png" alt="iCLEAN 12 Ultra Robot" class="rounded-lg shadow-lg">
+            </div>
+        </section>
+
+        <section id="features" class="mb-12 scroll-animate-initial">
+            <h2 class="text-4xl font-bold text-white text-center mb-8">Key Features</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/clean.png" alt="Cleaning Modes Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Multi-Mode Cleaning</h3>
+                    <p class="text-gray-300">Switch between Vacuuming & Mopping, Vacuum Only, or Mopping Only to suit any scenario.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/avoid.png" alt="Obstacle Avoidance Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Advanced Obstacle Avoidance</h3>
+                    <p class="text-gray-300">Millimeter-level precision to identify and avoid small objects, ensuring a smooth clean.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/suction.png" alt="Suction Power Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Powerful Suction</h3>
+                    <p class="text-gray-300">Boasts 5200 max Pa suction power for effective dust and hair removal with dual brushes.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/mopping.png" alt="Mopping Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Intelligent Wet Mopping</h3>
+                    <p class="text-gray-300">Electric-control water tank and 220rpm rotary pressurized mopping for efficient wet cleaning.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/slim.png" alt="Slim Design Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Slim Design</h3>
+                    <p class="text-gray-300">Its flexible, slim body easily navigates under sofas and furniture for thorough cleaning.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/motor.png" alt="NIDEC Motor Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Efficient NIDEC Motor</h3>
+                    <p class="text-gray-300">Powerful, quiet, and energy-saving brushless motor for reliable performance.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/smart.png" alt="Smart Control Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Smart Control</h3>
+                    <p class="text-gray-300">Effortlessly manage cleaning via intuitive app or voice commands (Alexa, Google Assistant).</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/auto.png" alt="Auto Management Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Automated Water & Dust Management</h3>
+                    <p class="text-gray-300">Silent auto water supply/drainage and internal circulation dust collection for hands-free operation.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/clean.png" alt="Self Cleaning Mop Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Self-Cleaning & Drying Mop</h3>
+                    <p class="text-gray-300">Automatically washes and dries the mop with 50°C hot air, keeping it fresh and odor-free.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/y_shaped.png" alt="Y-Shaped Mopping Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Y-Shaped Pressure Mopping</h3>
+                    <p class="text-gray-300">Effectively removes even 7-day old stubborn stains with its unique pressure mopping.</p>
+                </div>
+
+                <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
+                    <img src="assets/images/robot/lift.png" alt="Mop Lifting Icon" class="mb-4 rounded-lg">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-2">Adaptive Mop Lifting</h3>
+                    <p class="text-gray-300">Intelligently lifts the mop for carpets, self-cleaning, and obstacle traversal.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="specifications" class="mb-12 scroll-animate-initial">
+            <h2 class="text-4xl font-bold text-white text-center mb-8">Technical Specifications</h2>
+            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Specification</th>
+                            <th>iCLEAN 12 Ultra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Colour</td><td>White</td></tr>
+                        <tr><td>2</td><td>Navigation</td><td>Lidar</td></tr>
+                        <tr><td>3</td><td>Optical flow sensor</td><td>Yes</td></tr>
+                        <tr><td>4</td><td>Dynamic relocation</td><td>Yes</td></tr>
+                        <tr><td>5</td><td>Dynamic indoor walking direction automatic calibration</td><td>Yes</td></tr>
+                        <tr><td>6</td><td>Running time</td><td>180mins</td></tr>
+                        <tr><td>7</td><td>Lithium battery</td><td>5200mAh</td></tr>
+                        <tr><td>8</td><td>Floating roller brush, Side brushes (L& R)</td><td>Yes</td></tr>
+                        <tr><td>9</td><td>V-type composite wool rubber roller brush</td><td>Yes</td></tr>
+                        <tr><td>10</td><td>Partition map</td><td>Yes</td></tr>
+                        <tr><td>11</td><td>Front sensor</td><td>13 groups</td></tr>
+                        <tr><td>12</td><td>Climbing height</td><td>20MM</td></tr>
+                        <tr><td>13</td><td>Auto Dumping With Charging Station</td><td>Yes</td></tr>
+                        <tr><td>14</td><td>Aromatherapy purifies the air</td><td>Yes</td></tr>
+                        <tr><td>15</td><td>Suction Range</td><td>5200Max pa</td></tr>
+                        <tr><td>16</td><td>Suction Standard</td><td>Adjustable</td></tr>
+                        <tr><td>17</td><td>Motor Type</td><td>BLDC</td></tr>
+                        <tr><td>18</td><td>Noise Level</td><td>53 dB</td></tr>
+                        <tr><td>19</td><td>Quick Mapping, Room Wise Map Selection, Zone</td><td>Yes</td></tr>
+                        <tr><td>20</td><td>Water Tank Capacity</td><td>300ml</td></tr>
+                        <tr><td>21</td><td>Dust bin Capacity</td><td>500ml</td></tr>
+                        <tr><td>22</td><td>Dumping Pure Water Storage</td><td>3L</td></tr>
+                        <tr><td>23</td><td>Dumping Sewage Water Storage</td><td>3L</td></tr>
+                        <tr><td>24</td><td>Dumping Dry Dust</td><td>2L</td></tr>
+                        <tr><td>25</td><td>Self Cleaning Mop Pad, Auto Filling Water. Auto Cleaning Dust</td><td>yes</td></tr>
+                        <tr><td>26</td><td>Cleaning Option</td><td>Sweep Only/Mop Only/Sweep and</td></tr>
+                        <tr><td>27</td><td>Sweeping frequency</td><td>1 or 2 Times</td></tr>
+                        <tr><td>28</td><td>Carpet Cleaning Prefer</td><td>Adaptive / Evade</td></tr>
+                        <tr><td>29</td><td>Net Weight</td><td>10 kg</td></tr>
+                        <tr><td>30</td><td>App control, Voice Prompt, Voice control (google/alexa). Child Lock Function</td><td>Yes</td></tr>
+                        <tr><td>31</td><td>Auto Cleaning, Edge Cleaning, Time Schedule</td><td>Yes</td></tr>
+                        <tr><td>32</td><td>Voltage</td><td>14.4v</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="whats-in-the-box" class="mb-12 scroll-animate-initial">
+            <h2 class="text-4xl font-bold text-white text-center mb-8">What's in the Box</h2>
+            <div class="glass-effect p-8 rounded-lg max-w-3xl mx-auto">
+                <ul class="list-disc list-inside text-lg text-gray-300 space-y-2">
+                    <li>1 x Vacuum Cleaner</li>
+                    <li>1 x Charging Dock with auto dumping</li>
+                    <li>1 x 3-pin Adaptor cable</li>
+                    <li>2 x Reusable Wet Mop Pad</li>
+                    <li>1 x Pure water tank</li>
+                    <li>1 x Sewage water tank</li>
+                    <li>4 x Side Brush</li>
+                    <li>2 x Cleaning tool</li>
+                    <li>2 x Dustbin bag</li>
+                </ul>
+                <div class="flex justify-center mt-6">
+                    <img src="assets/images/robot/whats_in_the_box.png" alt="What's in the Box" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="mb-12 scroll-animate-initial">
+            <h2 class="text-4xl font-bold text-white text-center mb-8">Get To Know Us Better</h2>
+            <div class="glass-effect p-8 rounded-lg max-w-2xl mx-auto text-center">
+                <p class="text-lg text-gray-300 mb-4"><strong>Innovative Engineering Products</strong></p>
+                <p class="text-lg text-gray-300 mb-2"><strong>Contact Numbers:</strong> +91 99523 86668, +91 99433 82727</p>
+                <p class="text-lg text-gray-300 mb-4"><strong>Web:</strong> <a href="javascript:void(0)" class="text-purple-300 hover:underline">innovativeengineeringproducts.com</a></p>
+                <p class="text-lg text-gray-300"><strong>Address:</strong> [Your Company Address Here, e.g., #123, 1st Main, Industrial Area, Peenya, Bengaluru, Karnataka 560058, India]</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 py-10">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <div class="flex flex-col items-center mb-6">
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-12 h-12 mb-2">
+                <p class="text-xl font-bold text-white">Innovative Engineering Products</p>
+            </div>
+            <p class="mb-4">&copy; 2025 Innovative Engineering Products. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Privacy Policy</a>
+                <span class="text-gray-600">|</span>
+                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu event listeners (copied from main.js for standalone page)
+        function toggleMobileMenu() {
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (!mobileMenuOverlay || !menuIcon || !closeIcon) {
+                console.error('Mobile menu elements not found.');
+                return;
+            }
+
+            mobileMenuOverlay.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        }
+
+        // Intersection Observer for scroll animations (copied from main.js for standalone page)
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animate-entered');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const currentYearElement = document.getElementById('current-year-footer'); // Changed ID to avoid conflict with main page
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+
+            // Mobile menu event listeners
+            document.getElementById('mobile-menu-button')?.addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-menu-close-button')?.addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-menu-overlay')?.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+
+            // Observe sections for fade-in animation
+            document.querySelectorAll('section.scroll-animate-initial, footer.footer-initial').forEach(element => {
+                fadeInObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

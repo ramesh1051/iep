@@ -242,3 +242,10 @@ body {
         height: 250px; /* Shorter height for mobile devices */
     }
 }
+
+/* Force desktop width on all devices */
+body {
+    min-width: 1024px;
+    overflow-x: auto; /* Enable horizontal scroll if needed */
+}
+

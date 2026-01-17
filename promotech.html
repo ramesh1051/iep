@@ -42,6 +42,27 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Change opacity to 1 so content is visible by default */
+        .scroll-animate-initial {
+            opacity: 1; 
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* ADD THIS: This makes the cards look like glass */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Optional: This makes the cards pop when you hover over them */
+        .glass-effect:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-950 text-gray-200 font-sans">
@@ -53,21 +74,40 @@
                 <span>Innovative Engineering Products</span>
             </a>
             <div class="hidden md:flex space-x-6">
-                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
-                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
-                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
-                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+                <a href="index.html#hero" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Home
+                </a>
+                <div class="relative">
+                    <button id="products-button" class="flex items-center hover:text-purple-400 transition duration-300 focus:outline-none">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Products
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="products-dropdown" class="absolute left-0 mt-4 w-72 bg-white rounded-md shadow-lg z-20 hidden ring-1 ring-black ring-opacity-5">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#about" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6a6 6 0 016 6v1h-3"></path></svg>
+                    About Us
+                </a>
+                <a href="index.html#contact" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact
+                </a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
         </div>
         <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
             <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <svg class="w-8 h-8" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <a href="index.html#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
             <a href="index.html#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
@@ -96,7 +136,10 @@
 
         <section class="mb-8">
             <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <label for="category-filter" class="text-lg text-gray-300">Jump to Category:</label>
+                <label for="category-filter" class="text-lg text-gray-300 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    Jump to Section:
+                </label>
                 <div class="relative inline-block text-left">
                     <select id="category-filter" class="block appearance-none w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer">
                         <option value="all">All Categories</option>
@@ -109,7 +152,10 @@
         </section>
 
         <section id="products-glance" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Products at a Glance</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+                Products at a Glance
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
@@ -141,7 +187,10 @@
         </section>
 
         <section id="drilling-machines" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Drilling Machines</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Drilling Machines
+            </h2>
 
             <h3 class="text-3xl font-bold text-white mb-6 text-center">Compact Magnetic Drilling Machines</h3>
             <div class="glass-effect p-6 rounded-lg mb-8">
@@ -393,189 +442,195 @@
         </section>
 
         <section id="beveling-solutions" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Beveling Solutions</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l-1.06-1.06a2.5 2.5 0 10-3.536-3.536L5 12m9.121 2.121L12 15"></path></svg>
+                Beveling Solutions
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_6.png" alt="BM-6 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-6 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **6 mm**</li>
-                        <li>Bevel Radius **R2, R3, R4, and R5**</li>
+                        <li>Bevel width up to 6 mm</li>
+                        <li>Bevel Radius R2, R3, R4, and R5</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_7.png" alt="BM-7 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-7 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **7 mm**</li>
-                        <li>Bevel Radius **R2, R3, R4, and R5**</li>
+                        <li>Bevel width up to 7 mm</li>
+                        <li>Bevel Radius R2, R3, R4, and R5</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_18.png" alt="BM-18 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-18 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **18 mm**</li>
-                        <li>Bevel Radius **R2, R3, R4, and R5**</li>
+                        <li>Bevel width up to 18 mm</li>
+                        <li>Bevel Radius R2, R3, R4, and R5</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_18a.png" alt="BM-18A Pneumatic Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-18A Pneumatic Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **18 mm**</li>
-                        <li>Bevel angles: **22.5, 30, 37.5, 45, 50, 55, 60 degrees**</li>
+                        <li>Bevel width up to 18 mm</li>
+                        <li>Bevel angles: 22.5, 30, 37.5, 45, 50, 55, 60 degrees</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_20_plus.png" alt="BM-20plus Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-20 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **21 mm**</li>
-                        <li>Bevel angles: **15-60 degrees (0 degrees option)**</li>
+                        <li>Bevel width up to 21 mm</li>
+                        <li>Bevel angles: 15-60 degrees (0 degrees option)</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_21.png" alt="BM-21 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-6 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **21 mm**</li>
-                        <li>Bevel angles: **0-60 degrees**</li>
+                        <li>Bevel width up to 21 mm</li>
+                        <li>Bevel angles: 0-60 degrees</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_21_s.png" alt="BM-21S Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-21S Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **21 mm**</li>
-                        <li>**Stainless Steel Machining**</li>
+                        <li>Bevel width up to 21 mm</li>
+                        <li>Stainless Steel Machining</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_25.png" alt="BM-25 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-25 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **25 mm**</li>
-                        <li>Bevel angles: **0-90 degrees**</li>
-                        <li>**Pipe attachment - optional**</li>
+                        <li>Bevel width up to 25 mm</li>
+                        <li>Bevel angles: 0-90 degrees</li>
+                        <li>Pipe attachment - optional</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_25_s.png" alt="BM-25S Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-25S Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **25 mm**</li>
-                        <li>Bevel angles: **0-90 degrees**</li>
-                        <li>**Stainless Steel Machining**</li>
+                        <li>Bevel width up to 25 mm</li>
+                        <li>Bevel angles: 0-90 degrees</li>
+                        <li>Stainless Steel Machining</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/bm_30_mw.png" alt="BM-30 WM Weild Shaver" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">BM-30 WM Weild Shaver</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Max. milling height **11 mm**</li>
-                        <li>Max. milling depth - **1.5 mm**</li>
-                        <li>Max. milling height - **30 mm**</li>
+                        <li>Max. milling height 11 mm</li>
+                        <li>Max. milling depth - 1.5 mm</li>
+                        <li>Max. milling height - 30 mm</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/abm_14.png" alt="ABM-14 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">ABM-14 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **14 mm**</li>
-                        <li>Bevel angles: **22.5, 25, 30, 35, 37.5, 45 degrees**</li>
-                        <li>**Top & Bottom Beveling**</li>
+                        <li>Bevel width up to 14 mm</li>
+                        <li>Bevel angles: 22.5, 25, 30, 35, 37.5, 45 degrees</li>
+                        <li>Top & Bottom Beveling</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/ABM_29.png" alt="ABM-29 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">ABM-29 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **29 mm**</li>
-                        <li>Top beveling **20-45 degrees**</li>
-                        <li>**Bottom beveling 20-45 degrees**</li>
+                        <li>Bevel width up to 29 mm</li>
+                        <li>Top beveling 20-45 degrees</li>
+                        <li>Bottom beveling 20-45 degrees</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/abm_30.png" alt="ABM-30 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">ABM-30 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **30 mm**</li>
-                        <li>Facing off, **top & bottom beveling**</li>
-                        <li>Bevel angles: **between -70 and 70 degrees**</li>
+                        <li>Bevel width up to 30 mm</li>
+                        <li>Facing off, top & bottom beveling</li>
+                        <li>Bevel angles: between -70 and 70 degrees</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/abm_50_dd.png" alt="ABM-50 DD Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">ABM-50 DD Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **50 mm**</li>
-                        <li>**Top beveling, Auto feed mode**</li>
-                        <li>Bevel angles: **15-60 degrees**</li>
+                        <li>Bevel width up to 50 mm</li>
+                        <li>Top beveling, Auto feed mode</li>
+                        <li>Bevel angles: 15-60 degrees</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/abm_50.png" alt="ABM-50 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">ABM-50 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **50 mm**</li>
-                        <li>**Top and bottom beveling, Auto feed mode**</li>
-                        <li>Bevel angles: **15-60 degrees**</li>
+                        <li>Bevel width up to 50 mm</li>
+                        <li>Top and bottom beveling, Auto feed mode</li>
+                        <li>Bevel angles: 15-60 degrees</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/sbm_500.png" alt="SBM-500 Plate Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">SBM-500 Plate Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Bevel width up to **30 mm**</li>
-                        <li>Bevel angles **15-60 degrees**</li>
+                        <li>Bevel width up to 30 mm</li>
+                        <li>Bevel angles 15-60 degrees</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/pro_2_pb.png" alt="PRO-2 PB Pipe Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">PRO-2 PB Pipe Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Pipe ID **19.5 mm** up to **OD 48 mm**</li>
-                        <li>(option: ID**15.5-22 mm)**</li>
-                        <li>(option: OD**60.3 mm)**</li>
+                        <li>Pipe ID 19.5 mm up to OD 48 mm</li>
+                        <li>(option: ID15.5-22 mm)</li>
+                        <li>(option: OD60.3 mm)</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/pro_5_pb.png" alt="PRO-5 PB Pipe Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">PRO-5 PB Pipe Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Pipe ID **32 mm** up to **OD 114 mm**</li>
-                        <li>(option: ID**25-32 mm)**</li>
-                        <li>(option: OD**140 mm)**</li>
-                        <li>**J-groove beveling**</li>
+                        <li>Pipe ID 32 mm up to OD 114 mm</li>
+                        <li>(option: ID25-32 mm)</li>
+                        <li>(option: OD140 mm)</li>
+                        <li>J-groove beveling</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/pro_10_pb.png" alt="PRO-10 PB Pipe Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">PRO-10 PB Pipe Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Pipe ID **84 mm** up to **OD 273 mm**</li>
-                        <li>(option: ID**38-84 mm)**</li>
-                        <li>(option: OD**355 mm)**</li>
-                        <li>**J-groove beveling**</li>
-                        <li>**Flange Facing (optional)**</li>
+                        <li>Pipe ID 84 mm up to OD 273 mm</li>
+                        <li>(option: ID38-84 mm)</li>
+                        <li>(option: OD355 mm)</li>
+                        <li>J-groove beveling</li>
+                        <li>Flange Facing (optional)</li>
                     </ul>
                 </div>
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
                     <img src="assets/images/promotech/pro_40_pbs.png" alt="PRO-40 PBS Pipe Beveller" class="mb-4 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-2">PRO-40 PBS PB Pipe Beveller</h3>
                     <ul class="text-gray-300 list-disc list-inside text-left">
-                        <li>Pipe OD **200-1000 mm**</li>
-                        <li>**Stainless Steel machining**</li>
-                        <li>**J-groove beveling**</li>
+                        <li>Pipe OD 200-1000 mm</li>
+                        <li>Stainless Steel machining</li>
+                        <li>J-groove beveling</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="welding-mechanization" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Welding Mechanization</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 16.51A8.02 8.02 0 016.343 7.343L6.343 7.343"></path></svg>
+                Welding Mechanization
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
@@ -652,7 +707,10 @@
         </section>
 
         <section id="cutting-mechanization" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Cutting Mechanization</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l-1.06-1.06a2.5 2.5 0 10-3.536-3.536L5 12m9.121 2.121L12 15"></path></svg>
+                Cutting Mechanization
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg flex flex-col items-center text-center">
@@ -689,7 +747,10 @@
         </section>
 
         <section id="accessories" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Accessories</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.608 3.292 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Accessories
+            </h2>
 
             <h3 class="text-3xl font-bold text-white mb-6 text-center">TCT Annular Cutters</h3>
             <div class="glass-effect p-4 rounded-lg mb-8">
@@ -860,7 +921,10 @@
         </section>
 
         <section id="contact" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Get In Touch With Innovative Engineering Products</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Get In Touch With Innovative Engineering Products
+            </h2>
             <div class="glass-effect p-8 rounded-lg max-w-2xl mx-auto text-center">
                 <p class="text-lg text-gray-300 mb-4"><strong>Innovative Engineering Products</strong></p>
                 <p class="text-lg text-gray-300 mb-2"><strong>Contact Numbers:</strong> +91 99523 86668, +91 99433 82727</p>
@@ -886,6 +950,8 @@
         </div>
     </footer>
 
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
     <script>
         // Define categories for the filter dropdown, mapping display names to section IDs
         const sectionCategories = [
@@ -922,65 +988,30 @@
                 }
             }
         }
-
-        // Mobile menu event listeners
-        function toggleMobileMenu() {
-            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-
-            if (!mobileMenuOverlay || !menuIcon || !closeIcon) {
-                console.error('Mobile menu elements not found.');
-                return;
-            }
-
-            mobileMenuOverlay.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
-        }
-
-        // Intersection Observer for scroll animations
-        const fadeInObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-animate-entered');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
         document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('scroll-animate-entered');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-animate-initial').forEach(section => {
+                observer.observe(section);
+            });
             // Set current year in footer
             const currentYearElement = document.getElementById('current-year');
             if (currentYearElement) {
                 currentYearElement.textContent = new Date().getFullYear();
             }
 
-            // Mobile menu event listeners
-            document.getElementById('mobile-menu-button')?.addEventListener('click', toggleMobileMenu);
-            document.getElementById('mobile-menu-close-button')?.addEventListener('click', toggleMobileMenu);
-            document.getElementById('mobile-menu-overlay')?.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', toggleMobileMenu);
-            });
-
             // Populate categories for the filter
             populateCategories();
 
             // Add event listener for category filter
             categoryFilter.addEventListener('change', filterSections);
-
-            // Observe sections for fade-in animation
-            document.querySelectorAll('section.scroll-animate-initial').forEach(section => {
-                fadeInObserver.observe(section);
-            });
-            // Footer animation: Added explicit observation since it's outside sections
-            document.querySelector('footer')?.classList.add('scroll-animate-initial'); // Ensure footer has initial class if not already there
-            document.querySelectorAll('footer.scroll-animate-initial').forEach(footer => {
-                 fadeInObserver.observe(footer);
-            });
         });
     </script>
 </body>

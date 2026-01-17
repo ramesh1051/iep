@@ -24,6 +24,7 @@ function handleImageError(event, altText = "Image") {
 // --- Mobile Menu Logic ---
 let isMobileMenuOpen = false;
 
+
 function toggleMobileMenu() {
     const mobileMenuOverlay = getElement('mobile-menu-overlay');
     const menuIcon = getElement('menu-icon');
@@ -113,35 +114,73 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', toggleMobileMenu);
     });
 
-    // --- Hero Section Animations on Load ---
-    const backgenImage = getElement('backgen-image');
-    const heroTitle = getElement('hero-title');
-    const heroDescription = getElement('hero-description');
-    const heroButton = getElement('hero-button');
-    const companyInfo = getElement('company-info');
+    // --- Products Dropdown Logic ---
+    const productsButton = getElement('products-button');
+    const productsDropdown = getElement('products-dropdown');
 
+    if (productsButton && productsDropdown) {
+        const dropdownContent = productsDropdown.querySelector('div');
+        let hideTimeout;
+        
+        // Populate dropdown if it's empty
+        if (dropdownContent && dropdownContent.children.length === 0) {
+            products.forEach(product => {
+                const link = document.createElement('a');
+                link.href = product.detailsPage;
+                link.className = 'block px-4 py-2 text-sm text-gray-200 hover:bg-gray-700 hover:text-purple-300';
+                link.textContent = product.category;
+                dropdownContent.appendChild(link);
+            });
+        }
+
+        const showDropdown = () => {
+            clearTimeout(hideTimeout);
+            productsDropdown.classList.remove('hidden');
+        };
+
+        const hideDropdown = () => {
+            productsDropdown.classList.add('hidden');
+        };
+
+        const startHideTimeout = () => {
+            hideTimeout = setTimeout(hideDropdown, 200);
+        };
+
+        productsButton.addEventListener('mouseenter', showDropdown);
+        productsDropdown.addEventListener('mouseenter', showDropdown);
+
+        productsButton.addEventListener('mouseleave', startHideTimeout);
+        productsDropdown.addEventListener('mouseleave', startHideTimeout);
+    }
+
+    // --- Hero Section Animations on Load (Homepage Specific) ---
+    const backgenImage = getElement('backgen-image');
     if (backgenImage) {
         setTimeout(() => {
             backgenImage.classList.add('hero-foreground-image-animate');
         }, 100);
+
+        // Stagger hero elements only if the main hero image exists
+        const heroTitle = getElement('hero-title');
+        const heroDescription = getElement('hero-description');
+        const heroButton = getElement('hero-button');
+        const companyInfo = getElement('company-info');
+
+        if (heroTitle) {
+            setTimeout(() => heroTitle.classList.add('hero-element-animate'), 400);
+        }
+        if (heroDescription) {
+            setTimeout(() => heroDescription.classList.add('hero-element-animate'), 600);
+        }
+        if (companyInfo) {
+            setTimeout(() => companyInfo.classList.add('hero-element-animate'), 800);
+        }
+        if (heroButton) {
+            setTimeout(() => heroButton.classList.add('hero-element-animate'), 1000);
+        }
     }
 
-    // Stagger hero elements
-    if (heroTitle) {
-        setTimeout(() => heroTitle.classList.add('hero-element-animate'), 400);
-    }
-    if (heroDescription) {
-        setTimeout(() => heroDescription.classList.add('hero-element-animate'), 600);
-    }
-    if (companyInfo) {
-        setTimeout(() => companyInfo.classList.add('hero-element-animate'), 800);
-    }
-    if (heroButton) {
-        setTimeout(() => heroButton.classList.add('hero-element-animate'), 1000);
-    }
-
-
-    // --- Populate Manufacturers Grid ---
+    // --- Populate Manufacturers Grid (Homepage Specific) ---
     const manufacturersGrid = getElement('manufacturers-grid');
     if (manufacturersGrid) {
         manufacturers.forEach((mfr, index) => {
@@ -154,22 +193,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Populate Product Cards (New Design) ---
+    // --- Populate Product Cards (Homepage Specific) ---
     const productCardsContainer = getElement('product-cards-container');
     if (productCardsContainer) {
         productCardsContainer.innerHTML = ''; // Clear any existing static cards
         products.forEach((product, index) => {
-            const productCard = document.createElement('a'); // Changed to <a> for direct linking
-            productCard.href = product.detailsPage || 'starblaze.html'; // Link to detailsPage or fallback
+            const productCard = document.createElement('a');
+            productCard.href = product.detailsPage || 'starblaze.html';
             productCard.className = 'product-card flex flex-col rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 ease-in-out glow-button group scroll-animate-initial';
-            productCard.style.transitionDelay = `${index * 0.08}s`; // Stagger animation
+            productCard.style.transitionDelay = `${index * 0.08}s`;
 
-            // Add an alert for products without a specific details page, on click
             if (!product.detailsPage) {
                 productCard.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent default navigation for the alert
+                    e.preventDefault();
                     alert(`Detailed specifications for "${product.category}" are coming soon! Redirecting to a general solutions page.`);
-                    window.location.href = 'starblaze.html'; // Manually navigate after alert
+                    window.location.href = 'starblaze.html';
                 });
             }
 
@@ -196,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Animate sections that are present on ANY page ---
     const sectionsToAnimate = document.querySelectorAll(
         '[data-animation-type="fade-up"], ' +
         '[data-animation-type="slide-left"], ' +
@@ -203,20 +242,88 @@ document.addEventListener('DOMContentLoaded', () => {
         '[data-animation-type="scale-in"]'
     );
     
-
     sectionsToAnimate.forEach(section => {
         fadeInObserver.observe(section);
     });
 
+// --- About Us Carousel Logic (Enhanced) ---
+    const aboutTrack = getElement('about-track');
+    const aboutPrevBtn = getElement('prevAbout');
+    const aboutNextBtn = getElement('nextAbout');
 
-    // --- Form Submission Alert (Example) ---
-    const contactForm = document.querySelector('#contact form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            console.log('Contact form submitted (client-side demo).');
-            alert('Message sent! (Form submission is handled by client-side JS for demo purposes.)');
-            contactForm.reset();
+    // CONFIGURATION
+    const folderPath = 'assets/images/index/'; 
+    const imageFiles = [
+        'image1.jpeg',
+        'image2.jpeg',
+        'image3.jpeg',
+        'image4.jpeg'
+        // Add more filenames here exactly as they appear in your folder
+    ];
+
+
+    if (aboutTrack && aboutPrevBtn && aboutNextBtn) {
+        // Clear the track first to prevent duplicates or "ghost" images
+        aboutTrack.innerHTML = '';
+
+        // Build the slides
+        imageFiles.forEach((fileName) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'min-w-full aspect-video';
+            
+            // Create the image element
+            const img = document.createElement('img');
+            img.src = folderPath + fileName;
+            img.className = 'w-full h-full object-cover';
+            img.alt = "Industrial Product";
+            
+            // Use your existing utility function for errors
+            img.onerror = (e) => handleImageError(e, fileName);
+            
+            slideDiv.appendChild(img);
+            aboutTrack.appendChild(slideDiv);
+            console.log("Loading carousel image:", img.src);
         });
+
+        const slides = aboutTrack.children;
+        let currentIndex = 0;
+        let slideInterval;
+
+        const updateAboutSlide = () => {
+            const offset = currentIndex * -100;
+            aboutTrack.style.transform = `translateX(${offset}%)`;
+        };
+
+        const moveNextAbout = () => {
+            if (slides.length <= 1) return; // Don't slide if only 1 image
+            currentIndex = (currentIndex >= slides.length - 1) ? 0 : currentIndex + 1;
+            updateAboutSlide();
+        };
+
+        const movePrevAbout = () => {
+            if (slides.length <= 1) return;
+            currentIndex = (currentIndex <= 0) ? slides.length - 1 : currentIndex - 1;
+            updateAboutSlide();
+        };
+
+        const startAutoPlay = () => {
+            if (slides.length > 1) {
+                slideInterval = setInterval(moveNextAbout, 5000);
+            }
+        };
+
+        aboutNextBtn.addEventListener('click', () => {
+            moveNextAbout();
+            clearInterval(slideInterval);
+            startAutoPlay();
+        });
+
+        aboutPrevBtn.addEventListener('click', () => {
+            movePrevAbout();
+            clearInterval(slideInterval);
+            startAutoPlay();
+        });
+
+        startAutoPlay();
     }
 });

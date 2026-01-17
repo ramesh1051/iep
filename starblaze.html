@@ -36,6 +36,37 @@
         tr:hover {
             background-color: #4a5568; /* gray-700 on hover */
         }
+        .scroll-animate-entered { 
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        #products-dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #cbd5e0;
+            font-size: 0.875rem;
+        }
+        #products-dropdown a:hover {
+            background-color: #7c3aed;
+            color: white;
+        }
+        /* Update this in your <style> tag */
+        .scroll-animate-initial {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* Add this class to your Hero section instead of the initial one */
+        .fade-in-load {
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-950 text-gray-200 font-sans">
@@ -47,10 +78,28 @@
                 <span>Innovative Engineering Products</span>
             </a>
             <div class="hidden md:flex space-x-6">
-                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
-                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
-                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
-                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+                <a href="index.html#hero" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Home
+                </a>
+            <div class="relative">
+                <button id="products-button" class="flex items-center hover:text-purple-400 transition duration-300 focus:outline-none">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Products
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="products-dropdown" class="absolute left-0 mt-4 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg z-20 hidden">
+                    <div class="py-1"></div>
+                </div>
+            </div>
+                <a href="index.html#about" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6a6 6 0 016 6v1h-3"></path></svg>
+                    About Us
+                </a>
+                <a href="index.html#contact" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact
+                </a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
@@ -71,23 +120,35 @@
     </nav>
 
     <main class="container mx-auto px-4 py-16">
-        <section id="hero" class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-8 scroll-animate-initial">
-            <div class="w-full lg:w-1/2 text-center lg:text-left">
-                <h1 class="text-5xl font-extrabold text-white mb-4">StarBlaze: Superior Technology | Superior Performance</h1>
-                <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
-                    StarBlaze India, a division of Stellaris Specialities India Ltd., established in 2004, is a leading exporter and manufacturer of top-quality Welding Electrodes, Welding Wires, Welding Machines, Industrial Coatings, MRO Aerosols, and Bulk Cleaners and Degreasers. Our vision is to "Make Better" by providing products that are far superior in performance and reliability, offering a perfect balance of product quality and cost-effective pricing.
-                </p>
-            </div>
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                <img src="assets/images/starblaze/star_blaze.png" alt="StarBlaze Welding Products" style="height: 450px; width: 800px;" class="rounded-lg shadow-lg">
-            </div>
-        </section>
+<section id="hero" class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-12 fade-in-load">
+    
+        <div class="w-full lg:w-3/5 text-center lg:text-left">
+        <h1 class="text-5xl font-extrabold text-white mb-4">StarBlaze: Superior Technology | Superior Performance</h1>
+        <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
+            StarBlaze India, a division of Stellaris Specialities India Ltd., established in 2004, is a leading exporter and manufacturer of top-quality Welding Electrodes, Welding Wires, Welding Machines, Industrial Coatings, MRO Aerosols, and Bulk Cleaners and Degreasers. Our vision is to "Make Better" by providing products that are far superior in performance and reliability, offering a perfect balance of product quality and cost-effective pricing.
+        </p>
+    </div>
+
+        <div class="w-full lg:w-2/5 flex justify-center lg:justify-end">
+        <img src="assets/images/starblaze/star_blaze.png" 
+             alt="StarBlaze Welding Products" 
+             style="height: auto; width: 100%; max-width: 500px;" 
+             class="rounded-lg shadow-lg">
+    </div>
+
+</section>
 
         <section id="products-jump-to" class="mb-8">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Our Products</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-10 h-10 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                Our Products
+            </h2>
 
             <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-                <label for="category-filter" class="text-lg text-gray-300">Jump to Category:</label>
+                <label for="category-filter" class="text-lg text-gray-300 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    Jump to Section:
+                </label>
                 <div class="relative inline-block text-left">
                     <select id="category-filter" class="block appearance-none w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer">
                         <option value="all">Select a Category</option>
@@ -99,12 +160,15 @@
             </div>
         </section>
 
-        <section id="mild-steel-electrodes" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">A - Mild Steel & Low Alloys Welding Electrodes</h3>
+        <section id="mild-steel-electrodes" class="mb-12 scroll-animate-initial" data-animation-type="fade-up">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 16.51A8.02 8.02 0 016.343 7.343L6.343 7.343"></path></svg>
+                A - Mild Steel & Low Alloys Welding Electrodes
+            </h3>
             <div class="text-gray-300 mb-4">
                 <p>Full range. Multiple variants in E 6013 & E 7018/E 7018-1, to suit different customer needs.</p>
                 <p>Excellent re-strike & other welding characteristics.</p>
-                <p>E7018/E7018-1: Ultra low diffusible hydrogen limits, <4 ml/100gms of weld deposit.</p>
+                <p>E7018/E7018-1: Ultra low diffusible hydrogen limits, &lt;4 ml/100gms of weld deposit.</p>
                 <p>Best in class mechanical properties.</p>
                 <p>Best in class packaging for minimum transit flux damage/breakage.</p>
                 <p class="mt-2 text-sm italic">*E7018 & 7018-1 also available in H4R category</p>
@@ -124,32 +188,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>STARBLAZE PRIME 6010</td><td>E 6010</td><td>400</td><td>470</td><td>28</td><td>>50 at -30°C</td><td>DC(+)</td><td>Excellent all position electrode. Best suitable for pipes and pipelines welding. Excellent mechanical properties in class.</td></tr>
-                        <tr><td>STARBLAZE PRIME 6011</td><td>E 6011</td><td>$\ge400$</td><td>$\ge470$</td><td>$\ge28$</td><td>>47 at -30°C</td><td>AC:DC+</td><td>Excellent all position electrode. Best suitable for pipes and pipelines welding. Excellent mechanical properties in class.</td></tr>
-                        <tr><td>STARBLAZE PRIME 6013</td><td>E 6013</td><td>$\ge380$</td><td>470-540</td><td>$\ge24$</td><td>>60 at 0°C</td><td>DC$\pm$</td><td>Very soft arc, minimum spatter, smooth fine rippled radiographic weld bead. Superior slag detachability. Excellent impact notch toughness at 0°C.</td></tr>
-                        <tr><td>STARBLAZE PRIME 6013 VD</td><td>E 6013</td><td>>380</td><td>470-540</td><td>>24</td><td>>60 at 0°C</td><td>DC$\pm$</td><td>Rutile-Cellulosic exceptionally suitable for vertical down welding. Excellent gap bridging. Ultra smooth weldability.</td></tr>
-                        <tr><td>STARBLAZE PRIME 6013 S</td><td>E 6013</td><td>$\ge380$</td><td>470-540</td><td>$\ge24$</td><td>$\ge70$ at 0°C</td><td>DC$\pm$</td><td>Ultra smooth weldability. Especially suited for thick section fillet joints. Excellent arc Stability even at low currents.</td></tr>
-                        <tr><td>STARBLAZE PRIME 7016</td><td>E 7016-H4</td><td>$\ge420$</td><td>550-620</td><td>30</td><td>>90 at -30 C</td><td>DC+:AC</td><td>Excellent weldability. Self-peeling slag. Excellent mechanical properties.</td></tr>
-                        <tr><td>STARBLAZE PRIME 7016-A1</td><td>E 7016-A1-H4</td><td>>420</td><td>510-640</td><td>24</td><td>>47 at -20°C</td><td>AC:DC+</td><td>Ultra smooth finely rippled weld bead. Less than 4.0 ml diffusible hydrogen. Excellent for C-0.50% Mo Steels.</td></tr>
-                        <tr><td>STARBLAZE PRIME 7018</td><td>E 7018-H4</td><td>450</td><td>550-620</td><td>28</td><td>>100 at -30 C, 80 at -45°C</td><td>AC:DC+</td><td>Excellent weldability. Best in class mechanical properties. Less than 4.0 ml diffusible hydrogen level.</td></tr>
+                        <tr><td>STARBLAZE PRIME 6010</td><td>E 6010</td><td>400</td><td>470</td><td>28</td><td>&gt;50 at -30°C</td><td>DC(+)</td><td>Excellent all position electrode. Best suitable for pipes and pipelines welding. Excellent mechanical properties in class.</td></tr>
+                        <tr><td>STARBLAZE PRIME 6011</td><td>E 6011</td><td>≥400</td><td>≥470</td><td>≥28</td><td>&gt;47 at -30°C</td><td>AC:DC+</td><td>Excellent all position electrode. Best suitable for pipes and pipelines welding. Excellent mechanical properties in class.</td></tr>
+                        <tr><td>STARBLAZE PRIME 6013</td><td>E 6013</td><td>≥380</td><td>470-540</td><td>≥24</td><td>&gt;60 at 0°C</td><td>DC&plusmn;</td><td>Very soft arc, minimum spatter, smooth fine rippled radiographic weld bead. Superior slag detachability. Excellent impact notch toughness at 0°C.</td></tr>
+                        <tr><td>STARBLAZE PRIME 6013 VD</td><td>E 6013</td><td>&gt;380</td><td>470-540</td><td>&gt;24</td><td>&gt;60 at 0°C</td><td>DC&plusmn;</td><td>Rutile-Cellulosic exceptionally suitable for vertical down welding. Excellent gap bridging. Ultra smooth weldability.</td></tr>
+                        <tr><td>STARBLAZE PRIME 6013 S</td><td>E 6013</td><td>≥380</td><td>470-540</td><td>≥24</td><td>≥70 at 0°C</td><td>DC&plusmn;</td><td>Ultra smooth weldability. Especially suited for thick section fillet joints. Excellent arc Stability even at low currents.</td></tr>
+                        <tr><td>STARBLAZE PRIME 7016</td><td>E 7016-H4</td><td>≥420</td><td>550-620</td><td>30</td><td>&gt;90 at -30 C</td><td>DC+:AC</td><td>Excellent weldability. Self-peeling slag. Excellent mechanical properties.</td></tr>
+                        <tr><td>STARBLAZE PRIME 7016-A1</td><td>E 7016-A1-H4</td><td>&gt;420</td><td>510-640</td><td>24</td><td>&gt;47 at -20°C</td><td>AC:DC+</td><td>Ultra smooth finely rippled weld bead. Less than 4.0 ml diffusible hydrogen. Excellent for C-0.50% Mo Steels.</td></tr>
+                        <tr><td>STARBLAZE PRIME 7018</td><td>E 7018-H4</td><td>450</td><td>550-620</td><td>28</td><td>&gt;100 at -30 C, 80 at -45°C</td><td>AC:DC+</td><td>Excellent weldability. Best in class mechanical properties. Less than 4.0 ml diffusible hydrogen level.</td></tr>
                         <tr><td>STARBLAZE PRIME 7018 S</td><td>E 7018-1-H4</td><td>450</td><td>550-620</td><td>30</td><td></td><td>AC:DC+</td><td>Ultra smooth finely rippled weld bead. Less than 4.0 ml diffusible hydrogen level.</td></tr>
-                        <tr><td>STARBLAZE PRIME 7018-A1</td><td>E 7018-A1-H4</td><td>>470</td><td>550-650</td><td>24</td><td>$\ge 40 J~at~-30^{\circ}C$</td><td>AC:DC+</td><td>Excellent weldability. Best suited positional welding. Excellent creep resistant.</td></tr>
-                        <tr><td>STARBLAZE PRIME 8018G-</td><td>E 8018G-</td><td>>500</td><td>560-680</td><td>28</td><td>$\ge 60~at~-50^{\circ}C$</td><td>AC:DC+</td><td>Excellent toughness and formability. Highly crack resistant joint welding.</td></tr>
-                        <tr><td>STARBLAZE PRIME 8018-82</td><td>E 8018-82</td><td>$\ge460$</td><td>600-680</td><td>$\ge20$</td><td>$\ge47~at~+20^{\circ}C$</td><td>DC+</td><td>Ultra smooth finely rippled bead. Best in class mechanical properties.</td></tr>
-                        <tr><td>STARBLAZE PRIME 9018-B3</td><td>E 9018-B3</td><td>$\ge550$</td><td>620-750</td><td>$\ge20$</td><td>$\ge47~at~+20^{\circ}C$</td><td>DC+</td><td>Excellent weldability and mechanical properties.</td></tr>
-                        <tr><td>STARBLAZE PRIME 9018G-</td><td>E 9018G-</td><td>$\ge560$</td><td>650-750</td><td>$\ge20$</td><td>$\ge47~at~-50^{\prime\prime}C$</td><td>AC:DC+</td><td>Excellent weldability extra low hydrogen, Self-peeling slag, best in class mechanical properties.</td></tr>
-                        <tr><td>STARBLAZE PRIME 9018-M</td><td>E 9018-M H4</td><td>540-620</td><td>620-720</td><td>$\ge26$</td><td>>47J at -51 C</td><td>AC DC+</td><td>Extra Low hydrogen. Tough and crack free welded joints. Excellent mechanical properties.</td></tr>
-                        <tr><td>STARBLAZE PRIME 10018-D2</td><td>E 10018D2--H4</td><td>630</td><td>700-850</td><td>$\ge22$</td><td>> 60 at -50°C</td><td>AC:DC+</td><td>Smooth finely rippled weld bead. Excellent impact notch toughness at $-50^{\circ}C$. Recommended for critical security welding applications.</td></tr>
-                        <tr><td>STARBLAZE PRIME 10018G-</td><td>E 10018G--H4</td><td>$\ge 680$</td><td>760-850</td><td>$\ge18$</td><td>$\ge 47 J~at~-60^{\circ}C$</td><td>AC DC+</td><td>Superior weldability, concentrated arc, smooth weld bead, self-releasing slag.at $-50^{\circ}C$.</td></tr>
-                        <tr><td>STARBLAZE PRIME 11018G-</td><td>E 11018G--H4</td><td>$\ge720$</td><td>$\ge780$</td><td>$\ge17$</td><td>$\ge 47 J~at~-60^{\circ}C$</td><td>AC DC+</td><td>Superior weldability, concentrated smooth arc, all positions, crack free joints.</td></tr>
-                        <tr><td>STARBLAZE PRIME 11018-M</td><td>E 11018-M-H4</td><td>680-730</td><td>760-850</td><td>$\ge20$</td><td>$\ge50~at~-50^{\circ}C$</td><td>AC DC+</td><td>Excellent weldability. Best in class. Mechanical properties.</td></tr>
+                        <tr><td>STARBLAZE PRIME 7018-A1</td><td>E 7018-A1-H4</td><td>&gt;470</td><td>550-650</td><td>24</td><td>≥ 40 J at 30°C</td><td>AC:DC+</td><td>Excellent weldability. Best suited positional welding. Excellent creep resistant.</td></tr>
+                        <tr><td>STARBLAZE PRIME 8018G-</td><td>E 8018G-</td><td>&gt;500</td><td>560-680</td><td>28</td><td>≥ 60 at -50°C</td><td>AC:DC+</td><td>Excellent toughness and formability. Highly crack resistant joint welding.</td></tr>
+                        <tr><td>STARBLAZE PRIME 8018-82</td><td>E 8018-82</td><td>≥460</td><td>600-680</td><td>≥20</td><td>≥47 at +20°C</td><td>DC+</td><td>Ultra smooth finely rippled bead. Best in class mechanical properties.</td></tr>
+                        <tr><td>STARBLAZE PRIME 9018-B3</td><td>E 9018-B3</td><td>≥550</td><td>620-750</td><td>≥20</td><td>≥47 at +20°C</td><td>DC+</td><td>Excellent weldability and mechanical properties.</td></tr>
+                        <tr><td>STARBLAZE PRIME 9018G-</td><td>E 9018G-</td><td>≥560</td><td>650-750</td><td>≥20</td><td>≥47 at -50°C</td><td>AC:DC+</td><td>Excellent weldability extra low hydrogen, Self-peeling slag, best in class mechanical properties.</td></tr>
+                        <tr><td>STARBLAZE PRIME 9018-M</td><td>E 9018-M H4</td><td>540-620</td><td>620-720</td><td>≥26</td><td>>47J at -51 C</td><td>AC DC+</td><td>Extra Low hydrogen. Tough and crack free welded joints. Excellent mechanical properties.</td></tr>
+                        <tr><td>STARBLAZE PRIME 10018-D2</td><td>E 10018D2--H4</td><td>630</td><td>700-850</td><td>≥22</td><td>&gt; 60 at -50°C</td><td>AC:DC+</td><td>Smooth finely rippled weld bead. Excellent impact notch toughness at  -50°C . Recommended for critical security welding applications.</td></tr>
+                        <tr><td>STARBLAZE PRIME 10018G-</td><td>E 10018G--H4</td><td>≥ 680</td><td>760-850</td><td>≥18</td><td>≥ 47 J at -60°C</td><td>AC DC+</td><td>Superior weldability, concentrated arc, smooth weld bead, self-releasing slag.at  -50°C .</td></tr>
+                        <tr><td>STARBLAZE PRIME 11018G-</td><td>E 11018G--H4</td><td>≥720</td><td>≥780</td><td>≥17</td><td>≥ 47 J at -60°C</td><td>AC DC+</td><td>Superior weldability, concentrated smooth arc, all positions, crack free joints.</td></tr>
+                        <tr><td>STARBLAZE PRIME 11018-M</td><td>E 11018-M-H4</td><td>680-730</td><td>760-850</td><td>≥20</td><td>≥50 at -50°C</td><td>AC DC+</td><td>Excellent weldability. Best in class. Mechanical properties.</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <section id="stainless-steel-electrodes" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">B - Stainless Steel Welding Electrodes</h3>
+        <section id="stainless-steel-electrodes" class="mb-12 scroll-animate-initial" data-animation-type="fade-up">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 16.51A8.02 8.02 0 016.343 7.343L6.343 7.343"></path></svg>
+                B - Stainless Steel Welding Electrodes
+            </h3>
             <div class="text-gray-300 mb-4">
                 <p>Perfect FULL LENGTH welding</p>
                 <p>Self-releasing slag</p>
@@ -174,31 +241,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>STARBLAZE PRIME 307</td><td>E 307L 16</td><td>$\ge500$</td><td>>550</td><td>>35</td><td>75 at RT</td><td>AC DC+</td><td>Austenitic structure, rutile type, excellent weldability. Excellent machinability.</td></tr>
+                        <tr><td>STARBLAZE PRIME 307</td><td>E 307L 16</td><td>≥500</td><td>&gt;550</td><td>&gt;35</td><td>75 at RT</td><td>AC DC+</td><td>Austenitic structure, rutile type, excellent weldability. Excellent machinability.</td></tr>
                         <tr><td>STARBLAZE PRIME 308H</td><td>E 308H-16</td><td></td><td>600</td><td>37</td><td>55 at RT</td><td>AC DC+</td><td>Smooth weldability. Suitable for high. Temperature applications.</td></tr>
-                        <tr><td>STARBLAZE PRIME 308L-15</td><td>E 308L-15</td><td></td><td>$\ge550$</td><td>$\ge35$</td><td>47 at 196°C</td><td>DC+</td><td>Basic coated superior weld ability, self-peeling slag best suitable for pipe welding. Impact passes at- $196^{\circ}C$.</td></tr>
+                        <tr><td>STARBLAZE PRIME 308L-15</td><td>E 308L-15</td><td></td><td>≥550</td><td>≥35</td><td>47 at -196°C</td><td>DC+</td><td>Basic coated superior weld ability, self-peeling slag best suitable for pipe welding. Impact passes at-  -196°C .</td></tr>
                         <tr><td>STARBLAZE PRIME 308L*</td><td>E 308L-16</td><td></td><td>610</td><td>40</td><td>70 at RT</td><td>AC:DC+</td><td>LMA type coating, superior weldability without spatter, self-peeling slag. Best in class mechanical properties.</td></tr>
-                        <tr><td>STARBLAZE PRIME 309CB</td><td>E 309Cb16-</td><td></td><td>590</td><td>40</td><td>>75 at RT</td><td>AC:DC+</td><td>Excellent resistance to chemical corrosion and heat. Weldability with spatter free arc, self-releasing slag.</td></tr>
-                        <tr><td>STARBLAZE PRIME 309L*</td><td>E 309L16-</td><td></td><td>600</td><td>>35</td><td>>80 at RT</td><td>AC:DC+</td><td>Excellent weldability, self-peeling slag.</td></tr>
-                        <tr><td>STARBLAZE PRIME 309LMO</td><td>E 309LMo-16</td><td></td><td>650</td><td>36</td><td>>70 at RT</td><td>AC:DC+</td><td>Excellent weldability, slag-peeling slag best in class mechanical properties. Best for joining dissimilar steels.</td></tr>
-                        <tr><td>STARBLAZE PRIME 310</td><td>E 310-16</td><td></td><td>$\ge 550$</td><td>$\ge30$</td><td>$\ge 60$ at RT</td><td>AC DC+</td><td>Highly crack resistant. Soft fusion, nice aspect of the bead, slag lifts by it self.</td></tr>
-                        <tr><td>STARBLAZE PRIME 312</td><td>E 312-16</td><td></td><td>$\ge800$</td><td>$\ge20$</td><td>$\ge70$ at RT</td><td>AC DC+</td><td>Austenitic structure, rutile type, excellent weldability. Superior weldability. Excellent crack, heat and shock resistant, highest tensile strength with elongation in class.</td></tr>
+                        <tr><td>STARBLAZE PRIME 309CB</td><td>E 309Cb16-</td><td></td><td>590</td><td>40</td><td>&gt;75 at RT</td><td>AC:DC+</td><td>Excellent resistance to chemical corrosion and heat. Weldability with spatter free arc, self-releasing slag.</td></tr>
+                        <tr><td>STARBLAZE PRIME 309L*</td><td>E 309L16-</td><td></td><td>600</td><td>&gt;35</td><td>&gt;80 at RT</td><td>AC:DC+</td><td>Excellent weldability, self-peeling slag.</td></tr>
+                        <tr><td>STARBLAZE PRIME 309LMO</td><td>E 309LMo-16</td><td></td><td>650</td><td>36</td><td>&gt;70 at RT</td><td>AC:DC+</td><td>Excellent weldability, slag-peeling slag best in class mechanical properties. Best for joining dissimilar steels.</td></tr>
+                        <tr><td>STARBLAZE PRIME 310</td><td>E 310-16</td><td></td><td>≥ 550</td><td>≥30</td><td>≥ 60 at RT</td><td>AC DC+</td><td>Highly crack resistant. Soft fusion, nice aspect of the bead, slag lifts by it self.</td></tr>
+                        <tr><td>STARBLAZE PRIME 312</td><td>E 312-16</td><td></td><td>≥800</td><td>≥20</td><td>≥70 at RT</td><td>AC DC+</td><td>Austenitic structure, rutile type, excellent weldability. Superior weldability. Excellent crack, heat and shock resistant, highest tensile strength with elongation in class.</td></tr>
                         <tr><td>STARBLAZE PRIME 316L*</td><td>E 316L16-</td><td>450</td><td>590</td><td>40</td><td>80 at RT</td><td>AC:DC+</td><td>Superior weldability, finely rippled bead, self-peeling slag. Best in class corrosion resistant.</td></tr>
-                        <tr><td>STARBLAZE PRIME 318-16</td><td>E 318-16</td><td></td><td>590</td><td>35</td><td>65 at $+20^{\circ}C$</td><td>AC:DC+</td><td>Excellent intergranular corrosion resistant, good weldability, self-peeling slag.</td></tr>
+                        <tr><td>STARBLAZE PRIME 318-16</td><td>E 318-16</td><td></td><td>590</td><td>35</td><td>65 at +20°C</td><td>AC:DC+</td><td>Excellent intergranular corrosion resistant, good weldability, self-peeling slag.</td></tr>
                         <tr><td>STARBLAZE PRIME 347</td><td>E 347-16</td><td></td><td>590</td><td>40</td><td>80 at RT</td><td>AC:DC+</td><td>Soft fusion, without spatters, very easy slag removal, exceptional weld bead appearance, easy restriking.</td></tr>
-                        <tr><td>STARBLAZE PRIME 347-15</td><td>E 347-15</td><td>$\ge450$</td><td>$\ge590$</td><td>$\ge35$</td><td>$\ge47~at~-60^{\circ}C$</td><td>DC+</td><td>Basic coated controlled fluidity, superior weld ability, self-peeling slag, superior intergranular corrosion resistant.</td></tr>
-                        <tr><td>STARBLAZE PRIME 385</td><td>E 385-16</td><td>$\ge370$</td><td>$\ge570$</td><td>$\ge35$</td><td>90 at +20°C</td><td>AC:DC+</td><td>Fully austenitic, highly corrosion resistant. Good weldability in all positions, except vertical down.</td></tr>
-                        <tr><td>STARBLAZE PRIME 2209-16</td><td>E 2209-16</td><td>$\ge500$</td><td>$\ge720$</td><td>$\ge25$</td><td>$\ge50~at~RT$</td><td>AC:DC+</td><td>Corrosive resistant duplex-steels. Excellent resistant to inter granular corrosion, pitting and stress corrosion conditions.</td></tr>
-                        <tr><td>STARBLAZE PRIME 2594-16</td><td>E 2594-16</td><td>$\ge650$</td><td>$\ge800$</td><td>$\ge20$</td><td>50 at RT</td><td>AC:DC+</td><td>Super-duplex stainless steels. Excellent resistant to pitting and crevice corrosion. Excellent weldability, spatter free arc, very smooth bead appearance.</td></tr>
-                        <tr><td>STARBLAZE PRIME 410</td><td>E 410-15</td><td>$\ge250$</td><td>$\ge520$</td><td>$\ge22$</td><td></td><td>AC DC+</td><td>Basic heavy coated low hydrogen type. Excellent weldability.</td></tr>
-                        <tr><td>STARBLAZE PRIME 410NiMo</td><td>E 410NiMo-15</td><td>$\ge600$</td><td>$\ge760$</td><td>$\ge15$</td><td></td><td>DC+</td><td>Basic coated. Superior weldability. Excellent resistance to abrasion.</td></tr>
+                        <tr><td>STARBLAZE PRIME 347-15</td><td>E 347-15</td><td>≥450</td><td>≥590</td><td>≥35</td><td>≥47 at -60°C</td><td>DC+</td><td>Basic coated controlled fluidity, superior weld ability, self-peeling slag, superior intergranular corrosion resistant.</td></tr>
+                        <tr><td>STARBLAZE PRIME 385</td><td>E 385-16</td><td>≥370</td><td>≥570</td><td>≥35</td><td>90 at +20°C</td><td>AC:DC+</td><td>Fully austenitic, highly corrosion resistant. Good weldability in all positions, except vertical down.</td></tr>
+                        <tr><td>STARBLAZE PRIME 2209-16</td><td>E 2209-16</td><td>≥500</td><td>≥720</td><td>≥25</td><td>≥50 at RT</td><td>AC:DC+</td><td>Corrosive resistant duplex-steels. Excellent resistant to inter granular corrosion, pitting and stress corrosion conditions.</td></tr>
+                        <tr><td>STARBLAZE PRIME 2594-16</td><td>E 2594-16</td><td>≥650</td><td>≥800</td><td>≥20</td><td>50 at RT</td><td>AC:DC+</td><td>Super-duplex stainless steels. Excellent resistant to pitting and crevice corrosion. Excellent weldability, spatter free arc, very smooth bead appearance.</td></tr>
+                        <tr><td>STARBLAZE PRIME 410</td><td>E 410-15</td><td>≥250</td><td>≥520</td><td>≥22</td><td></td><td>AC DC+</td><td>Basic heavy coated low hydrogen type. Excellent weldability.</td></tr>
+                        <tr><td>STARBLAZE PRIME 410NiMo</td><td>E 410NiMo-15</td><td>≥600</td><td>≥760</td><td>≥15</td><td></td><td>DC+</td><td>Basic coated. Superior weldability. Excellent resistance to abrasion.</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <section id="hard-facing-cast-iron-nickel-alloys" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">C - Hard Facing, Cast Iron & Nickel Alloys</h3>
+        <section id="hard-facing-cast-iron-nickel-alloys" class="mb-12 scroll-animate-initial" data-animation-type="fade-up">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 16.51A8.02 8.02 0 016.343 7.343L6.343 7.343"></path></svg>
+                C - Hard Facing, Cast Iron & Nickel Alloys
+            </h3>
             <div class="overflow-x-auto glass-effect p-4 rounded-lg">
                 <table class="min-w-full">
                     <thead>
@@ -214,19 +284,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>STARBLAZE PRIME NiFe</td><td>E NiFe-C1</td><td>300-400</td><td>$\ge500$</td><td>$\ge15$</td><td></td><td>AC DC+</td><td>Graphite basic coated. Ferro-Nickel alloy. Good bonding and flow of the weld metal. Good machinability.</td></tr>
-                        <tr><td>STARBLAZE PRIME CI99</td><td>E NI-CI</td><td>260-410</td><td>$\ge450$</td><td>$\ge3$</td><td></td><td>AC:DC+</td><td>Excellent machinability. Pure nickel Electrode. Smooth and intensive arc. Easy slag removal.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCu7</td><td>E Ni-Cu-7</td><td>$\ge230$</td><td>$\ge490$</td><td>$\ge30$</td><td>$\ge47~at~-196^{\circ}C$</td><td>DC+</td><td>Universal Monel electrode for repairing, joining, problem solver. Weld metal corrosion resistant to seawater, salts and reducing acids.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCrFe-2</td><td>E NiCr Fe-2</td><td>$\ge400$</td><td>$\ge600$</td><td>$\ge40$</td><td>$\ge47~i~at~-196^{\circ}C$</td><td>DC+</td><td>Excellent out of position welding. Excellent corrosion resistant even at elevated temperatures.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCrFe-3</td><td>E NiCr Fe-3</td><td>$\ge420$</td><td>$\ge580$</td><td>$\ge30$</td><td>$\underline{\ge47}~at~-196^{\circ}C$</td><td>DC+</td><td>Excellent out of position welding. Excellent corrosion resistant at normal and elevated temperatures.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCr-Mo3</td><td>ENiCr Mo-3</td><td>$>420$</td><td>$\overline{>760}$</td><td>$\underline{>30}$</td><td>$\ge47~at~-196^{\circ}C$</td><td>DC+</td><td>Superior weldability. Fully austenitic, excellent resistance against corrosive media.</td></tr>
+                        <tr><td>STARBLAZE PRIME NiFe</td><td>E NiFe-C1</td><td>300-400</td><td>≥500</td><td>≥15</td><td></td><td>AC DC+</td><td>Graphite basic coated. Ferro-Nickel alloy. Good bonding and flow of the weld metal. Good machinability.</td></tr>
+                        <tr><td>STARBLAZE PRIME CI99</td><td>E NI-CI</td><td>260-410</td><td>≥450</td><td>≥3</td><td></td><td>AC:DC+</td><td>Excellent machinability. Pure nickel Electrode. Smooth and intensive arc. Easy slag removal.</td></tr>
+                        <tr><td>STARBLAZE PRIME NiCu7</td><td>E Ni-Cu-7</td><td>≥230</td><td>≥490</td><td>≥30</td><td>≥47 at -196°C</td><td>DC+</td><td>Universal Monel electrode for repairing, joining, problem solver. Weld metal corrosion resistant to seawater, salts and reducing acids.</td></tr>
+                        <tr><td>STARBLAZE PRIME NiCrFe-2</td><td>E NiCr Fe-2</td><td>≥400</td><td>≥600</td><td>≥40</td><td>≥47 at -196°C</td><td>DC+</td><td>Excellent out of position welding. Excellent corrosion resistant even at elevated temperatures.</td></tr>
+                        <tr><td>STARBLAZE PRIME NiCrFe-3</td><td>E NiCr Fe-3</td><td>≥420</td><td>≥580</td><td>≥30</td><td>≥47 at -196°C</td><td>DC+</td><td>Excellent out of position welding. Excellent corrosion resistant at normal and elevated temperatures.</td></tr>
+                        <tr><td>STARBLAZE PRIME NiCr-Mo3</td><td>ENiCr Mo-3</td><td>&gt;420</td><td>≥760</td><td>≥30</td><td>≥47 at -196°C</td><td>DC+</td><td>Superior weldability. Fully austenitic, excellent resistance against corrosive media.</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
         <section id="flux-cored-wire" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">D - Flux Cored Wire (E-71T1 Wire)</h3>
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 16.51A8.02 8.02 0 016.343 7.343L6.343 7.343"></path></svg>
+                D - Flux Cored Wire (E-71T1 Wire)
+            </h3>
             <div class="text-gray-300 mb-4">
                 <p>Specially designed for single or multiple pass welding.</p>
                 <p>An all position flux-cored wire.</p>
@@ -241,7 +314,10 @@
         </section>
 
         <section id="stainless-steel-welding-wires" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">E - Stainless Steel Welding Wires</h3>
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 16.51A8.02 8.02 0 016.343 7.343L6.343 7.343"></path></svg>
+                E - Stainless Steel Welding Wires
+            </h3>
 
             <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel MIG Wires</h4>
             <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
@@ -297,7 +373,10 @@
         </section>
 
         <section id="stainless-steel-wire-general" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">F - Stainless Steel Wire (General)</h3>
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 16.51A8.02 8.02 0 016.343 7.343L6.343 7.343"></path></svg>
+                F - Stainless Steel Wire (General)
+            </h3>
 
             <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel Fine Wires</h4>
             <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
@@ -319,8 +398,11 @@
             </div>
         </section>
 
-        <section id="welding-machines" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">G - Welding Machines</h3>
+        <section id="welding-machines" class="mb-12">
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                G - Welding Machines
+            </h3>
 
             <h4 class="text-2xl font-semibold text-purple-400 mb-4">ARC Inverter Series (RILAND)</h4>
             <div class="text-gray-300 mb-4">
@@ -328,7 +410,7 @@
                 <ul class="list-disc list-inside ml-4">
                     <li>Protection against under voltage, over voltage and over current, it makes the machine safe & reliable.</li>
                     <li>Wide range from 180 Volt to 260 Volt for single phase and 350 Volt to 480 Volt for three phase.</li>
-                    <li>VRD as standard features OCV reduced to $17V_{\alpha}$ lowest in the segment.</li>
+                    <li>VRD as standard features OCV reduced to 17V lowest in the segment.</li>
                     <li>Generator friendly.</li>
                     <li>Suitable for acidic, basic and cellulosic electrodes.</li>
                 </ul>
@@ -351,8 +433,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$AC~220\pm15\%$</td><td>$Ac220\pm15\%$</td><td>$AC~220\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td></tr>
-                        <tr><td></td><td></td><td></td><td></td><td>$415^{*}2P\pm15\%$</td><td></td><td></td><td></td></tr>
+                        <tr><td>Rates input Voltage (V)</td><td> AC 220±15% </td><td> Ac220±15% </td><td> AC 220±15% </td><td> 415*3P±15% </td><td> 415*3P±15% </td><td> 415*3P±15% </td><td> 415*3P±15% </td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td> 415*2P±15% </td><td></td><td></td><td></td></tr>
                         <tr><td>Frequency (Hz)</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td></tr>
                         <tr><td>Rated input capacity (KVA)</td><td>5.83</td><td>7.24</td><td>9.24</td><td>18.2</td><td>18.2</td><td>23.8</td><td>23.2</td></tr>
                         <tr><td>Rated input current (A)</td><td>26.5</td><td>33</td><td>42</td><td>25.3</td><td>25.3</td><td>33.1</td><td>32.3</td></tr>
@@ -361,9 +443,9 @@
                         <tr><td>Efficiency (%)</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>87%</td></tr>
                         <tr><td>Insulation</td><td>F</td><td>F</td><td>F</td><td>H</td><td>F</td><td>F</td><td>H</td></tr>
                         <tr><td>Case protection degree</td><td>IP21</td><td>IP 21</td><td>IP21</td><td>IP 21</td><td>IP 21</td><td>IP 21</td><td>IP 21</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$204\times87\times146$</td><td>$295\times130\times235$</td><td>$345\times153\times285$</td><td>$457\times203\times330$</td><td>$482\times241\times381$</td><td>$520\times267\times419$</td><td>$520\times267\times419$</td></tr>
+                        <tr><td>Overall dimensions (mm)</td><td> 204x87x146 </td><td> 295x130x235 </td><td> 345x153x285 </td><td> 457x203x330 </td><td> 482x241x381 </td><td> 520x267x419 </td><td> 520x267x419 </td></tr>
                         <tr><td>Weight (kg)</td><td>2</td><td>3.7</td><td>5.5</td><td>13</td><td>13.5</td><td>24.5</td><td>25</td></tr>
-                        <tr><td>Suitable electrode rod (mm)</td><td>$1.6/2.5$</td><td>$1.6/2.5/3.2$</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td></tr>
+                        <tr><td>Suitable electrode rod (mm)</td><td> 1.6/2.5 </td><td> 1.6/2.5/3.2 </td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td></tr>
                         <tr><td>Warranty**</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td></tr>
                     </tbody>
                 </table>
@@ -396,7 +478,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$230^{*}1P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td></tr>
+                        <tr><td>Rates input Voltage (V)</td><td> 230*1P±15% </td><td> 415*3P±15% </td><td> 415*3P±15% </td><td> 415*3P±15% </td><td> 415*3P±15% </td></tr>
                         <tr><td>Frequency (Hz)</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td></tr>
                         <tr><td>Rated input capacity ((KVA)</td><td>3.1</td><td>9.2</td><td>15.2</td><td>22.8</td><td>16</td></tr>
                         <tr><td>Rated input current (A)</td><td>13.4</td><td>12.8</td><td>21</td><td>32</td><td>22.2</td></tr>
@@ -407,7 +489,7 @@
                         <tr><td>Efficiency (%)</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td></tr>
                         <tr><td>Insulation</td><td>F</td><td>F</td><td>H</td><td>F</td><td>H</td></tr>
                         <tr><td>Case protection degree</td><td>IP21</td><td>IP21</td><td>IP21</td><td>IP21</td><td>IP21S</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>280x156x180</td><td>$466\times212\times371$</td><td>$508\times244\times423$</td><td>$526\times272\times468$</td><td>$550\times280\times545$</td></tr>
+                        <tr><td>Overall dimensions (mm)</td><td> 280x156x180 </td><td> 466x212x371 </td><td> 508x244x423 </td><td> 526x272x468 </td><td> 550x280x545 </td></tr>
                         <tr><td>Weight (kg)</td><td>3.1</td><td>16</td><td>24</td><td>30</td><td>36</td></tr>
                         <tr><td>Warranty**</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
                     </tbody>
@@ -442,7 +524,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$220^{*}1P\pm15\%$</td><td>$220^{*}1P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415\%3P\pm15\%$</td></tr>
+                        <tr><td>Rates input Voltage (V)</td><td> 220*1P±15% </td><td> 220*1P±15% </td><td> 415*3P±15% </td><td> 415%3P±15% </td></tr>
                         <tr><td>Frequency (Hz)</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td></tr>
                         <tr><td>Rated input capacity ((KVA)</td><td>7.81</td><td>8.03</td><td>12.36</td><td>17.4</td></tr>
                         <tr><td>Rated input current (A)</td><td>35.5</td><td>36.5</td><td>17.2</td><td>24.3</td></tr>
@@ -451,7 +533,7 @@
                         <tr><td>Efficiency (%)</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td></tr>
                         <tr><td>Insulation</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
                         <tr><td>Case protection degree</td><td>IP21S</td><td>IP21</td><td>IP21</td><td>IP21</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$402\times160\times300$</td><td>$476\times340\times402$</td><td>$609\times332\times622$</td><td>$508\times244\times423$</td></tr>
+                        <tr><td>Overall dimensions (mm)</td><td> 402x160x300 </td><td> 476x340x402 </td><td> 609x332x622 </td><td> 508x244x423 </td></tr>
                         <tr><td>Weight (kg)</td><td>7.5</td><td>18.5</td><td>36</td><td>25</td></tr>
                         <tr><td>Warranty**</td><td>1</td><td>2</td><td>2</td><td>2</td></tr>
                     </tbody>
@@ -483,7 +565,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$415^{*}3P\pm15\%$</td></tr>
+                        <tr><td>Rates input Voltage (V)</td><td> 415*3P±15% </td></tr>
                         <tr><td>Frequency (Hz)</td><td>50/60</td></tr>
                         <tr><td>Rated input capacity ((KVA)</td><td>63.01</td></tr>
                         <tr><td>Rated input current (A)</td><td>82.6</td></tr>
@@ -494,7 +576,7 @@
                         <tr><td>Efficiency (%)</td><td>85%</td></tr>
                         <tr><td>Insulation</td><td>F</td></tr>
                         <tr><td>Case protection degree</td><td>IP23</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$825\times451\times1040$</td></tr>
+                        <tr><td>Overall dimensions (mm)</td><td> 825x451x1040 </td></tr>
                         <tr><td>Weight (kg)</td><td>123.4</td></tr>
                         <tr><td>Warranty**</td><td>2</td></tr>
                     </tbody>
@@ -524,17 +606,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$415^{*}3P\pm15\%$</td></tr>
+                        <tr><td>Rates input Voltage (V)</td><td> 415*3P±15% </td></tr>
                         <tr><td>Frequency (Hz)</td><td>50/60</td></tr>
                         <tr><td>Rated input capacity ((KVA)</td><td>21.0</td></tr>
                         <tr><td>Rated input current (A)</td><td>15.0</td></tr>
                         <tr><td>Welding output Current (A)</td><td>20-100</td></tr>
                         <tr><td>Welding output voltage (V)</td><td>328</td></tr>
                         <tr><td>Efficiency (%)</td><td>85%</td></tr>
-                        <tr><td>Power factor</td><td>>0.93</td></tr>
+                        <tr><td>Power factor</td><td>&gt;0.93</td></tr>
                         <tr><td>Insulation</td><td>H</td></tr>
                         <tr><td>Case protection degree</td><td>IP21</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$526\times272\times468$</td></tr>
+                        <tr><td>Overall dimensions (mm)</td><td> 526x272x468 </td></tr>
                         <tr><td>Weight (kg)</td><td>25.6</td></tr>
                         <tr><td>Warranty**</td><td>2</td></tr>
                     </tbody>
@@ -543,7 +625,10 @@
         </section>
 
         <section id="welding-auxiliaries" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">H - Welding Auxiliaries</h3>
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                H - Welding Auxiliaries
+            </h3>
             <div class="flex justify-center mb-8">
                 <img src="assets/images/starblaze/welding_auxilaries.png" alt="Welding Auxiliaries" class="rounded-lg shadow-lg">
             </div>
@@ -628,516 +713,10 @@
         </section>
 
         <section id="chemical-composition" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">Annexure 1 - Typical Chemical Composition</h3>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th>GRADE OFFERED</th>
-                            <th>%C</th>
-                            <th>%N2</th>
-                            <th>%Mn</th>
-                            <th>%Si</th>
-                            <th>%S</th>
-                            <th>%P</th>
-                            <th>%Cr</th>
-                            <th>%Ni</th>
-                            <th>%Cu</th>
-                            <th>%Mo</th>
-                            <th>Others</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td colspan="12" class="text-center font-semibold bg-gray-800">Chemical Composition as per ASTM A580</td></tr>
-                        <tr><td>302</td><td>0.120</td><td></td><td>2.000</td><td>1.000</td><td>0.030</td><td>0.045</td><td>17.0-19.0</td><td>8.0-10.0</td><td></td><td></td><td></td></tr>
-                        <tr><td>304L</td><td>0.030</td><td></td><td>2.000</td><td>1.00</td><td>0.030</td><td>0.045</td><td>18.00-20.00</td><td>8.00-12.00</td><td></td><td></td><td></td></tr>
-                        <tr><td>304</td><td>0.080</td><td></td><td>2.000</td><td>1.00</td><td>0.030</td><td>0.045</td><td>18.00-20.00</td><td>8.00-12.00</td><td></td><td></td><td></td></tr>
-                        <tr><td>310</td><td>0.250</td><td></td><td>2.000</td><td>1.50</td><td>0.030</td><td>0.045</td><td>24.00-26.00</td><td>19.00-22.00</td><td></td><td></td><td></td></tr>
-                        <tr><td>310S</td><td>0.080</td><td></td><td>2.000</td><td>1.50</td><td>0.030</td><td>0.045</td><td>24.00-26.00</td><td>19.00-22.00</td><td></td><td></td><td></td></tr>
-                        <tr><td>314</td><td>0.250</td><td></td><td>2.000</td><td>1.50-3.00</td><td>0.030</td><td>0.045</td><td>23.00-26.00</td><td>19.00-22.00</td><td></td><td></td><td></td></tr>
-                        <tr><td>316</td><td>0.080</td><td></td><td>2.000</td><td>1.00</td><td>0.030</td><td>0.045</td><td>16.50-18.00</td><td>10.00-14.00</td><td></td><td>2.00-3.00</td><td></td></tr>
-                        <tr><td>316L</td><td>0.030</td><td></td><td>2.000</td><td>1.00</td><td>0.030</td><td>0.045</td><td>16.50-18.00</td><td>10.00-14.00</td><td></td><td>2.00-3.00</td><td></td></tr>
-                        <tr><td>316Ti</td><td>0.080</td><td></td><td>2.000</td><td>1.00</td><td>0.030</td><td>0.045</td><td>16.50-18.00</td><td>10.00-14.00</td><td></td><td>2.00-3.00</td><td>% Ti-5 x C% min</td></tr>
-                        <tr><td>321</td><td>0.080</td><td></td><td>2.000</td><td>1.00</td><td>0.030</td><td>0.040</td><td>17.00-19.00</td><td>9.00-12.00</td><td></td><td></td><td>%'Ti-5 x C% min</td></tr>
-                        <tr><td colspan="12" class="text-center font-semibold bg-gray-800">Ferritic Stainless Steel</td></tr>
-                        <tr><td>430</td><td>0.120</td><td></td><td>1.000</td><td>1.00</td><td>0.030</td><td>0.040</td><td>16.00-18.00</td><td></td><td></td><td></td><td></td></tr>
-                        <tr><td>430L</td><td>0.030</td><td></td><td>1.000</td><td>1.00</td><td>0.030</td><td>0.040</td><td>16.00-18.00</td><td></td><td></td><td></td><td></td></tr>
-                        <tr><td colspan="12" class="text-center font-semibold bg-gray-800">Welding Grades</td></tr>
-                        <tr><td>ER 307</td><td>0.20</td><td></td><td>5.00-8.00</td><td>0.65</td><td>0.030</td><td>0.030</td><td>17.00-20.00</td><td>7.00-10.00</td><td>0.50</td><td>0.50</td><td></td></tr>
-                        <tr><td>ER 307Si</td><td>0.20</td><td></td><td>5.00-8.00</td><td>0.65-1.20</td><td>0.030</td><td>0.030</td><td>17.00-20.00</td><td>7.00-10.00</td><td>0.50</td><td>0.50</td><td></td></tr>
-                        <tr><td>ER 308L</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>19.50-22.00</td><td>9.0-11.0</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 308H</td><td>0.04-0.080</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>19.50-22.00</td><td>9.0-11.0</td><td>0.75</td><td>0.50</td><td></td></tr>
-                        <tr><td>ER308LW</td><td>0.020</td><td>0.040</td><td>1.60-1.90</td><td>0.20</td><td>0.015</td><td>0.020</td><td>19.50-20.50</td><td>9.6-10.6</td><td>0.10</td><td>0.30</td><td>%Co-0.10 Max</td></tr>
-                        <tr><td>ER 308LSI</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.65-1.00</td><td>0.030</td><td>0.030</td><td>19.50-22.00</td><td>9.0-11.0</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER309L</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>23.00-25.00</td><td>12.0-14.0</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER309H</td><td>0.04-0.080</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>23.00-25.00</td><td>12.0-14.0</td><td>0.75</td><td>0.50</td><td></td></tr>
-                        <tr><td>ER 309LSI</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.65-1.00</td><td>0.030</td><td>0.030</td><td>23.00-25.00</td><td>12.0-14.0</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 309LMo</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>23.00-25.00</td><td>12.0-14.0</td><td>0.75</td><td>2.00-3.00</td><td></td></tr>
-                        <tr><td>ER 316L</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>18.00-20.00</td><td>11.0-14.00</td><td>0.75</td><td>2.00-3.00</td><td></td></tr>
-                        <tr><td>ER 316H</td><td>0.04-0.080</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>18.00-20.00</td><td>11.0-14.00</td><td>0.75</td><td>2.00-3.00</td><td></td></tr>
-                        <tr><td>ER 316LW</td><td>0.020</td><td>0.040</td><td>1.60-1.90</td><td>0.20</td><td>0.015</td><td>0.020</td><td>18.00-19.50</td><td>11.0-12.50</td><td>0.10</td><td>2.00-3.00</td><td></td></tr>
-                        <tr><td>ER 316LWMo</td><td>0.020</td><td>0.040</td><td>1.60-1.90</td><td>0.20</td><td>0.015</td><td>0.020</td><td>18.00-19.50</td><td>11.0-12.50</td><td>0.10</td><td>2.50-3.00</td><td>Co-0.10 Max</td></tr>
-                        <tr><td>ER 316LHMo</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.020</td><td>0.030</td><td>18.00-20.00</td><td>11.0-14.00</td><td>0.50</td><td>2.50-3.00</td><td></td></tr>
-                        <tr><td>ER 316LSI</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.65-1.00</td><td>0.030</td><td>0.030</td><td>18.00-20.00</td><td>11.0-14.00</td><td>0.75</td><td>2.00-3.00</td><td></td></tr>
-                        <tr><td>ER 316LSIMO</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.65-1.20</td><td>0.020</td><td>0.030</td><td>18.00-20.00</td><td>11.0-14.00</td><td>0.50</td><td>2.50-3.00</td><td></td></tr>
-                        <tr><td>ER 310</td><td>0.08-0.15</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>25.00-28.00</td><td>20.0-22.05</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 312</td><td>0.15</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>28.00-32.00</td><td>8.00-10.50</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 317L</td><td>0.030</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>18.50-20.50</td><td>13.0-15.00</td><td>0.75</td><td>3.00-4.00</td><td></td></tr>
-                        <tr><td>ER 318</td><td>0.080</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>18.00-20.00</td><td>11.0-14.00</td><td>0.75</td><td>2.00-3.00</td><td>%Nb-8XC min-1.00</td></tr>
-                        <tr><td>ER 320</td><td>0.070</td><td></td><td>2.50</td><td>0.60</td><td>0.030</td><td>0.030</td><td>19.00-21.00</td><td>32.0-36.00</td><td>3.00-4.00</td><td>2.00-3.00</td><td>%Nb-8XC min-1.00</td></tr>
-                        <tr><td>ER 320LR</td><td>0.025</td><td></td><td>1.50-2.00</td><td>0.15</td><td>0.020</td><td>0.015</td><td>19.00-21.00</td><td>32.0-36.00</td><td>3.00-4.00</td><td>2.00-3.00</td><td>%Nb-8XC min-0.40</td></tr>
-                        <tr><td>ER 321</td><td>0.080</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>18.50-20.50</td><td>9.00-10.50</td><td>0.75</td><td>0.75</td><td>%Ti-9XC min-1.00</td></tr>
-                        <tr><td>ER 347L</td><td>0.03</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>19.00-21.50</td><td>9.0-11.00</td><td>0.75</td><td>0.75</td><td>%Nb-10XCmin -1.00</td></tr>
-                        <tr><td>ER 347</td><td>0.08</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>19.00-21.50</td><td>9.0-11.00</td><td>0.75</td><td>0.75</td><td>%Nb-10XC min-1.00</td></tr>
-                        <tr><td>ER 347H</td><td>0.04-0.080</td><td></td><td>1.00-2.50</td><td>0.30-0.65</td><td>0.030</td><td>0.030</td><td>19.00-21.50</td><td>9.0-11.00</td><td>0.75</td><td>0.75</td><td>%Nb-10XCmin -1.00</td></tr>
-                        <tr><td>ER 347LSI</td><td>0.03</td><td></td><td>1.00-2.50</td><td>0.65-1.00</td><td>0.030</td><td>0.030</td><td>19.00-21.50</td><td>9.0-11.00</td><td>0.75</td><td>0.75</td><td>%Nb-10XC min-1.00</td></tr>
-                        <tr><td>ER 347SI</td><td>0.08</td><td></td><td>1.00-2.50</td><td>0.65-1.00</td><td>0.030</td><td>0.030</td><td>19.00-21.50</td><td>9.0-11.00</td><td>0.75</td><td>0.75</td><td>%Nb-10XC min-1.00</td></tr>
-                        <tr><td>ER 385</td><td>0.025</td><td></td><td>1.00-2.50</td><td>0.50</td><td>0.020</td><td>0.020</td><td>19.50-21.50</td><td>24.00-26.00</td><td>1.20-2.00</td><td>4.20-5.20</td><td></td></tr>
-                        <tr><td>ER 410</td><td>0.12</td><td></td><td>0.60</td><td>0.50</td><td>0.030</td><td>0.030</td><td>11.50-13.50</td><td>0.60</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 410NiMo</td><td>0.06</td><td></td><td>0.60</td><td>0.50</td><td>0.030</td><td>0.030</td><td>11.0-12.50</td><td>4.00-5.00</td><td>0.75</td><td>0.40-0.70</td><td></td></tr>
-                        <tr><td>ER 420</td><td>0.25-0.40</td><td></td><td>0.60</td><td>0.50</td><td>0.030</td><td>0.030</td><td>12.00-14.00</td><td>0.60</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 430L</td><td>0.03</td><td></td><td>0.60</td><td>0.50</td><td>0.030</td><td>0.030</td><td>15.50-17.00</td><td>0.60</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 430</td><td>0.10</td><td></td><td>0.60</td><td>0.50</td><td>0.030</td><td>0.030</td><td>15.50-17.00</td><td>0.60</td><td>0.75</td><td>0.75</td><td></td></tr>
-                        <tr><td>ER 409Cb</td><td>0.08</td><td></td><td>0.80</td><td>1.00</td><td>0.030</td><td>0.040</td><td>10.50-13.50</td><td>0.60</td><td>0.75</td><td>0.5</td><td>%Nb-10XC min-0.75</td></tr>
-                        <tr><td>ER 2209</td><td>0.03</td><td>0.08-0.20</td><td>0.50-2.00</td><td>0.90</td><td>0.020</td><td>0.030</td><td>21.50-23.50</td><td>7.5-9.5</td><td>0.75</td><td>2.50-3.50</td><td></td></tr>
-                        <tr><td>ER 2594</td><td>0.03</td><td></td><td>2.50</td><td>1.00</td><td>0.020</td><td>0.030</td><td>24.00-27.00</td><td>8.00-10.50</td><td>1.5</td><td>2.50-4.50</td><td>%W-1.00 max, 0.20-0.30</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="hard-facing-cast-iron-nickel-alloys" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">C - Hard Facing, Cast Iron & Nickel Alloys</h3>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Classification AWS/SFA</th>
-                            <th>Yield Strength N/mm2</th>
-                            <th>Tensile Strength N/mm2</th>
-                            <th>Elongation A5 (%)</th>
-                            <th>Impact (J)</th>
-                            <th>Welding Conditions</th>
-                            <th>Welding Features (All Vacuum Packed)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>STARBLAZE PRIME NiFe</td><td>E NiFe-C1</td><td>300-400</td><td>$\ge500$</td><td>$\ge15$</td><td></td><td>AC DC+</td><td>Graphite basic coated. Ferro-Nickel alloy. Good bonding and flow of the weld metal. Good machinability.</td></tr>
-                        <tr><td>STARBLAZE PRIME CI99</td><td>E NI-CI</td><td>260-410</td><td>$\ge450$</td><td>$\ge3$</td><td></td><td>AC:DC+</td><td>Excellent machinability. Pure nickel Electrode. Smooth and intensive arc. Easy slag removal.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCu7</td><td>E Ni-Cu-7</td><td>$\ge230$</td><td>$\ge490$</td><td>$\ge30$</td><td>$\ge47~at~-196^{\circ}C$</td><td>DC+</td><td>Universal Monel electrode for repairing, joining, problem solver. Weld metal corrosion resistant to seawater, salts and reducing acids.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCrFe-2</td><td>E NiCr Fe-2</td><td>$\ge400$</td><td>$\ge600$</td><td>$\ge40$</td><td>$\ge47~i~at~-196^{\circ}C$</td><td>DC+</td><td>Excellent out of position welding. Excellent corrosion resistant even at elevated temperatures.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCrFe-3</td><td>E NiCr Fe-3</td><td>$\ge420$</td><td>$\ge580$</td><td>$\ge30$</td><td>$\underline{\ge47}~at~-196^{\circ}C$</td><td>DC+</td><td>Excellent out of position welding. Excellent corrosion resistant at normal and elevated temperatures.</td></tr>
-                        <tr><td>STARBLAZE PRIME NiCr-Mo3</td><td>ENiCr Mo-3</td><td>$>420$</td><td>$\overline{>760}$</td><td>$\underline{>30}$</td><td>$\ge47~at~-196^{\circ}C$</td><td>DC+</td><td>Superior weldability. Fully austenitic, excellent resistance against corrosive media.</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="flux-cored-wire" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">D - Flux Cored Wire (E-71T1 Wire)</h3>
-            <div class="text-gray-300 mb-4">
-                <p>Specially designed for single or multiple pass welding.</p>
-                <p>An all position flux-cored wire.</p>
-                <p>Excellent wire feeding, low fumes.</p>
-                <p>Smooth arc transfer, Low spatter, Very easy slag removal.</p>
-                <p>High deposition rate, excellent bead appearance.</p>
-                <p>Vacuum Packed, rust free.</p>
-            </div>
-            <div class="flex justify-center">
-                <img src="assets/images/starblaze/flux_cored_wire.png" alt="Flux Cored Wire" class="rounded-lg shadow-lg">
-            </div>
-        </section>
-
-        <section id="stainless-steel-welding-wires" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">E - Stainless Steel Welding Wires</h3>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel MIG Wires</h4>
-            <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p><strong>Size Range:</strong> 0.60 mm to 1.20 mm (0.025" to 0.047")</p>
-                        <p><strong>Finish:</strong> Bright, Semi-Bright & Matte</p>
-                        <p><strong>Packaging:</strong> 1kg, 5kg, 12.5kg & 15kg plastic & basket spools, 100kg & 250kg Drum Pack</p>
-                    </div>
-                    <div>
-                        <p>StarBlaze high quality stainless steel MIG welding wires in bright as well as in matte finish with specially designed cleaning operation to avoid welding contamination & trouble free feeding. StarBlaze MIG welding wire comes in plastic & in metal basket spool as per the different weight requirement by customers.</p>
-                        <p>The wires tensile strength, helix and cast diameter is engineered to precise tolerance to ensure perfect "Pay-Off".</p>
-                        <p>Also manufactures stainless steel MIG welding wires in bulk supplies, which comes with 100 to 250 Kgs (250 to 500 Lbs.) fiber/card board drums for robotic as well as for general applications.</p>
-                        <p>Our pail pack drums equipped with all required facilities for robotic uses & can be utilized on any wire-feeding unit without changing much expensive equipment's.</p>
-                        <p>Our pail pack drum also increases productivity by reducing down times as compared with small plastic spools.</p>
-                        <p>Cast & helix of our pail pack drums are engineered in such a manner that it reduces wastage of wires & increase life of liner tips.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/stainless_steel_mig_wires.png" alt="Stainless Steel MIG Wires" class="rounded-lg shadow-lg">
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel TIG Wires</h4>
-            <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
-                <p><strong>Size Range:</strong> 0.80 mm to 5.00 mm (0.030" to 0.196")</p>
-                <p><strong>Finish:</strong> Bright</p>
-                <p><strong>Length:</strong> 1000mm (40") & 914 mm (36")</p>
-                <p>StarBlaze manufactures high quality stainless steel TIG welding wires in 36" & 1,000 mm cut lengths, with embossing on one or both sides above 1.2 mm wires as per customer's requirements. StarBlaze TIG welding wires are supplied in bright and clean finish to avoid all possible contamination. Plastic tube/ cardboard tube packaging of 5kg (10lbs) in master carton of 20kg (44lbs) further packed in wooden/cardboard box/Euro pallet.</p>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/stainless_steel_tig_wires.png" alt="Stainless Steel TIG Wires" class="rounded-lg shadow-lg">
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel Saw Wires</h4>
-            <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
-                <p><strong>Size Range:</strong> 1.60mm to 4.00mm (0.062" to 0.156")</p>
-                <p><strong>Finish:</strong> Bright & Matte</p>
-                <p><strong>Packaging:</strong> 25 kg Paper Core & K415 basket spools</p>
-                <p>StarBlaze manufactures clean & layer wound wire for submerged arc welding from 1.60 mm (0.0625") to 5.00 mm (0.1875") in various grades in bright as well as in matte finish. The tensile strength, helix and cast diameter is engineered to precise tolerance: to ensure perfect "Pay-Off".</p>
-                <p class="mt-2 text-sm italic">*For stainless steel wires, please follow Annexure 1 for Chemical Composition</p>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/stainless_steel_saw_wires.png" alt="Stainless Steel Saw Wires" class="rounded-lg shadow-lg">
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel Core Wires</h4>
-            <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
-                <p><strong>Size Range:</strong> 1.60mm to 5.00mm (0.062" to 0.196")</p>
-                <p><strong>Packaging:</strong> Cut length of 350mm & coils</p>
-                <p><strong>Finish:</strong> Bright & Matte</p>
-            </div>
-        </section>
-
-        <section id="stainless-steel-wire-general" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">F - Stainless Steel Wire (General)</h3>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel Fine Wires</h4>
-            <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
-                <p><strong>Size Range:</strong> 0.10mm to 0.70mm (0.004" to 0.317")</p>
-                <p><strong>Finish:</strong> Bright</p>
-                <p><strong>Temper:</strong> Annealed or spring hard (stress relieved-optional)</p>
-                <p><strong>Packaging:</strong> On spools DIN 125, DIN160, DIN 200, DIN 250</p>
-                <p><strong>Application:</strong> Braiding, Knitting, Weaving, Jewellery, Scrubber, Shorts, Brushes, Staples, Wire Rope Manufacturing, Fencing etc.</p>
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Stainless Steel Thick Wires</h4>
-            <div class="text-gray-300 mb-4 glass-effect p-4 rounded-lg">
-                <p><strong>Size Range:</strong> 0.70mm to 7.00mm (0.317" to 3.17")</p>
-                <p><strong>Finish:</strong> Soap Drawn (Matte Finish)/Grease Drawn (Bright Finish), Cleaned or with residual lubricant, Bright Drawn (EPQ) Quality.</p>
-                <p><strong>Temper:</strong> Annealed or spring hard</p>
-                <p><strong>Packaging:</strong> Coils on Hanger</p>
-                <p><strong>Application:</strong> Air Bag, Balls, conveyor belts, Fasteners, Fencing, Filters, Hangers, Lashing, Nails, Kitchen Hose, Roofing Hooks, Screens, Staples, Wool, Wire Mesh, Wire Ropes, etc.</p>
-                <p class="mt-2 text-sm italic">*For stainless steel wires, please follow Annexure 1 for Chemical Composition</p>
-            </div>
-        </section>
-
-        <section id="welding-machines" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">G - Welding Machines</h3>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">ARC Inverter Series (RILAND)</h4>
-            <div class="text-gray-300 mb-4">
-                <p><strong>Salient features:</strong></p>
-                <ul class="list-disc list-inside ml-4">
-                    <li>Protection against under voltage, over voltage and over current, it makes the machine safe & reliable.</li>
-                    <li>Wide range from 180 Volt to 260 Volt for single phase and 350 Volt to 480 Volt for three phase.</li>
-                    <li>VRD as standard features OCV reduced to $17V_{\alpha}$ lowest in the segment.</li>
-                    <li>Generator friendly.</li>
-                    <li>Suitable for acidic, basic and cellulosic electrodes.</li>
-                </ul>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/arc_invertor_series.png" alt="ARC Inverter Series" class="rounded-lg shadow-lg">
-            </div>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th>Main Technical Parameters:</th>
-                            <th>ARC-200</th>
-                            <th>ARC-220</th>
-                            <th>ARC-2700</th>
-                            <th>ARC-400</th>
-                            <th>ARC-400 HD</th>
-                            <th>ARC-500</th>
-                            <th>ARC-600</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$AC~220\pm15\%$</td><td>$Ac220\pm15\%$</td><td>$AC~220\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td></tr>
-                        <tr><td></td><td></td><td></td><td></td><td>$415^{*}2P\pm15\%$</td><td></td><td></td><td></td></tr>
-                        <tr><td>Frequency (Hz)</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td></tr>
-                        <tr><td>Rated input capacity (KVA)</td><td>5.83</td><td>7.24</td><td>9.24</td><td>18.2</td><td>18.2</td><td>23.8</td><td>23.2</td></tr>
-                        <tr><td>Rated input current (A)</td><td>26.5</td><td>33</td><td>42</td><td>25.3</td><td>25.3</td><td>33.1</td><td>32.3</td></tr>
-                        <tr><td>Welding output voltage (V)</td><td>54</td><td>58</td><td>70V</td><td>71</td><td>71</td><td>74</td><td>75</td></tr>
-                        <tr><td>Current adjusting range (A)</td><td>30-200</td><td>30-220</td><td>30-270</td><td>40-400A</td><td>40-400A</td><td>40-500A</td><td>45-600A</td></tr>
-                        <tr><td>Efficiency (%)</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>87%</td></tr>
-                        <tr><td>Insulation</td><td>F</td><td>F</td><td>F</td><td>H</td><td>F</td><td>F</td><td>H</td></tr>
-                        <tr><td>Case protection degree</td><td>IP21</td><td>IP 21</td><td>IP21</td><td>IP 21</td><td>IP 21</td><td>IP 21</td><td>IP 21</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$204\times87\times146$</td><td>$295\times130\times235$</td><td>$345\times153\times285$</td><td>$457\times203\times330$</td><td>$482\times241\times381$</td><td>$520\times267\times419$</td><td>$520\times267\times419$</td></tr>
-                        <tr><td>Weight (kg)</td><td>2</td><td>3.7</td><td>5.5</td><td>13</td><td>13.5</td><td>24.5</td><td>25</td></tr>
-                        <tr><td>Suitable electrode rod (mm)</td><td>$1.6/2.5$</td><td>$1.6/2.5/3.2$</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td><td>1.6/2.5/3.2/4.0</td></tr>
-                        <tr><td>Warranty**</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">MIG/MAG Inverter Series</h4>
-            <div class="text-gray-300 mb-4">
-                <p><strong>Salient features:</strong></p>
-                <ul class="list-disc list-inside ml-4">
-                    <li>Protection against under voltage, over voltage and over current, it makes the machine safe and reliable.</li>
-                    <li>Electronic choke adjustment for better arc control.</li>
-                    <li>Multi process GMAW, FCAW, MMAW & Lift TIG.</li>
-                    <li>Generator friendly.</li>
-                    <li>Suitable for Gasless welding.</li>
-                </ul>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/mag_invertor_series.png" alt="MAG Inverter Series" class="rounded-lg shadow-lg">
-            </div>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th>Main Technical Parameters:</th>
-                            <th>MIG 135E</th>
-                            <th>MIG 250F</th>
-                            <th>MIG 400</th>
-                            <th>MIG 500</th>
-                            <th>MIG 500 HD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$230^{*}1P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td></tr>
-                        <tr><td>Frequency (Hz)</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td></tr>
-                        <tr><td>Rated input capacity ((KVA)</td><td>3.1</td><td>9.2</td><td>15.2</td><td>22.8</td><td>16</td></tr>
-                        <tr><td>Rated input current (A)</td><td>13.4</td><td>12.8</td><td>21</td><td>32</td><td>22.2</td></tr>
-                        <tr><td>Welding output voltage (V)</td><td>55</td><td>61</td><td>66</td><td>61</td><td>76</td></tr>
-                        <tr><td>No load loss (W)</td><td>100</td><td>120</td><td>120</td><td>190</td><td>120</td></tr>
-                        <tr><td>Current adjusting range (A)</td><td>32-120</td><td>40-250</td><td>60-400</td><td>60-500</td><td>62-500</td></tr>
-                        <tr><td>Voltage adjusting range (V)</td><td></td><td>16-27</td><td>17-34</td><td>17-39</td><td>17-39</td></tr>
-                        <tr><td>Efficiency (%)</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td></tr>
-                        <tr><td>Insulation</td><td>F</td><td>F</td><td>H</td><td>F</td><td>H</td></tr>
-                        <tr><td>Case protection degree</td><td>IP21</td><td>IP21</td><td>IP21</td><td>IP21</td><td>IP21S</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>280x156x180</td><td>$466\times212\times371$</td><td>$508\times244\times423$</td><td>$526\times272\times468$</td><td>$550\times280\times545$</td></tr>
-                        <tr><td>Weight (kg)</td><td>3.1</td><td>16</td><td>24</td><td>30</td><td>36</td></tr>
-                        <tr><td>Warranty**</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">TIG Inverter Series</h4>
-            <div class="text-gray-300 mb-4">
-                <p><strong>Salient features:</strong></p>
-                <ul class="list-disc list-inside ml-4">
-                    <li>Auto-Adaptive arc force and hot start current under MMA function.</li>
-                    <li>Generator friendly.</li>
-                    <li>Dual functions HF TIG and MMA.</li>
-                    <li>Protection against under voltage, over voltage and over current, it makes the machine safe and reliable.</li>
-                    <li>Adopt new techniques that maximize thermal dissipation with 4 separated heat sinks.</li>
-                    <li>Pass the high voltage 3750V AC dielectric strength test safe for welders.</li>
-                </ul>
-                <p class="mt-2 text-sm italic">*Water Cooled Torch & Water Cooler optional</p>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/tig_invertor_series.png" alt="TIG Inverter Series" class="rounded-lg shadow-lg">
-            </div>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th>Main Technical Parameters:</th>
-                            <th>TIG 250</th>
-                            <th>TIG 250P AC/DC</th>
-                            <th>TIG 315P AC/DC</th>
-                            <th>TIG 400</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$220^{*}1P\pm15\%$</td><td>$220^{*}1P\pm15\%$</td><td>$415^{*}3P\pm15\%$</td><td>$415\%3P\pm15\%$</td></tr>
-                        <tr><td>Frequency (Hz)</td><td>50/60</td><td>50/60</td><td>50/60</td><td>50/60</td></tr>
-                        <tr><td>Rated input capacity ((KVA)</td><td>7.81</td><td>8.03</td><td>12.36</td><td>17.4</td></tr>
-                        <tr><td>Rated input current (A)</td><td>35.5</td><td>36.5</td><td>17.2</td><td>24.3</td></tr>
-                        <tr><td>Welding output voltage (V)</td><td>64</td><td>62</td><td>62</td><td>65</td></tr>
-                        <tr><td>Current adjusting range (A)</td><td>10-250</td><td>10-250</td><td>12-300</td><td>10-400</td></tr>
-                        <tr><td>Efficiency (%)</td><td>85%</td><td>85%</td><td>85%</td><td>85%</td></tr>
-                        <tr><td>Insulation</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
-                        <tr><td>Case protection degree</td><td>IP21S</td><td>IP21</td><td>IP21</td><td>IP21</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$402\times160\times300$</td><td>$476\times340\times402$</td><td>$609\times332\times622$</td><td>$508\times244\times423$</td></tr>
-                        <tr><td>Weight (kg)</td><td>7.5</td><td>18.5</td><td>36</td><td>25</td></tr>
-                        <tr><td>Warranty**</td><td>1</td><td>2</td><td>2</td><td>2</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">SAW Welding Machine (SAW 1250 HD)</h4>
-            <div class="text-gray-300 mb-4">
-                <p><strong>Salient features:</strong></p>
-                <ul class="list-disc list-inside ml-4">
-                    <li>The advanced IGBT inverter technology.</li>
-                    <li>Generator friendly.</li>
-                    <li>100% duty cycle at 1250A.</li>
-                    <li>Analog keys and rotary knobs for convenient operation.</li>
-                    <li>Intelligent energy-saving mode as the machine stop working for more than 5 minutes.</li>
-                    <li>Startup protection circuit in case of inrush current.</li>
-                    <li>Unique control circuit to balance two side's output current and voltage.</li>
-                </ul>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/saw_welding_machine.png" alt="SAW Welding Machine" class="rounded-lg shadow-lg">
-            </div>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th>Main Technical Parameters:</th>
-                            <th>SAW 1250HD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$415^{*}3P\pm15\%$</td></tr>
-                        <tr><td>Frequency (Hz)</td><td>50/60</td></tr>
-                        <tr><td>Rated input capacity ((KVA)</td><td>63.01</td></tr>
-                        <tr><td>Rated input current (A)</td><td>82.6</td></tr>
-                        <tr><td>Welding output voltage (V)</td><td>92</td></tr>
-                        <tr><td>No load loss (W)</td><td>200</td></tr>
-                        <tr><td>Current adjusting range (A)</td><td>250-1250</td></tr>
-                        <tr><td>Voltage adjusting range (V)</td><td>20-44</td></tr>
-                        <tr><td>Efficiency (%)</td><td>85%</td></tr>
-                        <tr><td>Insulation</td><td>F</td></tr>
-                        <tr><td>Case protection degree</td><td>IP23</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$825\times451\times1040$</td></tr>
-                        <tr><td>Weight (kg)</td><td>123.4</td></tr>
-                        <tr><td>Warranty**</td><td>2</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h4 class="text-2xl font-semibold text-purple-400 mb-4">Plasma Cutting Machine (CUT 100)</h4>
-            <div class="text-gray-300 mb-4">
-                <p><strong>Salient features:</strong></p>
-                <ul class="list-disc list-inside ml-4">
-                    <li>The advanced IGBT inverter technology.</li>
-                    <li>Current and post flow time adjustable, enrich controlling ways of welding shape.</li>
-                    <li>Compressed air pressure display on the panel.</li>
-                    <li>Standard signal output socket for CNC on the back panel.</li>
-                    <li>Generator friendly.</li>
-                </ul>
-            </div>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/plasma_cutting_machine.png" alt="Plasma Cutting Machine" class="rounded-lg shadow-lg">
-            </div>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg mb-8">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th>Main Technical Parameters:</th>
-                            <th>CUT 100</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Rates input Voltage (V)</td><td>$415^{*}3P\pm15\%$</td></tr>
-                        <tr><td>Frequency (Hz)</td><td>50/60</td></tr>
-                        <tr><td>Rated input capacity ((KVA)</td><td>21.0</td></tr>
-                        <tr><td>Rated input current (A)</td><td>15.0</td></tr>
-                        <tr><td>Welding output Current (A)</td><td>20-100</td></tr>
-                        <tr><td>Welding output voltage (V)</td><td>328</td></tr>
-                        <tr><td>Efficiency (%)</td><td>85%</td></tr>
-                        <tr><td>Power factor</td><td>>0.93</td></tr>
-                        <tr><td>Insulation</td><td>H</td></tr>
-                        <tr><td>Case protection degree</td><td>IP21</td></tr>
-                        <tr><td>Overall dimensions (mm)</td><td>$526\times272\times468$</td></tr>
-                        <tr><td>Weight (kg)</td><td>25.6</td></tr>
-                        <tr><td>Warranty**</td><td>2</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="welding-auxiliaries" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">H - Welding Auxiliaries</h3>
-            <div class="flex justify-center mb-8">
-                <img src="assets/images/starblaze/welding_auxilaries.png" alt="Welding Auxiliaries" class="rounded-lg shadow-lg">
-            </div>
-            <div class="text-gray-300 space-y-6">
-                <div>
-                    <h4 class="text-2xl font-semibold text-purple-400 mb-2">1. StarBlaze ANTI SPATTER (NF)</h4>
-                    <p>Weather resistant long lasting anti-spatter coating. Prevents spatter from adhering to weld beads, surrounding & welding tips during welding.</p>
-                    <p><strong>Key Features:</strong></p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li>Heavy duty-effective even on the most severe high amperage weld spattering, unlike normal anti spatter sprays.</li>
-                        <li>Fully non-flammable formulation with a non-flammable CO2 propelled for higher user safety as well as higher actual coverage (97% actives vs 65% max actives in hydrocarbon propelled aerosol sprays).</li>
-                    </ul>
-                    <p><strong>PACKING:</strong> 400 Gms/CAN</p>
-                </div>
-                <div>
-                    <h4 class="text-2xl font-semibold text-purple-400 mb-2">2. StarBlaze ANTI SPATTER (E)</h4>
-                    <p>Heavy-duty dry thin film Water based welder anti spatter coating. Designed to prevent spatter from adhering to weld beads, surrounding metal surfaces & welding tips during welding.</p>
-                    <p><strong>Key Features:</strong></p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li>Heavy duty-Effective even on the most severe high amperage weld spattering, unlike normal anti-spatter sprays.</li>
-                        <li>Fully non-flammable water based formulation. Superior application and durability.</li>
-                        <li>Keeps tips and nozzles clean. Prevents spatter build-up.</li>
-                    </ul>
-                    <p><strong>PACKING:</strong> 350 ml/CAN</p>
-                </div>
-                <div>
-                    <h4 class="text-2xl font-semibold text-purple-400 mb-2">3. StarBlaze SUPER PENETRANT & SUPER DEVELOPER</h4>
-                    <p>Will locate surface discontinuities or other indications on all non-porous materials (Metals, Plastics, and Ceramics):- Cracks, Seams, Porosity, Laps, Laminations, and Cold Shuts. Use to detect welding, casting & forging defects, cracks & leaks in new-components and fatigue cracks on in-service components.</p>
-                    <p><strong>Key Features:</strong></p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li>Will detect wide spectrum of flaw sizes regardless of flaw orientation, up to 1 micron to 30 microns depth on standard Ni-Cr test panel.</li>
-                        <li>Superior capillary action, Non-Toxic, Non-Corrosive Free from halides & sulfides.</li>
-                        <li>Conforms to MIL-1-25135, MIL STD 271, IS 3658-1981 "Code of practice for liquid penetrant flaw detection".</li>
-                    </ul>
-                    <p><strong>Packing:</strong> 400 ml/CAN</p>
-                </div>
-                <div>
-                    <h4 class="text-2xl font-semibold text-purple-400 mb-2">4. StarBlaze SUPER 40</h4>
-                    <p>Plastic safe, high di-electric strength cleaner, lubricant, moisture displacer, penetrant & corrosion inhibitor that loosens dirt, scale, rust Reopens jammed assemblies, cleans grease/grime, provides effective anti-rust and prevents electrical malfunctions caused by water penetration, humidity, condensation or corrosion.</p>
-                    <p><strong>Key Application Areas:</strong></p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li><strong>Mechanical:</strong> Threaded assemblies, tools, molds, dies, electrical system precision machined components.</li>
-                        <li><strong>Electrical:</strong> Motor, generators, electromechanical equipment's, communication systems, re-opening jammed parts & assemblies.</li>
-                    </ul>
-                    <p><strong>Packing:</strong> 400 ml/CAN, 200 ml/Can & 100 ml/Can.</p>
-                </div>
-                <div>
-                    <h4 class="text-2xl font-semibold text-purple-400 mb-2">5. StarBlaze NOZZLE DIP GEL</h4>
-                    <p>Heavy duty proprietary polymer gel type formulation. Designed to prevent accumulation of weld spatter from adhering to the welding torch nozzle, both interior and exterior surfaces. Facilitates smooth welding and reduced downtime by avoiding spatter build-up and repeated cleaning of welding tips during the welding process.</p>
-                    <p><strong>Key Application Areas:</strong></p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li>Resistance welding tips, MIG and TIG torch nozzles.</li>
-                        <li>Heavy duty: Effective even on the most severe weld spattering.</li>
-                        <li>Non-drip formulation: Superior adhesion and durability of the gel ensures nozzle and tip remains clean during welding.</li>
-                        <li>No adverse effect on type of welding. It is a non-toxic, non-fuming formulation.</li>
-                    </ul>
-                    <p><strong>Packing:</strong> 300 Gms/Can</p>
-                </div>
-                <div>
-                    <h4 class="text-2xl font-semibold text-purple-400 mb-2">6. StarBlaze 82CO2 WONDER GEL</h4>
-                    <p>Stainless Steel Pickling Gel is a unique, fast action, non-fuming, pickling gel used to remove heat tint, weld discoloration, oxide scale and rust from all series of stainless steels. The corrosion resistance of stainless steel depends on the presence of an invisible protective chromium oxide surface. Operations or exposure to carbon can damage the passive protective layer. Such as welding, grinding.</p>
-                    <p><strong>Key Features:</strong></p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li>User friendly-minimal fuming & skin irritation.</li>
-                        <li>Fast Action.</li>
-                        <li>Easy to use. No mixing or measuring. Apply directly to surfaces to remove stubborn impurities. Superon Pickling Gel Cleans the toughest slag, weld scale and heat/black oxide color from stainless steel.</li>
-                        <li>Cleans & restores the original corrosion resistant properties of the material.</li>
-                    </ul>
-                    <p><strong>PACKING:</strong> 1kg/Can & 500 gm/Can</p>
-                </div>
-                <div class="mt-6">
-                    <h4 class="text-2xl font-semibold text-purple-400 mb-2">Key Application Areas for Auxiliaries:</h4>
-                    <ul class="list-disc list-inside ml-4">
-                        <li>Casting Industry</li>
-                        <li>Fabrication Industry</li>
-                        <li>NDT Testing</li>
-                        <li>Electrical & Electronics</li>
-                        <li>Automobile Industry</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="chemical-composition" class="mb-12 scroll-animate-initial">
-            <h3 class="text-3xl font-bold text-white mb-6 text-center">Annexure 1 - Typical Chemical Composition</h3>
+            <h3 class="text-3xl font-bold text-white mb-6 text-center flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Annexure 1 - Typical Chemical Composition
+            </h3>
             <div class="overflow-x-auto glass-effect p-4 rounded-lg">
                 <table class="min-w-full">
                     <thead>
@@ -1216,7 +795,10 @@
         </section>
 
         <section id="contact" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Get In Touch With Innovative Engineering Products</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Get In Touch With Innovative Engineering Products
+            </h2>
             <div class="glass-effect p-8 rounded-lg max-w-2xl mx-auto text-center">
                 <p class="text-lg text-gray-300 mb-4"><strong>Innovative Engineering Products</strong></p>
                 <p class="text-lg text-gray-300 mb-2"><strong>Contact Numbers:</strong> +91 99523 86668, +91 99433 82727</p>
@@ -1242,6 +824,8 @@
         </div>
     </footer>
 
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
     <script>
         // Define categories for the filter dropdown, mapping display names to section IDs
         const sectionCategories = [
@@ -1293,18 +877,6 @@
             closeIcon.classList.toggle('hidden');
             document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
         }
-
-        // Intersection Observer for scroll animations
-        const fadeInObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-animate-entered'); // Use the class from style.css
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
 
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer

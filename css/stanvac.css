@@ -1,0 +1,61 @@
+/ Table styling copied from main style.css for standalone page /
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+th, td {
+    border: 1px solid #4a5568; / gray-700 /
+    padding: 0.75rem;
+    text-align: left;
+}
+th {
+    background-color: #2d3748; / gray-800 /
+    color: #cbd5e0; / gray-300 /
+    font-weight: 600;
+}
+tr:nth-child(even) {
+    background-color: #2a3340; / Slightly darker for even rows /
+}
+tr:hover {
+    background-color: #4a5568; / gray-700 on hover /
+}
+
+/ Animation keyframes and classes (copied from main style.css for standalone page) /
+.scroll-animate-initial {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate-entered {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.img-placeholder {
+    min-height: 100px;
+    background-color: #1f2937; / gray-800 /
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af; / gray-400 /
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 8px;
+}
+.section-note {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: #374151; / gray-700 /
+    border-left: 4px solid #8b5cf6; / purple-500 /
+    border-radius: 0.25rem;
+}
+/ New general styles for enhanced product text blocks /
+.product-feature-list {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #2d3748; / Slightly lighter than card body /
+    border-radius: 0.5rem;
+}

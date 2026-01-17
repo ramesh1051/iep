@@ -31,16 +31,23 @@
             background-color: #4a5568; /* gray-700 on hover */
         }
 
-        /* Animation keyframes and classes (copied from main style.css for standalone page) */
+        /* Animation keyframes and classes */
         .scroll-animate-initial {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: all 0.8s ease-out;
         }
 
-        .scroll-animate-entered { /* Using a different name to prevent conflict if main.js is loaded */
-            opacity: 1;
-            transform: translateY(0);
+        .scroll-animate-entered { 
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* ADD THIS: Style for your cards */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -53,21 +60,40 @@
                 <span>Innovative Engineering Products</span>
             </a>
             <div class="hidden md:flex space-x-6">
-                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
-                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
-                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
-                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+                <a href="index.html#hero" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Home
+                </a>
+                <div class="relative">
+                    <button id="products-button" class="flex items-center hover:text-purple-400 transition duration-300 focus:outline-none">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Products
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                <div id="products-dropdown" class="absolute left-0 mt-4 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg z-20 hidden">
+                    <div class="py-1">
+                        </div>
+                </div>
+                </div>
+                <a href="index.html#about" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6a6 6 0 016 6v1h-3"></path></svg>
+                    About Us
+                </a>
+                <a href="index.html#contact" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact
+                </a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
         </div>
         <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
             <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <svg class="w-8 h-8" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <a href="index.html#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
             <a href="index.html#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
@@ -81,7 +107,7 @@
             <div class="w-full lg:w-1/2 text-center lg:text-left">
                 <h1 class="text-5xl font-extrabold text-white mb-4">Makita Angle Grinder Series</h1>
                 <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
-                    Discover the robust **4", 4-1/2" & 5" Makita Angle Grinder Series**, engineered for power, durability, and performance. Ideal for welders, fabricators, masons, and automotive applications.
+                    Discover the robust 4", 4-1/2" & 5" Makita Angle Grinder Series, engineered for power, durability, and performance. Ideal for welders, fabricators, masons, and automotive applications.
                 </p>
                 <div class="mt-8">
                     <a href="#specifications" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300">
@@ -96,7 +122,10 @@
 
         <section class="mb-8">
             <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <label for="category-filter" class="text-lg text-gray-300">Jump to Section:</label>
+                <label for="category-filter" class="text-lg text-gray-300 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    Jump to Section:
+                </label>
                 <div class="relative inline-block text-left">
                     <select id="category-filter" class="block appearance-none w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer">
                         <option value="all">All Sections</option>
@@ -108,8 +137,11 @@
             </div>
         </section>
 
-        <section id="features" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Features & Benefits</h2>
+        <section id="features" class="mb-12 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                Features & Benefits
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -152,14 +184,17 @@
             </div>
         </section>
 
-        <section id="specifications" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Technical Specifications</h2>
+        <section id="specifications" class="mb-12 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.608 3.292 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Technical Specifications
+            </h2>
             <div class="overflow-x-auto glass-effect p-4 rounded-lg">
                 <table class="min-w-full">
                     <thead>
                         <tr>
                             <th>Model</th>
-                            <th>9553NB/K*</th>
+                            <th>9553NB/K</th>
                             <th>9554NB</th>
                             <th>9557NB</th>
                             <th>9557PB</th>
@@ -181,12 +216,15 @@
                         <tr><td>UPC Code</td><td colspan="6">088381-06158-2 088381-06177-3 088381-06244-2 088381-06353-1 088381-06246-6 088381-06392-0</td></tr>
                     </tbody>
                 </table>
-                <p class="text-sm italic text-gray-400 mt-4">*K = with case</p>
+                <p class="text-sm italic text-gray-400 mt-4">K = with case</p>
             </div>
         </section>
 
-        <section id="equipment" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Standard Equipment</h2>
+        <section id="equipment" class="mb-12 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                Standard Equipment
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg">
@@ -240,8 +278,11 @@
             </div>
         </section>
 
-        <section id="contact" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Get In Touch With Innovative Engineering Products</h2>
+        <section id="contact" class="mb-12 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Get In Touch With Innovative Engineering Products
+            </h2>
             <div class="glass-effect p-8 rounded-lg max-w-2xl mx-auto text-center">
                 <p class="text-lg text-gray-300 mb-4"><strong>Innovative Engineering Products</strong></p>
                 <p class="text-lg text-gray-300 mb-2"><strong>Contact Numbers:</strong> +91 99523 86668, +91 99433 82727</p>
@@ -267,6 +308,8 @@
         </div>
     </footer>
 
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
     <script>
         // Define categories for the filter dropdown, mapping display names to section IDs
         const sectionCategories = [
@@ -300,36 +343,6 @@
                 }
             }
         }
-
-        // Mobile menu event listeners
-        function toggleMobileMenu() {
-            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-
-            if (!mobileMenuOverlay || !menuIcon || !closeIcon) {
-                console.error('Mobile menu elements not found.');
-                return;
-            }
-
-            mobileMenuOverlay.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
-        }
-
-        // Intersection Observer for scroll animations
-        const fadeInObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-animate-entered');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer
             const currentYearElement = document.getElementById('current-year');
@@ -337,28 +350,11 @@
                 currentYearElement.textContent = new Date().getFullYear();
             }
 
-            // Mobile menu event listeners
-            document.getElementById('mobile-menu-button')?.addEventListener('click', toggleMobileMenu);
-            document.getElementById('mobile-menu-close-button')?.addEventListener('click', toggleMobileMenu);
-            document.getElementById('mobile-menu-overlay')?.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', toggleMobileMenu);
-            });
-
             // Populate categories for the filter
             populateCategories();
 
             // Add event listener for category filter
             categoryFilter.addEventListener('change', filterSections); // Changed to filterSections
-
-            // Observe sections for fade-in animation
-            document.querySelectorAll('section.scroll-animate-initial').forEach(section => {
-                fadeInObserver.observe(section);
-            });
-            // Footer animation: Added explicit observation since it's outside sections
-            document.querySelector('footer')?.classList.add('scroll-animate-initial'); // Ensure footer has initial class if not already there
-            document.querySelectorAll('footer.scroll-animate-initial').forEach(footer => {
-                 fadeInObserver.observe(footer);
-            });
         });
     </script>
 </body>

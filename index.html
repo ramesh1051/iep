@@ -7,6 +7,7 @@
     <title>Innovative Engineering Products</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="min-h-screen bg-gray-950 text-gray-200">
@@ -19,23 +20,42 @@
             </a>
 
             <div class="hidden md:flex space-x-6">
-                <a href="#hero" class="hover:text-purple-400 transition duration-300">Home</a>
-                <a href="#products" class="hover:text-purple-400 transition duration-300">Products</a>
-                <a href="#about" class="hover:text-purple-400 transition duration-300">About Us</a>
-                <a href="#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+                <a href="#hero" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Home
+                </a>
+                <div class="relative">
+                    <button id="products-button" class="flex items-center hover:text-purple-400 transition duration-300 focus:outline-none">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Products
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="products-dropdown" class="absolute left-0 mt-4 w-72 bg-white rounded-md shadow-lg z-20 hidden ring-1 ring-black ring-opacity-5">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        </div>
+                    </div>
+                </div>
+                <a href="#about" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6a6 6 0 016 6v1h-3"></path></svg>
+                    About Us
+                </a>
+                <a href="#contact" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact
+                </a>
             </div>
 
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
         </div>
 
         <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
             <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <svg class="w-8 h-8" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <a href="#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
             <a href="#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
@@ -65,7 +85,7 @@
         <a id="hero-button" href="#products"
            class="inline-flex items-center px-8 py-4 bg-purple-600 text-white text-lg font-semibold rounded-full hover:bg-purple-700 transition duration-300 glow-button hero-element-initial">
             Explore Our Catalog
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="#a78bfa" viewBox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -92,62 +112,93 @@
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2 about-text-initial" data-animation-type="slide-left">
-                <h2 class="text-5xl font-extrabold text-white mb-6 leading-tight glow-text">
-                    About Innovative Engineering Products
-                </h2>
-                <p class="text-lg text-gray-300 mb-6">
-                    Innovative Engineering Products stands at the forefront of industrial solutions, serving as a premium aggregator for high-performance drilling bits and advanced machinery. We meticulously curate top-tier products from trusted global manufacturers, ensuring our clients receive nothing but the best.
-                </p>
-                <p class="text-lg text-gray-300 mb-8">
-                    Our platform is designed to provide a unified, professional-grade experience, inspiring trust and showcasing the pinnacle of engineering excellence. We are committed to empowering industries with tools that deliver unrivaled performance and reliability.
-                </p>
-                <a href="#contact" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-700 transition duration-300 glow-button">
-                    Learn More
-                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </a>
-            </div>
-            <div class="lg:w-1/2 flex justify-center items-center about-image-initial" data-animation-type="slide-right">
-                <img src="assets/images/about-us-image.jpg" alt="About Innovative Engineering Products" class="rounded-xl shadow-2xl glass-effect">
-            </div>
+<section id="about" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+        
+        <div class="lg:w-1/2 about-text-initial" data-animation-type="slide-left">
+            <h2 class="text-5xl font-extrabold text-white mb-6 leading-tight glow-text">
+                About Innovative Engineering Products
+            </h2>
+            <p class="text-lg text-gray-300 mb-6">
+                Innovative Engineering Products stands at the forefront of industrial solutions, serving as a premium aggregator for high-performance drilling bits and advanced machinery. We meticulously curate top-tier products from trusted global manufacturers, ensuring our clients receive nothing but the best.
+            </p>
+            <p class="text-lg text-gray-300 mb-8">
+                Our platform is designed to provide a unified, professional-grade experience, inspiring trust and showcasing the pinnacle of engineering excellence. We are committed to empowering industries with tools that deliver unrivaled performance and reliability.
+            </p>
+            <a href="#contact" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-700 transition duration-300 glow-button">
+                Learn More
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
         </div>
-    </section>
 
-    <section id="contact" class="py-20 bg-gray-950">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-5xl font-extrabold text-white mb-12 glow-text scroll-animate-initial" data-animation-type="fade-up">Get in Touch</h2>
-            <div class="max-w-2xl mx-auto glass-effect p-8 rounded-xl contact-form-initial" data-animation-type="scale-in">
-                <p class="text-xl text-gray-300 mb-8">
-                    Have questions or need a custom quote? Our team is ready to assist you.
-                </p>
-                <form class="space-y-6 text-left">
-                    <div>
-                        <label for="name" class="block text-gray-300 text-sm font-bold mb-2">
-                            Name
-                        </label>
-                        <input type="text" id="name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-800 border-gray-700 text-white" placeholder="Your Name" required>
-                    </div>
-                    <div>
-                        <label for="email" class="block text-gray-300 text-sm font-bold mb-2">
-                            Email
-                        </label>
-                        <input type="email" id="email" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-800 border-gray-700 text-white" placeholder="your@example.com" required>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-gray-300 text-sm font-bold mb-2">
-                            Message
-                        </label>
-                        <textarea id="message" rows="5" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 bg-gray-800 border-gray-700 text-white" placeholder="Your message..." required></textarea>
-                    </div>
-                    <button type="submit" class="w-full px-6 py-3 bg-purple-600 text-white text-lg font-semibold rounded-full glow-button hover:bg-purple-700 transition duration-300">
-                        Send Message
-                    </button>
-                </form>
-            </div>
+        <div class="lg:w-1/2 relative group overflow-hidden rounded-xl shadow-2xl glass-effect about-image-initial" data-animation-type="slide-right">
+            <div id="about-track" class="flex transition-transform duration-700 ease-in-out"></div>
+
+            <button id="prevAbout" class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button id="nextAbout" class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
         </div>
-    </section>
+
+            <button id="prevAbout" class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button id="nextAbout" class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-20 bg-gray-950">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-5xl font-extrabold text-white mb-12 glow-text scroll-animate-initial" data-animation-type="fade-up">
+            Get in Touch
+        </h2>
+
+        <div class="max-w-2xl mx-auto glass-effect p-8 rounded-xl border border-gray-800" data-animation-type="scale-in">
+            <p class="text-xl text-gray-300 mb-8">
+                Have questions or need a custom quote? Our team is ready to assist you.
+            </p>
+
+            <form id="form" class="space-y-6 text-left">
+                <div>
+                    <label class="block text-gray-300 text-sm font-bold mb-2">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Your Name" required
+                        class="w-full py-3 px-4 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-gray-300 text-sm font-bold mb-2">Email</label>
+                    <input type="email" name="email" id="email" placeholder="your@example.com" required
+                        class="w-full py-3 px-4 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-gray-300 text-sm font-bold mb-2">Phone Number</label>
+                    <input type="tel" name="phone_no" id="phone_no" placeholder="+91 0000000000" required
+                        class="w-full py-3 px-4 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-gray-300 text-sm font-bold mb-2">Message</label>
+                    <textarea name="message" id="message" rows="5" placeholder="Your message..." required
+                        class="w-full py-3 px-4 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 outline-none"></textarea>
+                </div>
+
+                <input type="submit" id="button" value="Send Message" 
+                    class="w-full px-6 py-3 bg-purple-600 text-white text-lg font-semibold rounded-full hover:bg-purple-700 transition duration-300 cursor-pointer shadow-lg">
+            </form>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    emailjs.init('X1rnfVIa_-PUvWyz9')
+</script>
 
     <footer class="bg-gray-900 py-10">
         <div class="container mx-auto px-4 text-center text-gray-400">
@@ -166,5 +217,6 @@
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>

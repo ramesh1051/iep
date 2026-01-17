@@ -53,21 +53,39 @@
                 <span>Innovative Engineering Products</span>
             </a>
             <div class="hidden md:flex space-x-6">
-                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
-                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
-                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
-                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+                <a href="index.html#hero" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Home
+                </a>
+            <div class="relative">
+                <button id="products-button" class="flex items-center hover:text-purple-400 transition duration-300 focus:outline-none">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Products
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="products-dropdown" class="absolute left-0 mt-4 w-72 bg-gray-900 border border-gray-700 rounded-md shadow-lg z-20 hidden">
+                    <div class="py-1"></div>
+                </div>
+            </div>
+                <a href="index.html#about" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6a6 6 0 016 6v1h-3"></path></svg>
+                    About Us
+                </a>
+                <a href="index.html#contact" class="flex items-center hover:text-purple-400 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact
+                </a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
         </div>
         <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
             <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <svg class="w-8 h-8" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <a href="index.html#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
             <a href="index.html#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
@@ -104,7 +122,10 @@
         </section>
 
         <section id="robotics-fleet" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Robotics: The Fleet</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9.83a4 4 0 01-3.54-1.99l-.27-.45A2 2 0 004 7.02V7m13 2v6m-3-3h.01"></path></svg>
+                Robotics: The Fleet
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg text-center">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">R-GEN</h3>
@@ -142,7 +163,10 @@
         </section>
 
         <section id="portfolio" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Our Portfolio</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                Our Portfolio
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg text-center">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">ROBOTS</h3>
@@ -163,7 +187,10 @@
         </section>
 
         <section id="robotics-solutions" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Robotics Solutions</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3m6-7h3m-18 0h3m5 5h4v-4h-4v4zm-2-12h10v2H7V7z"></path></svg>
+                Robotics Solutions
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="glass-effect p-6 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">Welding Solutions</h3>
@@ -196,7 +223,10 @@
 
 
         <section id="machines-automation" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Machines & Automation</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.608 3.292 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Machines & Automation
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="glass-effect p-6 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">Automated Machines</h3>
@@ -227,7 +257,10 @@
         </section>
 
         <section id="our-strength" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Our Strength</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-14l-3 3m5 5l-3-3m-4 6v-4m-2 2h4m-1-7l-3 3m5 5l-3-3"></path></svg>
+                Our Strength
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">End-to-End Solution Provider</h3>
@@ -256,7 +289,10 @@
         </section>
 
         <section id="contact" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Get In Touch With Innovative Engineering Products</h2>
+            <h2 class="text-4xl font-bold text-white text-center mb-8 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Get In Touch With Innovative Engineering Products
+            </h2>
             <div class="glass-effect p-8 rounded-lg max-w-2xl mx-auto text-center">
                 <p class="text-lg text-gray-300 mb-4"><strong>Innovative Engineering Products</strong></p>
                 <p class="text-lg text-gray-300 mb-2"><strong>Contact Numbers:</strong> +91 99523 86668, +91 99433 82727</p>
@@ -282,6 +318,8 @@
         </div>
     </footer>
 
+   <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
     <script>
         // Define categories for the filter dropdown, mapping display names to section IDs
         const sectionCategories = [
@@ -327,18 +365,6 @@
             closeIcon.classList.toggle('hidden');
             document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
         }
-
-        // Intersection Observer for scroll animations
-        const fadeInObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-animate-entered');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
 
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer

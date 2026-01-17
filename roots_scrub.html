@@ -4,150 +4,241 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RootsScrub E4043 - Sturdy Automatic Scrubber Drier | Innovative Engineering Products</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> 
     <style>
-        /* Table styling copied from main style.css for standalone page */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
-        }
-        th, td {
-            border: 1px solid #4a5568; /* gray-700 */
-            padding: 0.75rem;
-            text-align: left;
-        }
-        th {
-            background-color: #2d3748; /* gray-800 */
-            color: #cbd5e0; /* gray-300 */
-            font-weight: 600;
-        }
-        tr:nth-child(even) {
-            background-color: #2a3340; /* Slightly darker for even rows */
-        }
-        tr:hover {
-            background-color: #4a5568; /* gray-700 on hover */
+        :root { --color-custom-orange: #ff7a3d; }
+        .bg-custom-orange { background-color: var(--color-custom-orange); }
+        .text-custom-orange { color: var(--color-custom-orange); }
+
+/* Dropdown Styling - Clean & Premium */
+#products-dropdown {
+    background-color: #ffffff !important; /* Forces pure white */
+    border: 1px solid #e2e8f0; /* Soft light gray border */
+    border-radius: 0.5rem;
+    overflow: hidden; /* Ensures hover background doesn't bleed out of corners */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+#products-dropdown a {
+    display: block;
+    padding: 0.85rem 1.25rem;
+    color: #1f2937 !important; /* Dark text */
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom: 1px solid #f3f4f6; /* Very faint separator */
+    background-color: white !important;
+    transition: all 0.2s ease;
+}
+
+#products-dropdown a:last-child {
+    border-bottom: none; /* Removes line from the last item */
+}
+
+#products-dropdown a:hover {
+    background-color: #ff7a3d !important; /* Brand Orange */
+    color: #ffffff !important; /* Pure White text */
+    padding-left: 1.5rem; /* Subtle "slide" effect on hover */
+}
+
+        /* Table and Panel Styling */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem; text-align: left; color: #1f2937; }
+        th { background-color: var(--color-custom-orange); color: #ffffff; font-weight: 700; }
+        tr:nth-child(even) { background-color: #f7fafc; }
+        /* --- UPDATED PANEL STYLING: With Orange Hover & Title Highlight --- */
+        .light-panel { 
+            background-color: #ffffff; 
+            border: 2px solid #e2e8f0; 
+            border-radius: 1rem; 
+            transition: all 0.3s ease; /* Smooth transition for elevation */
         }
 
-        /* Animation keyframes and classes (copied from main style.css for standalone page) */
-        .scroll-animate-initial {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        /* Elevation, orange border, and shadow on hover */
+        .light-panel:hover {
+            border-color: #ff7a3d; 
+            transform: translateY(-5px); /* Elevation effect */
+            box-shadow: 0 10px 20px rgba(255, 122, 61, 0.15); /* Orange shadow */
         }
 
-        .scroll-animate-entered { /* Using a different name to prevent conflict if main.js is loaded */
-            opacity: 1;
-            transform: translateY(0);
+        /* Title Highlight: Turns the h3 orange when the panel is hovered */
+        .light-panel:hover h3 {
+            color: #ff7a3d !important;
         }
+
+        /* Animations */
+        .scroll-animate-initial { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .scroll-animate-entered { opacity: 1 !important; transform: translateY(0) !important; }
+
+        .product-feature-list li { display: flex; align-items: flex-start; margin-bottom: 0.5rem; color: #374151; }
+        .product-feature-list li svg { flex-shrink: 0; margin-top: 0.25rem; margin-right: 0.5rem; }
     </style>
 </head>
-<body class="min-h-screen bg-gray-950 text-gray-200 font-sans">
+<body class="min-h-screen bg-white text-gray-800 font-sans">
 
-    <nav class="sticky top-0 z-50 bg-gray-950 bg-opacity-90 backdrop-blur-md shadow-lg p-4">
+    <nav class="sticky top-0 z-50 bg-custom-orange p-4 shadow-xl">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2 text-white text-2xl font-bold">
-                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-8 h-8">
+            <a href="index.html" class="flex items-center space-x-3 text-white text-3xl font-bold">
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-10 h-10"> 
                 <span>Innovative Engineering Products</span>
             </a>
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html#hero" class="hover:text-purple-400 transition duration-300">Home</a>
-                <a href="index.html#products" class="hover:text-purple-400 transition duration-300">Products</a>
-                <a href="index.html#about" class="hover:text-purple-400 transition duration-300">About Us</a>
-                <a href="index.html#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+            <div class="hidden md:flex space-x-8 text-lg font-medium">
+                <a href="index.html#hero" class="flex items-center text-white hover:text-gray-900 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Home
+                </a>
+                <div class="relative">
+                    <button id="products-button" class="flex items-center text-white hover:text-gray-900 transition duration-300 focus:outline-none">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Products
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="products-dropdown" class="absolute left-0 mt-4 w-72 bg-white border border-gray-200 rounded-md shadow-xl z-20 hidden">
+                        <div class="py-1 flex flex-col">
+                            </div>
+                    </div>
+                </div>
+                <a href="index.html#about" class="flex items-center text-white hover:text-gray-900 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6a6 6 0 016 6v1h-3"></path></svg>
+                    About Us
+                </a>
+                <a href="index.html#contact" class="flex items-center text-white hover:text-gray-900 transition duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact
+                </a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
-        </div>
-        <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-gray-950 bg-opacity-95 z-40 flex-col items-center justify-center space-y-6 hidden">
-            <button id="mobile-menu-close-button" class="absolute top-4 right-4 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <a href="index.html#hero" class="text-white text-3xl hover:text-purple-400 transition duration-300">Home</a>
-            <a href="index.html#products" class="text-white text-3xl hover:text-purple-400 transition duration-300">Products</a>
-            <a href="index.html#about" class="text-white text-3xl hover:text-purple-400 transition duration-300">About Us</a>
-            <a href="index.html#contact" class="text-white text-3xl hover:text-purple-400 transition duration-300">Contact</a>
         </div>
     </nav>
 
     <main class="container mx-auto px-4 py-16">
-        <section id="hero" class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-8 scroll-animate-initial">
-            <div class="w-full lg:w-1/2 text-center lg:text-left">
-                <h1 class="text-5xl font-extrabold text-white mb-4">RootsScrub E4043</h1>
-                <h2 class="text-3xl font-semibold text-purple-400 mb-4">Sturdy Automatic Scrubber Drier</h2>
-                <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
-                    Superior technology for quick, economical and effective cleaning. Wet scrubbing and vacuuming - spotless cleaning up to 1720 $m^{2}$ cleanliness/hour.
-                </p>
-                <p class="text-xl italic text-gray-400 mt-4">
-                    Roots - Perfect from product to service.
-                </p>
-            </div>
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                <img src="assets/images/roots_scrub/roots_scrub.png" alt="RootsScrub E4043" class="rounded-lg shadow-lg max-w-full h-auto">
-            </div>
-        </section>
+    <section id="hero" class="mb-20 flex flex-col lg:flex-row items-center justify-between gap-12 scroll-animate-initial" data-animation-type="fade-up">
+        <div class="w-full lg:w-3/5 text-center lg:text-left">
+            <h1 class="text-6xl font-extrabold text-gray-900 mb-4 tracking-tight flex items-center lg:justify-start justify-center space-x-3">
+                <svg class="w-10 h-10 text-custom-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                <span>RootsScrub E4043</span>
+            </h1>
+            <h2 class="text-4xl font-light text-custom-orange mb-6">Sturdy Automatic Scrubber Drier</h2>
+            <p class="text-xl text-gray-700 max-w-3xl lg:max-w-none mx-auto lg:mx-0 leading-relaxed">
+                Superior technology for quick, economical and effective cleaning. Wet scrubbing and vacuuming, delivering spotless cleanliness up to 1720 m² cleanliness/hour.
+            </p>
+            <p class="text-lg italic text-gray-500 mt-6 border-l-4 border-custom-orange pl-4 inline-block">
+                Roots - Perfect from product to service.
+            </p>
+        </div>
 
-        <section class="mb-8">
+        <div class="w-full lg:w-2/5 flex justify-center lg:justify-end">
+            <img src="assets/images/roots_scrub/roots_scrub.png" alt="RootsScrub E4043" class="rounded-xl shadow-2xl hover:shadow-3xl transition duration-500 max-w-full h-auto">
+        </div>
+    </section>
+
+        <section class="mb-12">
+            <div class="bg-custom-orange text-white p-6 rounded-xl mb-12 shadow-xl text-center">
+                <h2 class="text-3xl font-semibold flex items-center justify-center">
+                    <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.54 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.784.57-1.838-.196-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118L2.05 10.002c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    Featured Product: RootsScrub E4043
+                </h2>
+            </div>
+
             <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <label for="category-filter" class="text-lg text-gray-300">Jump to Section:</label>
+                <label for="category-filter" class="text-lg text-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    Jump to Section:
+                </label>
                 <div class="relative inline-block text-left">
-                    <select id="category-filter" class="block appearance-none w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer">
+                    <select id="category-filter" class="block appearance-none w-full bg-white border border-gray-300 text-gray-800 py-3 px-6 pr-10 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-custom-orange focus:border-custom-orange cursor-pointer transition duration-300">
                         <option value="all">All Sections</option>
-                        </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">About RootsScrub E4043</h2>
-            <div class="glass-effect p-6 rounded-lg text-center">
-                <p class="text-lg text-gray-300 mb-4">
-                    The RootsScrub E4043 machine is a handy, mains operated scrubber-drier for quick, economical and effective cleaning of all types of hard floors. The extremely compact and robustly constructed machine guarantees high degree of maneuverability, easy handling and good visibility. RootsScrub E4043 offers low running costs, optimum cleanliness and ease of maintenance.
-                </p>
-                <p class="text-lg text-gray-300">
-                    Variety of brushes and pads are available to suit different floor conditions.
-                </p>
+        <section id="about" class="mb-20 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-10 border-b-2 pb-2 border-gray-200 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                About RootsScrub E4043
+            </h2>
+            <div class="light-panel p-10 rounded-2xl shadow-xl">
+                <ul class="product-feature-list text-gray-700 text-xl space-y-3">
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Handy, mains operated scrubber-drier designed for quick, economical, and effective cleaning.</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Robust, compact construction guarantees exceptional maneuverability and easy handling.</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Features low running costs, unmatched cleanliness, and simple maintenance procedures.</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Variety of brushes and pads available to suit any hard floor condition.</p>
+                    </li>
+                </ul>
             </div>
         </section>
 
-        <section id="features" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Key Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-effect p-6 rounded-lg text-center">
-                    <img src="assets/images/roots_scrub/operation.png" alt="Operational Switches" class="mb-4 rounded-lg shadow-lg mx-auto">
-                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Easy Operation</h3>
-                    <p class="text-gray-300">All operational switches are within direct view and easy reach of the operator. Excellent view of the area to be cleaned.</p>
+        <section id="features" class="mb-20 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-10 border-b-2 pb-2 border-gray-200 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Key Design Features
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                
+                <div class="light-panel p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition duration-500 ease-in-out">
+                    <img src="assets/images/roots_scrub/operation.png" alt="Operational Switches" class="mb-6 rounded-lg shadow-xl mx-auto max-h-32">
+                    <h3 class="text-xl font-semibold text-custom-orange mb-3 flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0h2m4 0v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0h2m4 0v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
+                        <span>Intuitive Operation</span>
+                    </h3>
+                    <p class="text-gray-700 text-base">All operational switches are located within direct view and easy reach, providing the operator an excellent view of the cleaning area.</p>
                 </div>
-                <div class="glass-effect p-6 rounded-lg text-center">
-                    <img src="assets/images/roots_scrub/cleaning.png" alt="Tank Cleaning" class="mb-4 rounded-lg shadow-lg mx-auto">
-                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Simple Tank Cleaning</h3>
-                    <p class="text-gray-300">Easy tank cleaning, thanks to the large tank opening. Tank can be emptied quickly and easily via the large outlet hose.</p>
+
+                <div class="light-panel p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition duration-500 ease-in-out">
+                    <img src="assets/images/roots_scrub/cleaning.png" alt="Tank Cleaning" class="mb-6 rounded-lg shadow-xl mx-auto max-h-32">
+                    <h3 class="text-xl font-semibold text-custom-orange mb-3 flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-1 12H6L5 7m5 0V4a1 1 0 011-1h2a1 1 0 011 1v3m-4 0h4"></path></svg>
+                        <span>Hassle-Free Cleaning</span>
+                    </h3>
+                    <p class="text-gray-700 text-base">Tank cleaning is simplified thanks to a large opening, and emptying is quick and easy via the generous outlet hose.</p>
                 </div>
-                <div class="glass-effect p-6 rounded-lg text-center">
-                    <img src="assets/images/roots_scrub/suction.png" alt="Suction Motor" class="mb-4 rounded-lg shadow-lg mx-auto">
-                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Powerful Suction</h3>
-                    <p class="text-gray-300">Powerful suction motor with filter protection and sensor ensures safety of vacuum motor in the dirty water tank.</p>
+
+                <div class="light-panel p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition duration-500 ease-in-out">
+                    <img src="assets/images/roots_scrub/suction.png" alt="Suction Motor" class="mb-6 rounded-lg shadow-xl mx-auto max-h-32">
+                    <h3 class="text-xl font-semibold text-custom-orange mb-3 flex items-center justify-center space-x-2">
+                         <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <span>Protected Vacuum</span>
+                    </h3>
+                    <p class="text-gray-700 text-base">A powerful suction motor is protected by a filter and sensor, ensuring the vacuum motor remains safe even when the dirty water tank is full.</p>
                 </div>
-                <div class="glass-effect p-6 rounded-lg text-center">
-                    <img src="assets/images/roots_scrub/brush_change.png" alt="Brush Change" class="mb-4 rounded-lg shadow-lg mx-auto">
-                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Effortless Brush Change</h3>
-                    <p class="text-gray-300">Brushes can be effortlessly changed quickly at the push of a button.</p>
+
+                <div class="light-panel p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition duration-500 ease-in-out">
+                    <img src="assets/images/roots_scrub/brush_change.png" alt="Brush Change" class="mb-6 rounded-lg shadow-xl mx-auto max-h-32">
+                    <h3 class="text-xl font-semibold text-custom-orange mb-3 flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c.7 0 1.4.3 1.9.9l4.5 4.5c.6.6.6 1.4 0 2s-1.4.6-2 0l-4.5-4.5c-.5-.5-1.2-.8-1.9-.8s-1.4.3-1.9.9L4 16.9c-.6.6-.6 1.4 0 2s1.4.6 2 0l4.5-4.5c.5-.5 1.2-.8 1.9-.8z"></path></svg>
+                        <span>Quick Brush Swap</span>
+                    </h3>
+                    <p class="text-gray-700 text-base">Changing brushes is an effortless task that can be completed quickly with the push of a dedicated button.</p>
                 </div>
             </div>
         </section>
 
-        <section id="specifications" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Technical Specifications</h2>
-            <div class="overflow-x-auto glass-effect p-4 rounded-lg">
+        <section id="specifications" class="mb-20 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-10 border-b-2 pb-2 border-gray-200 flex items-center justify-center space-x-3">
+                <svg class="w-8 h-8 text-custom-orange flex-shrink-0" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.608 3.292 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span>Technical Specifications</span>
+            </h2>
+            <div class="overflow-x-auto light-panel p-8 rounded-2xl shadow-xl">
                 <table class="min-w-full">
                     <thead>
                         <tr>
@@ -159,9 +250,9 @@
                     <tbody>
                         <tr><td>Scrubbing width</td><td>mm</td><td>430</td></tr>
                         <tr><td>Effective suction width</td><td>mm</td><td>750</td></tr>
-                        <tr><td>Theoretical area coverage</td><td>$m^{2}/hr$</td><td>1720</td></tr>
-                        <tr><td>Working speed, up to</td><td>$km/hr$</td><td>4</td></tr>
-                        <tr><td>Power supply</td><td>$V/Hz$</td><td>$230/50$</td></tr>
+                        <tr><td>Theoretical area coverage</td><td>m²/hr</td><td>1720</td></tr>
+                        <tr><td>Working speed, up to</td><td>km/hr</td><td>4</td></tr>
+                        <tr><td>Power supply</td><td>V/Hz</td><td>230/50</td></tr>
                         <tr><td>Total power</td><td>W</td><td>1200</td></tr>
                         <tr><td>Brush motor</td><td>W</td><td>800</td></tr>
                         <tr><td>Vacuum motor power</td><td>W</td><td>400</td></tr>
@@ -171,124 +262,137 @@
                         <tr><td>Brush load</td><td>kg</td><td>22</td></tr>
                         <tr><td>Fresh water tank</td><td>L</td><td>40</td></tr>
                         <tr><td>Dirty water tank</td><td>L</td><td>40</td></tr>
-                        <tr><td>Dimensions $(L\times W\times H)$ with Squeegee</td><td>mm</td><td>$1205\times780\times1055$</td></tr>
-                        <tr><td>Dimensions $(L\times W\times H)$ without Squeegee</td><td>mm</td><td>$1205\times465\times1055$</td></tr>
+                        <tr><td>Dimensions (L x W x H) with Squeegee</td><td>mm</td><td>1205x780x1055</td></tr>
+                        <tr><td>Dimensions (L x W x H) without Squeegee</td><td>mm</td><td>1205x465x1055</td></tr>
                         <tr><td>Total weight ready to operate</td><td>kg</td><td>120</td></tr>
-                        <tr><td>Sound Level</td><td>$dB(A)$</td><td>73.5</td></tr>
+                        <tr><td>Sound Level</td><td>dB [A]</td><td>73.5</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p class="text-sm italic text-gray-400 mt-4 text-center">
+            <p class="text-sm italic text-gray-600 mt-6 text-center">
                 Roots reserves the right to make any changes considered necessary for the purposes of improvement at any time or for any reason without prior notice, in line with its policy of continuous product development and progress.
             </p>
         </section>
 
-        <section id="product-range" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Our Extensive Product Range</h2>
-            <div class="glass-effect p-6 rounded-lg text-center">
-                <p class="text-lg text-gray-300">
-                    Sweepers, Scrubber-Driers, Vacuum Cleaners, Single Disc Scrubbers, Mini Floor Washers, High Pressure Water Jet Cleaners, City Sweepers, Bins, Mops & Trolleys.
-                </p>
+        <section id="product-range" class="mb-20 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-10 border-b-2 pb-2 border-gray-200 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                Our Extensive Product Range
+            </h2>
+            <div class="light-panel p-10 rounded-2xl shadow-xl">
+                <ul class="product-feature-list text-gray-700 text-xl space-y-3">
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Sweepers</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Scrubber-Driers</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Vacuum Cleaners</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Single Disc Scrubbers</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Mini Floor Washers</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>High Pressure Water Jet Cleaners</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>City Sweepers</p>
+                    </li>
+                    <li>
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p>Bins, Mops & Trolleys</p>
+                    </li>
+                </ul>
             </div>
         </section>
 
-        <section id="contact" class="mb-12 scroll-animate-initial">
-            <h2 class="text-4xl font-bold text-white text-center mb-8">Get In Touch With Innovative Engineering Products</h2>
-            <div class="glass-effect p-8 rounded-lg max-w-2xl mx-auto text-center">
-                <p class="text-lg text-gray-300 mb-4"><strong>Innovative Engineering Products</strong></p>
-                <p class="text-lg text-gray-300 mb-2"><strong>Contact Numbers:</strong> +91 99523 86668, +91 99433 82727</p>
-                <p class="text-lg text-gray-300 mb-4"><strong>Web:</strong> <a href="javascript:void(0)" class="text-purple-300 hover:underline">innovativeengineeringproducts.com</a></p>
-                <p class="text-lg text-gray-300"><strong>Address:</strong> #123, 1st Main, Industrial Area, Peenya, Bengaluru, Karnataka 560058, India</p>
+        <section id="contact" class="mb-12 scroll-animate-initial" data-animation-type="fade-up"></section>
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-10 border-b-2 pb-2 border-gray-200 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                Connect With Innovative Engineering Products
+            </h2>
+            <div class="light-panel p-10 rounded-2xl max-w-3xl mx-auto text-center shadow-2xl border-t-4 border-custom-orange">
+                <p class="text-2xl font-semibold text-gray-900 mb-4">Innovative Engineering Products</p>
+                <div class="space-y-2 mb-6 text-lg text-gray-700">
+                    <p class="flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5 text-custom-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v2m6-2v2m-6 4h.01m6-.01h.01M5 19v2a2 2 0 002 2h10a2 2 0 002-2v-2"></path></svg>
+                        <span>Contact Numbers: <span class="font-medium text-custom-orange">+91 99523 86668</span>, <span class="font-medium text-custom-orange">+91 99433 82727</span></span>
+                    </p>
+                    <p class="flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5 text-custom-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9h-3M3 12h3m0 0v-2m0 2v2m0-2h3m0 0h2m0 0v-2m0 2v2m0-2h3m0 0v-2m0 2v2m0-2h3"></path></svg>
+                        <span>Web: <a href="javascript:void(0)" class="text-custom-orange hover:text-gray-900 hover:underline transition duration-300">innovativeengineeringproducts.com</a></span>
+                    </p>
+                </div>
+                <p class="text-lg text-gray-700 flex items-start justify-center space-x-2 mx-auto">
+                    <svg class="w-5 h-5 text-custom-orange flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span>Address: #123, 1st Main, Industrial Area, Peenya, Bengaluru, Karnataka 560058, India</span>
+                </p>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-gray-900 py-10">
-        <div class="container mx-auto px-4 text-center text-gray-400">
+    <footer class="bg-gray-100 py-12 border-t border-gray-300 scroll-animate-initial">
+        <div class="container mx-auto px-4 text-center text-gray-600">
             <div class="flex flex-col items-center mb-6">
-                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-12 h-12 mb-2">
-                <p class="text-xl font-bold text-white">Innovative Engineering Products</p>
+                <img src="assets/images/company_logo.png" alt="Company Logo" class="w-14 h-14 mb-2">
+                <p class="text-2xl font-bold text-gray-800">Innovative Engineering Products</p>
             </div>
             <p class="mb-4">&copy; 2025 Innovative Engineering Products. All rights reserved.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Privacy Policy</a>
-                <span class="text-gray-600">|</span>
-                <a href="javascript:void(0)" class="hover:text-white transition duration-300">Terms of Service</a>
+            <div class="flex justify-center space-x-8 text-sm font-medium">
+                <a href="javascript:void(0)" class="hover:text-custom-orange transition duration-300">Privacy Policy</a>
+                <span class="text-gray-400">|</span>
+                <a href="javascript:void(0)" class="hover:text-custom-orange transition duration-300">Terms of Service</a>
             </div>
         </div>
     </footer>
 
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        // Define categories for the filter dropdown, mapping display names to section IDs
-        const sectionCategories = [
-            { value: 'about', text: 'About E4043' },
-            { value: 'features', text: 'Features' },
-            { value: 'specifications', text: 'Specifications' },
-            { value: 'product-range', text: 'Product Range' }
-        ];
-
-        const categoryFilter = document.getElementById('category-filter');
-
-        function populateCategories() {
-            categoryFilter.innerHTML = '<option value="all">All Sections</option>';
-
-            sectionCategories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category.value;
-                option.textContent = category.text;
-                categoryFilter.appendChild(option);
-            });
-        }
-
-        function filterSections() {
-            const selectedCategory = categoryFilter.value;
-
-            if (selectedCategory !== 'all') {
-                const targetSection = document.getElementById(selectedCategory);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        }
-
-        // Mobile menu event listeners
-        function toggleMobileMenu() {
-            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-
-            mobileMenuOverlay.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
-        }
-
-        // Intersection Observer for scroll animations
-        const fadeInObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-animate-entered');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
-            const currentYearElement = document.getElementById('current-year');
-            if (currentYearElement) {
-                currentYearElement.textContent = new Date().getFullYear();
+            // --- Section Filter ---
+            const sectionCategories = [
+                { value: 'about', text: 'About E4043' },
+                { value: 'features', text: 'Features' },
+                { value: 'specifications', text: 'Specifications' },
+                { value: 'product-range', text: 'Product Range' }
+            ];
+
+            const categoryFilter = document.getElementById('category-filter');
+
+            function populateCategories() {
+                categoryFilter.innerHTML = '<option value="all">All Sections</option>';
+
+                sectionCategories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category.value;
+                    option.textContent = category.text;
+                    categoryFilter.appendChild(option);
+                });
             }
 
-            // Mobile menu event listeners
-            document.getElementById('mobile-menu-button')?.addEventListener('click', toggleMobileMenu);
-            document.getElementById('mobile-menu-close-button')?.addEventListener('click', toggleMobileMenu);
-            document.getElementById('mobile-menu-overlay')?.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', toggleMobileMenu);
-            });
+            function filterSections() {
+                const selectedCategory = categoryFilter.value;
+
+                if (selectedCategory !== 'all') {
+                    const targetSection = document.getElementById(selectedCategory);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            }
 
             // Populate categories for the filter
             populateCategories();
@@ -296,15 +400,26 @@
             // Add event listener for category filter
             categoryFilter.addEventListener('change', filterSections);
 
-            // Observe sections for fade-in animation
-            document.querySelectorAll('section.scroll-animate-initial').forEach(section => {
-                fadeInObserver.observe(section);
-            });
-            // Footer animation: Added explicit observation since it's outside sections
-            document.querySelector('footer')?.classList.add('scroll-animate-initial'); // Ensure footer has initial class if not already there
-            document.querySelectorAll('footer.scroll-animate-initial').forEach(footer => {
-                 fadeInObserver.observe(footer);
-            });
+            // Manually trigger observer for this page
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('scroll-animate-entered');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-animate-initial').forEach(el => fadeInObserver.observe(el));
+
+            // Override dropdown link colors for the light theme
+            const productsDropdown = document.getElementById('products-dropdown');
+            if (productsDropdown) {
+                const links = productsDropdown.querySelectorAll('a');
+                links.forEach(link => {
+                    link.classList.remove('text-gray-200', 'hover:bg-gray-700', 'hover:text-purple-300');
+                    link.classList.add('text-gray-800', 'hover:bg-gray-100', 'hover:text-custom-orange');
+                });
+            }
         });
     </script>
 </body>

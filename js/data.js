@@ -69,7 +69,7 @@ const products = [
         image: 'assets/images/roots_scrub/roots_scrub.png',
         manufacturer: 'Roots Multiclean Ltd.',
         description: 'A handy, mains-operated scrubber-drier for quick, economical, and effective cleaning of all types of hard floors, guaranteeing high maneuverability.',
-        detailsPage: 'roots_scrub_orange.html'
+        detailsPage: 'roots_scrub.html'
     },
     {
         id: 'mechanical-mro-solutions',
@@ -80,8 +80,8 @@ const products = [
         detailsPage: 'mechanical_mro.html'
     },
     {
-        id: 'stanvac-superon-group-2017',
-        category: 'Maintenance & Repair Solutions 2017',
+        id: 'stanvac-superon-group',
+        category: 'Maintenance & Repair Solutions',
         image: 'assets/images/maintenance_repair/stanvac_maintenance_index.png',
         manufacturer: 'STANVAC - SUPERON GROUP',
         description: 'Comprehensive solutions for industrial repair, wear, corrosion, abrasion, electrical insulation, fire suppression, cleaning & degreasing, and speciality lubrication, established in 1994.',

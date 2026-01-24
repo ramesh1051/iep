@@ -91,12 +91,7 @@ const products = [
 
 const manufacturers = [
     { name: 'Roots Multiclean Ltd.', logo: 'assets/images/roots_logo.png', logoSize: 'h-16' },
-    { 
-        name: 'Makita U.S.A.', 
-        logo: 'assets/images/makita/makita_logo_loop.mp4', // Points to your video file
-        logoSize: 'h-16',
-        isVideo: true // This is the key that tells main.js to use a <video> tag
-    },
+    { name: 'Makita U.S.A.', logo: 'assets/images/makita_logo.png', logoSize: 'h-16' },
     { name: 'PROMOTECH Fabrication Machines Pvt. Ltd.', logo: 'assets/images/promotech_logo.png', logoSize: 'h-16' },
     { name: 'iCLEAN Technologies', logo: 'assets/images/i_clean_logo.png', logoSize: 'h-16' },
     { name: 'Broachcutter Drilling Machines Pvt. Ltd.', logo: 'assets/images/broach_cutter_logo.png', logoSize: 'h-16' },

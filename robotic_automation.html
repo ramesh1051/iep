@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024">
     <title>StarBlaze Robotic Automation Solutions | Innovative Engineering Products</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -53,7 +53,7 @@
                 <img src="assets/images/company_logo.png" alt="Company Logo" class="w-8 h-8">
                 <span>Innovative Engineering Products</span>
             </a>
-            <div class="hidden md:flex items-center space-x-6 text-white">
+            <div class="flex items-center space-x-6 text-white">
                 <a href="index.html#hero" class="flex items-center hover:text-purple-400 transition duration-300">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     Home
@@ -78,17 +78,17 @@
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Contact
                 </a>
-                <a href="#" target="_blank" class="hover:text-blue-500 transition duration-300 transform hover:scale-110">
+                <a href="#" target="_blank" class="flex items-center text-white hover:text-blue-500 transition duration-300 transform hover:scale-110">
                     <i class="fab fa-facebook-f text-xl"></i>
                 </a>
-                <a href="#" target="_blank" class="hover:text-pink-500 transition duration-300 transform hover:scale-110">
+                <a href="#" target="_blank" class="flex items-center text-white hover:text-pink-500 transition duration-300 transform hover:scale-110">
                     <i class="fab fa-instagram text-xl"></i>
                 </a>
-                <a href="https://wa.me/6383711498" target="_blank" class="hover:text-green-500 transition duration-300 transform hover:scale-110">
+                <a href="https://wa.me/6383711498" target="_blank" class="flex items-center text-white hover:text-green-500 transition duration-300 transform hover:scale-110">
                     <i class="fab fa-whatsapp text-xl"></i>
                 </a>
             </div>
-            <div class="md:hidden">
+            <div class="hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
                     <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -107,20 +107,20 @@
     </nav>
 
     <main class="container mx-auto px-4 py-16">
-        <section id="hero" class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-8 scroll-animate-initial">
-            <div class="w-full lg:w-1/2 text-center lg:text-left">
+        <section id="hero" class="mb-12 flex flex-row items-center justify-between gap-8 scroll-animate-initial">
+            <div class="w-1/2 text-center lg:text-left">
                 <h1 class="text-5xl font-extrabold text-white mb-4">ROBOTIC AUTOMATION SOLUTIONS</h1>
                 <p class="text-xl text-gray-300 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
                     StarBlaze offers cutting-edge robotic automation solutions to transform industries, optimize productivity, and redefine efficiency.
                 </p>
             </div>
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <div class="w-1/2 flex justify-center lg:justify-end">
                 <img src="assets/images/robotic_automation/hero.png" alt="Robotic Automation Solutions" class="rounded-lg shadow-lg max-w-full h-auto">
             </div>
         </section>
 
         <section class="mb-8">
-            <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <div class="flex flex-row justify-end items-center space-x-4">
                 <label for="category-filter" class="text-lg text-gray-300">Jump to Section:</label>
                 <div class="relative inline-block text-left">
                     <select id="category-filter" class="block appearance-none w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer">
@@ -138,7 +138,7 @@
                 <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9.83a4 4 0 01-3.54-1.99l-.27-.45A2 2 0 004 7.02V7m13 2v6m-3-3h.01"></path></svg>
                 Robotics: The Fleet
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg text-center">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">R-GEN</h3>
                     <p class="text-gray-300"><strong>Reach:</strong> 1600 - 3100mm</p>
@@ -179,7 +179,7 @@
                 <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 Our Portfolio
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg text-center">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">ROBOTS</h3>
                     <p class="text-gray-300 mb-2">Our robotic solutions can reduce defects by up to <strong>70%</strong> while tripling production throughput.</p>
@@ -273,7 +273,7 @@
                 <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-14l-3 3m5 5l-3-3m-4 6v-4m-2 2h4m-1-7l-3 3m5 5l-3-3"></path></svg>
                 Our Strength
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-3 gap-8">
                 <div class="glass-effect p-6 rounded-lg">
                     <h3 class="text-2xl font-semibold text-purple-400 mb-4">End-to-End Solution Provider</h3>
                     <p class="text-gray-300">Expertise in solving unique industrial challenges with no off-the-shelf solutions through advanced mechanical design and development, AI-driven programming, and embedded systems integration.</p>

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=1024">
     <title>Innovative Engineering Products</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +19,7 @@
                 <span>Innovative Engineering Products</span>
             </a>
 
-<div class="hidden md:flex items-center space-x-6 text-white">
+<div class="flex items-center space-x-6 text-white">
                 <a href="index.html#hero" class="flex items-center hover:text-purple-400 transition duration-300">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     Home
@@ -59,7 +58,7 @@
                 </a>
             </div>
 
-            <div class="md:hidden">
+            <div class="hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
                     <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -78,7 +77,7 @@
         </div>
     </nav>
 
-    <section id="hero" class="relative h-[80vh] flex items-center justify-start overflow-hidden px-4 md:px-8 lg:px-16">
+    <section id="hero" class="relative h-[80vh] flex items-center justify-start overflow-hidden px-16">
         <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-gray-950 opacity-90 z-0"></div>
         <img id="backgen-image" src="assets/images/background.png" alt="Industrial Background" class="absolute inset-0 w-full h-full object-cover z-0 hero-foreground-image-initial">
 
@@ -111,7 +110,7 @@
     <section class="bg-gray-900 py-16 scroll-animate-initial" data-animation-type="fade-up">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold text-gray-100 mb-12">Powered by the Best Manufacturers</h2>
-            <div id="manufacturers-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-center">
+            <div id="manufacturers-grid" class="grid grid-cols-6 gap-8 items-center justify-center">
                 </div>
         </div>
     </section>
@@ -121,15 +120,15 @@
             <h2 class="text-5xl font-extrabold text-center text-white mb-16 glow-text scroll-animate-initial" data-animation-type="fade-up">
                 Innovation at Your Fingertips: Explore Our Solutions
             </h2>
-            <div id="product-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div id="product-cards-container" class="grid grid-cols-3 gap-10">
                 </div>
         </div>
     </section>
 
 <section id="about" class="py-20 bg-gray-900">
-    <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+    <div class="container mx-auto px-4 flex flex-row items-center gap-12">
         
-        <div class="lg:w-1/2 about-text-initial" data-animation-type="slide-left">
+        <div class="w-1/2 about-text-initial" data-animation-type="slide-left">
             <h2 class="text-5xl font-extrabold text-white mb-6 leading-tight glow-text">
                 About Innovative Engineering Products
             </h2>
@@ -145,7 +144,7 @@
             </a>
         </div>
 
-        <div class="lg:w-1/2 relative group overflow-hidden rounded-xl shadow-2xl glass-effect about-image-initial" data-animation-type="slide-right">
+        <div class="w-1/2 relative group overflow-hidden rounded-xl shadow-2xl glass-effect about-image-initial" data-animation-type="slide-right">
             <div id="about-track" class="flex transition-transform duration-700 ease-in-out"></div>
 
             <button id="prevAbout" class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10">

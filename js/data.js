@@ -2,7 +2,7 @@ const products = [
     {
         id: 'promotech-magnetic-drills',
         category: 'Heavy-Duty Industrial Tools',
-        image: 'assets/images/promotech/promotech_hero.png',
+        image: 'assets/images/promotech/promotech_hero_1.mp4',
         manufacturer: 'PROMOTECH Fabrication Machines Pvt. Ltd.',
         description: 'PROMOTECH offers innovative power tools, welding automation, and industrial systems. Tailored for structural steel fabricators, heavy machinery.',
         detailsPage: 'promotech.html'
@@ -10,7 +10,7 @@ const products = [
     {
         id: 'makita-angle-grinder',
         category: 'Angle Grinders',
-        image: 'assets/images/makita/logo.png',
+        image: 'assets/images/makita/makita_logo_loop.mp4',
         manufacturer: 'Makita U.S.A.',
         description: 'Robust 4", 4-1/2" & 5" Makita Angle Grinders, engineered for power, durability, and performance. Ideal for welders, fabricators, masons.',
         detailsPage: 'makita_angle_grinder.html'
@@ -18,7 +18,7 @@ const products = [
     {
         id: 'roots-janitorial-products',
         category: 'Janitorial Products',
-        image: 'assets/images/janitorial_heading.png',
+        image: 'assets/images/janitorial_loop.mp4',
         manufacturer: 'Roots Multiclean Ltd.',
         description: 'A comprehensive range of innovative and eco-friendly janitorial products from Roots Multiclean Ltd. designed to elevate your cleaning standards.',
         detailsPage: 'janitorial.html'
@@ -91,7 +91,12 @@ const products = [
 
 const manufacturers = [
     { name: 'Roots Multiclean Ltd.', logo: 'assets/images/roots_logo.png', logoSize: 'h-16' },
-    { name: 'Makita U.S.A.', logo: 'assets/images/makita_logo.png', logoSize: 'h-16' },
+    { 
+        name: 'Makita U.S.A.', 
+        logo: 'assets/images/makita/makita_logo_loop.mp4', // Points to your video file
+        logoSize: 'h-16',
+        isVideo: true // This is the key that tells main.js to use a <video> tag
+    },
     { name: 'PROMOTECH Fabrication Machines Pvt. Ltd.', logo: 'assets/images/promotech_logo.png', logoSize: 'h-16' },
     { name: 'iCLEAN Technologies', logo: 'assets/images/i_clean_logo.png', logoSize: 'h-16' },
     { name: 'Broachcutter Drilling Machines Pvt. Ltd.', logo: 'assets/images/broach_cutter_logo.png', logoSize: 'h-16' },

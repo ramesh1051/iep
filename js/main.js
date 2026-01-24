@@ -187,7 +187,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.className = `glass-effect p-4 flex items-center justify-center h-24 rounded-lg hover:scale-105 transition duration-300 scroll-animate-initial`;
             div.style.transitionDelay = `${index * 0.1}s`;
-            div.innerHTML = `<img src="${mfr.logo}" alt="${mfr.name}" class="${mfr.logoSize} w-full object-contain opacity-75 hover:opacity-100 transition-opacity duration-300" onerror="handleImageError(event, '${mfr.name} Logo')">`;
+
+            if (mfr.isVideo) {
+                // Render Looping Video
+                div.innerHTML = `
+                    <video 
+                        src="${mfr.logo}" 
+                        class="${mfr.logoSize} w-full h-full object-contain opacity-75 hover:opacity-100 transition-opacity duration-300" 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline>
+                    </video>`;
+            } else {
+                // Render Standard Image
+                div.innerHTML = `
+                    <img src="${mfr.logo}" alt="${mfr.name}" 
+                        class="${mfr.logoSize} w-full object-contain opacity-75 hover:opacity-100 transition-opacity duration-300" 
+                        onerror="handleImageError(event, '${mfr.name} Logo')">`;
+            }
+
             manufacturersGrid.appendChild(div);
             fadeInObserver.observe(div);
         });
@@ -196,24 +215,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Populate Product Cards (Homepage Specific) ---
     const productCardsContainer = getElement('product-cards-container');
     if (productCardsContainer) {
-        productCardsContainer.innerHTML = ''; // Clear any existing static cards
+        productCardsContainer.innerHTML = ''; 
         products.forEach((product, index) => {
             const productCard = document.createElement('a');
             productCard.href = product.detailsPage || 'starblaze.html';
             productCard.className = 'product-card flex flex-col rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 ease-in-out glow-button group scroll-animate-initial';
             productCard.style.transitionDelay = `${index * 0.08}s`;
 
-            if (!product.detailsPage) {
-                productCard.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    alert(`Detailed specifications for "${product.category}" are coming soon! Redirecting to a general solutions page.`);
-                    window.location.href = 'starblaze.html';
-                });
-            }
+            // Check if the image path ends in .mp4
+            const isVideoProduct = product.image.toLowerCase().endsWith('.mp4');
+            
+            const mediaHTML = isVideoProduct 
+                ? `<video src="${product.image}" class="product-card-image" autoplay loop muted playsinline></video>`
+                : `<img src="${product.image}" alt="${product.category}" class="product-card-image" onerror="handleImageError(event, '${product.category}')">`;
 
             productCard.innerHTML = `
                 <div class="product-card-image-wrapper">
-                    <img src="${product.image}" alt="${product.category}" class="product-card-image" onerror="handleImageError(event, '${product.category}')">
+                    ${mediaHTML}
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between bg-gray-800 bg-opacity-80 backdrop-blur-md">
                     <div>

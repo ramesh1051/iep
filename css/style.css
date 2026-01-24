@@ -274,3 +274,18 @@ body {
     background-color: rgba(75, 85, 99, 0.5);
     color: #d8b4fe;
 }
+
+/* Add this to your style.css */
+video.product-card-image {
+    object-fit: cover; /* Change to 'contain' if you want to see the whole video frame */
+    background-color: #000;
+}
+
+/* Ensure the wrapper handles the video correctly */
+.product-card-image-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024">
     <title>Janitorial Products - Innovative Engineering Products</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -113,7 +113,7 @@
             <img src="assets/images/company_logo.png" alt="Company Logo" class="w-10 h-10"> 
             <span>Innovative Engineering Products</span>
         </a>
-        <div class="hidden md:flex space-x-4 text-lg font-medium">
+        <div class="flex items-center space-x-6 text-lg font-medium">
             <a href="index.html#hero" class="flex items-center text-white hover:text-gray-900 transition duration-300">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -148,11 +148,17 @@
                 </svg>
                 Contact
             </a>
-                <a href="#" target="_blank" class="text-white hover:text-blue-500 transition duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
-                <a href="#" target="_blank" class="text-white hover:text-pink-500 transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
-                <a href="https://wa.me/6383711498" target="_blank" class="text-white hover:text-green-500 transition duration-300"><i class="fab fa-whatsapp text-xl"></i></a>
+                <a href="#" target="_blank" class="flex items-center text-white hover:text-blue-500 transition duration-300">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="#" target="_blank" class="flex items-center text-white hover:text-pink-500 transition duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="https://wa.me/6383711498" target="_blank" class="flex items-center text-white hover:text-green-500 transition duration-300">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </a>
         </div>
-        <div class="md:hidden">
+        <div class="hidden">
             <button id="mobile-menu-button" class="text-white focus:outline-none">
                 <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -173,20 +179,20 @@
 </div>
 
 <main class="container mx-auto px-4 py-16">
-    <section class="mb-12 flex flex-col lg:flex-row items-center justify-between gap-8">
-        <div class="w-full lg:w-1/2 text-center lg:text-left">
+    <section class="mb-12 flex flex-row items-center justify-between gap-8">
+        <div class="w-1/2 text-left">
             <h1 class="text-5xl font-extrabold text-gray-900 mb-4">Innovative Janitorial Solutions</h1>
             <p class="text-xl text-gray-600 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
                 Discover a superior standard of cleanliness with Innovative Engineering Products's range of janitorial products. Partnering with leaders like Roots Multiclean, we transform cleaning into a satisfying experience.
             </p>
         </div>
-        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
+        <div class="w-1/2 flex justify-end">
             <img src="assets/images/janitorial_heading.png" alt="Janitorial Solutions" class="rounded-lg shadow-lg max-w-full h-auto">
         </div>
     </section>
 
     <section class="mb-8">
-        <div class="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <div class="flex flex-row justify-end items-center space-x-4">
             <label for="category-filter" class="text-lg text-gray-700 flex items-center">
                 Filter by Category:
             </label>
@@ -196,7 +202,7 @@
         </div>
     </section>
 
-    <section id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></section>
+    <section id="product-list" class="grid grid-cols-4 gap-8"></section>
         <section id="contact" class="mb-12 scroll-animate-initial" data-animation-type="fade-up"></section>
             <h2 class="text-4xl font-bold text-gray-900 text-center mb-10 border-b-2 pb-2 border-gray-200 flex items-center justify-center">
                 <svg class="w-8 h-8 mr-4" fill="none" stroke="#a78bfa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
